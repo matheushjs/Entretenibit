@@ -2,4 +2,4 @@
 
 
 ## Workflow
-View <<FILE>>
+View [file](https://github.com/martchellop/Bitmask_knights/blob/scrum-for-github/SCRUM-WORKFLOW.md)
