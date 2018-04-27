@@ -8,6 +8,8 @@
 	
 	- Na semana que vem nos encontraremos para definir:
 	
-		- Tecnologias a serem utilizadas
+		- Tecnologias a serem utilizadas	
+			- Seria legal se as pessoas podessem dar uma pesquisada sobre o assunto em geral
 		
 		- O que cada um deve aprender, mais ou menos
+		
