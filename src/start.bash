@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd scraper && docker build . -t scraper && cd ..
 cd frontend && docker build . -t frontend && cd ..
 
