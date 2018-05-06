@@ -1,8 +1,10 @@
-FROM node:latest
+FROM node:10
+
+MAINTAINER mhjsaldanha@gmail.com
 
 WORKDIR /frontend
 
-ADD index.js package.json /frontend/
+COPY index.js package.json /frontend/
 
 RUN npm install
 

@@ -1,8 +1,10 @@
 FROM python:3
 
+MAINTAINER mhjsaldanha@gmail.com
+
 WORKDIR /app
 
-ADD . /app
+COPY . /app
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
