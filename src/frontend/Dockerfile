@@ -6,6 +6,7 @@ WORKDIR /frontend
 
 COPY index.js package.json /frontend/
 
+RUN bash build.bash
 RUN npm install
 
 EXPOSE 80
