@@ -15,6 +15,10 @@ class App extends Component {
 		this.setState({searchString: event.target.value})
 	}
 
+	updatePageLinkHandler = (event) => {
+		console.log('To do.')
+	}
+
 	render() {
 		return (
 		<div className="App">
@@ -34,8 +38,11 @@ class App extends Component {
 						display: 'inline', 
 						margin: 'auto',
 					}} >
+
 					<SearchBar 
 						onChange={this.updateSearchStringHandler}
+						onEnter={this.updatePageLinkHandler}
+						value={this.state.searchString}
 						textStyle={{
 							margin: 'auto', 
 							width: '50vw',
