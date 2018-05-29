@@ -18,12 +18,14 @@ function IconLabelButtons(props) {
   const { classes } = props;
   return (
     <div style={props.buttonStyle}>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet" />
       <Button 
 	style={{display: 'inline-block'}}
 	className={classes.button} 
 	variant="raised"
 	color="primary">
-        <Icon className={classes.rightIcon}>Enviar</Icon>
+        <Icon className={classes.rightIcon}>send</Icon>
       </Button>
     </div>
   );
