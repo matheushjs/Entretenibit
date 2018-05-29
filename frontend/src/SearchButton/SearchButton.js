@@ -17,11 +17,11 @@ const styles = theme => ({
 function IconLabelButtons(props) {
   const { classes } = props;
   return (
-    <div style={props.buttonStyle}>
+    <div style={{display:'inline-block', padding:'0px 30px'}}>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet" />
       <Button 
-	style={{display: 'inline-block'}}
+        size="large"
 	className={classes.button} 
 	variant="raised"
 	color="primary">

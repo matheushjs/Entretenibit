@@ -33,10 +33,10 @@ const styles = theme => ({
     },
   },
   textFieldInput: {
-    borderRadius: 4,
+    borderRadius: 2,
     backgroundColor: theme.palette.common.white,
     border: '1px solid #ced4da',
-    fontSize: 24,
+    fontSize: 20,
     padding: '10px 12px',
     width: 'calc(100% - 24px)',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
@@ -46,10 +46,10 @@ const styles = theme => ({
     },
   },
   bootstrapInput: {
-    borderRadius: 4,
+    borderRadius: 2,
     backgroundColor: theme.palette.common.white,
     border: '1px solid #ced4da',
-    fontSize: 24,
+    fontSize: 20,
     margin: 'center',
     padding: '10px 12px',
     width: '200',
@@ -86,9 +86,7 @@ function CustomizedInputs(props) {
   const { classes } = props;
 
   return (
-    <div 
-				className={classes.container} 
-				style={props.divStyle}>
+    <div style={{display: 'inline-block'}} className={classes.container}>
 				<TextField
 					placeholder="O que você procura?"
 					id="bootstrap-input"
