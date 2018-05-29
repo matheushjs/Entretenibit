@@ -87,23 +87,29 @@ function CustomizedInputs(props) {
 
 	return (
 		<div style={{display: 'inline-block'}} className={classes.container}>
-				<TextField
-					onChange={props.onChange}
-					placeholder="O que você procura?"
-					id="bootstrap-input"
-					InputProps={{
-						disableUnderline: true,
-						classes: {
-						root: classes.textFieldRoot,
-						input: classes.textFieldInput,
-						},
-					}}
-					InputLabelProps={{
-					shrink: true,
-					className: classes.textFieldFormLabel,
+			<TextField
+				onKeyPress={(event) => {
+					if (event.key === 'Enter') {
+						props.onEnter(event);
+						event.preventDefault();
+					}
 				}}
-				style={{marginRight: 10, width: '60vw'}}
-				/>
+				onChange={props.onChange}
+				placeholder="O que você procura?"
+				id="bootstrap-input"
+				InputProps={{
+					disableUnderline: true,
+					classes: {
+					root: classes.textFieldRoot,
+					input: classes.textFieldInput,
+					},
+				}}
+				InputLabelProps={{
+				shrink: true,
+				className: classes.textFieldFormLabel,
+			}}
+			style={{marginRight: 10, width: '60vw'}}
+			/>
 		</div>
 	);
 }
