@@ -17,14 +17,13 @@ class App extends Component {
           <p style={{
 		fontSize: '6vw', 
 		color: 'white',
-		backgroundColor: 'rgba(75,75,75,0.75)',
+		backgroundColor: 'rgba( 55, 55, 55, 0.55 )',
 		}}> Entretenibit </p>
 
 	  <SearchBar 
 	  	textStyle={{
 	  		margin: 'auto', 
 	  		width: '50vw',
-			textAlign: 'auto',
 		}}
 	  	divStyle={{
 	  		lineHeight: '40vh',
@@ -34,7 +33,6 @@ class App extends Component {
 			}} />
           <SearchButton 
 	  	buttonStyle={{
-	  		lineHeight: '40vh',
 	  		display: 'inline', 
 	  		padding: '3px', 
 	  		margin: 'auto', 
