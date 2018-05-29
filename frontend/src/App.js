@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
 import SearchBar from './SearchBar/SearchBar';
 import SearchButton from './SearchButton/SearchButton';
 import { Parallax } from 'react-parallax';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import './App.css';
 
 class App extends Component {
+
+	state = {
+		searchString: ''
+	}
+
+	updateSearchStringHandler = (event) => {
+		this.setState({searchString: event.target.value})
+	}
+
 	render() {
 		return (
 		<div className="App">
@@ -26,13 +35,15 @@ class App extends Component {
 						margin: 'auto',
 					}} >
 					<SearchBar 
+						onChange={this.updateSearchStringHandler}
 						textStyle={{
 							margin: 'auto', 
 							width: '50vw',
 					}} />
 
-					<SearchButton />
-
+					<SearchButton searchLink={
+						this.props.pathComplement + 
+						this.state.searchString}/>
 				</div>
 			</Parallax>
 		</div>
@@ -41,7 +52,14 @@ class App extends Component {
 }
 
 App.defaultProps = {
-	backgroundImage: 'https://images.pexels.com/photos/34650/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=650&w=940'
+	backgroundImage: 
+		'https://images.pexels.com/photos/34650'+
+		'/pexels-photo.jpg?'+
+		'auto=compress&'+
+		'cs=tinysrgb&'+
+		'h=650&w=940',
+	searchLink: 'http://localhost:3000/',
+	pathComplement: '',
 }
 
 export default App;
