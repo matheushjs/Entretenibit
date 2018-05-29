@@ -32,11 +32,25 @@ const styles = theme => ({
       marginTop: theme.spacing.unit * 3,
     },
   },
+  textFieldInput: {
+    borderRadius: 4,
+    backgroundColor: theme.palette.common.white,
+    border: '1px solid #ced4da',
+    fontSize: 24,
+    padding: '10px 12px',
+    width: 'calc(100% - 24px)',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    '&:focus': {
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
   bootstrapInput: {
     borderRadius: 4,
     backgroundColor: theme.palette.common.white,
     border: '1px solid #ced4da',
-    fontSize: 32,
+    fontSize: 24,
+    margin: 'center',
     padding: '10px 12px',
     width: '200',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
@@ -73,16 +87,24 @@ function CustomizedInputs(props) {
 
   return (
     <div 
-	className={classes.container} 
-	style={props.divStyle}>
-      <MuiThemeProvider theme={theme}>
-        <TextField
-          style={props.textStyle}
-          className={classes.margin}
-          label="O que você procura?"
-          id="muia-theme-provider-input"
-        />
-      </MuiThemeProvider>
+				className={classes.container} 
+				style={props.divStyle}>
+				<TextField
+					placeholder="O que você procura?"
+					id="bootstrap-input"
+					InputProps={{
+						disableUnderline: true,
+						classes: {
+						root: classes.textFieldRoot,
+						input: classes.textFieldInput,
+						},
+					}}
+					InputLabelProps={{
+					shrink: true,
+					className: classes.textFieldFormLabel,
+				}}
+				style={{marginRight: 10, width: '60vw'}}
+				/>
     </div>
   );
 }
