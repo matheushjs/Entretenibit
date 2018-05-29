@@ -17,10 +17,6 @@ class App extends Component {
           <p style={{
 		fontSize: '6vw', 
 		color: 'white',
-		/* Note: This background color was added to prevent
-		 * the background to not have enough contrast with
-		 * the title, making difficult to read it.
-		 */
 		backgroundColor: 'rgba(75,75,75,0.75)',
 		}}> Entretenibit </p>
 
@@ -43,11 +39,6 @@ class App extends Component {
 	  		padding: '3px', 
 	  		margin: 'auto', 
 			}} />
-
-	/* Note: the highlighted events component must
-         * be placed right here, according to the
-         * main page planning.
-         */
 
         </Parallax>
       </div>
