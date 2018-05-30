@@ -1,9 +1,12 @@
 import urllib3
 from bs4 import BeautifulSoup
 import sys, traceback
+import re
+import datetime as dt
 
 from .ScraperBase import ScraperBase
 from Event import Event
+from Occurence import Occurence
 
 class ICMCEventsScraper(ScraperBase):
     """Scraper for events listed under the ICMC website."""
@@ -38,15 +41,53 @@ class ICMCEventsScraper(ScraperBase):
             quadros = self.soup.select(".bloco")[0].select(".quadro")
             
             for quadro in quadros:
-                link = quadro.a["href"]
-                title = quadro.h4.text
-                date = quadro.p.text
-                eventType = Event.ACADEMIC
-                self.items.append([link, title, date, eventType])
+                item = {}
+                item["link"] = quadro.a["href"]
+                item["title"] = quadro.h4.text
+                item["date"] = quadro.p.text
+                item["eventType"] = Event.ACADEMIC
+                self.items.append(item)
         except:
             # Log any exception
             self.items = []
             traceback.print_exc(file=sys.stdout)
+
+        # Process data items
+        pattern  = r"[^0-9]*" # May begin with some non-numbers
+        pattern += r"([0-9]{1,2}/[0-9]{1,2}/[0-9]{2,4})" # Date
+        
+        for item in self.items:
+            try:
+                m = re.match(pattern, item["date"])
+                date = m.group(1).split("/")
+                date = [ int(i) for i in date ]
+                date = dt.date(date[2], date[1], date[0])
+                item["date"] = date
+            except:
+                # Log any exception
+                item["date"] = None
+                traceback.print_exc(file=sys.stdout)
+
+        # Get Occurence objects
+        occurs = []
+        for item in self.items:
+            ev = Event(
+                title=item["title"], 
+                description=None, 
+                eventType=item["eventType"],
+                cast=None,
+                link=item["link"])
+            oc = Occurence(
+                event=ev,
+                date=item["date"],
+                location=None,
+                pricing=None)
+            
+            occurs.append(oc)
+        
+        # Change list of dictionaries with a list of Occurence objects
+        self.items = occurs
+
 
     def getEvents(self):
         return self.items
