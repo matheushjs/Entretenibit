@@ -18,17 +18,17 @@ class Robot():
                 ret = scrap.getOccurences()
                 if ret:
                     occurences.extend(ret)
-            except:
+            except Exception:
                 # Log exception and go to next scraper
                 traceback.print_exc(file=sys.stdout)
-        
+
         return occurences
 
 if __name__ == '__main__':
     # Testing procedures
     rb = Robot()
-    
+
     for i in rb.scrapeAll():
         print(i)
-    
+
     print("Gracefully ended.")

@@ -13,12 +13,12 @@ class Location():
         'district' is the district of the location (aka bairro))"""
 
         # Check types
-        if type(name) is not str \
-        or type(street) is not str \
-        or type(number) is not int \
-        or type(district) is not str:
+        if not isinstance(name, str) \
+        or not isinstance(street, str) \
+        or not isinstance(number, int) \
+        or not isinstance(district, str):
             raise TypeError("One of the arguments is of the wrong type")
-        
+
         # Check values
         if number < 0:
             raise ValueError("One of the arguments has an invallid value")
@@ -29,10 +29,10 @@ class Location():
         self.district = district
 
     def __str__(self):
-        format = "Location Name: {}\n" + \
+        formatt = "Location Name: {}\n" + \
             "Address: {}, {} - {}"
 
-        return format.format(
+        return formatt.format(
             self.name if self.name else "None",
             self.street if self.street else "None",
             self.number if self.number else "None",
@@ -41,7 +41,7 @@ class Location():
 
 if __name__ == '__main__':
     ev = Location("Meu querido bar", "Rua santo antônio do satanas", 666, "polígono espectral")
-    
+
     try:
         ev = Location("Meu querido bar", "Rua santo antônio do satanas", -666, "polígono espectral")
     except Exception as e:

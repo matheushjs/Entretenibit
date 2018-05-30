@@ -1,6 +1,6 @@
 class ScraperBase():
     """Abstract Parent class for all scrapers. Every scraper should reimplement the methods here"""
-    
+
     def __init__(self):
         pass
 

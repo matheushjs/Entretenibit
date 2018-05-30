@@ -10,12 +10,12 @@ class Occurence():
         'date' is either a dt.date or dt.datetime object signalling when the event will happen
         'location' is a Location object containing the location where the event will happen
         'pricing' is a list of pairs of string-like (class, price) with the pricing of the event"""
-        
+
         # Check types
-        if type(event) is not Event \
-        or type(date) not in [dt.date, dt.datetime] \
-        or location and type(location) is not Location \
-        or pricing and type(pricing) is not list:
+        if not isinstance(event, Event) \
+        or not isinstance(date, (dt.date, dt.datetime)) \
+        or location and not isinstance(location, Location) \
+        or pricing and not isinstance(pricing, list):
             raise TypeError("One of the arguments is of the wrong type")
 
         self.event = event
@@ -31,12 +31,12 @@ class Occurence():
             self.pricing = None
 
     def __str__(self):
-        format = "{}\n" + \
+        formatt = "{}\n" + \
             "Date: {}\n" + \
             "{}\n" + \
             "Pricing: {}\n"
 
-        return format.format(
+        return formatt.format(
             str(self.event),
             str(self.date),
             str(self.location) if self.location else "No Location",
