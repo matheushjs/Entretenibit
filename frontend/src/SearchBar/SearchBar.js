@@ -7,7 +7,7 @@ import FormControl from "@material-ui/core/FormControl";
 import purple from "@material-ui/core/colors/purple";
 import green from "@material-ui/core/colors/green";
 
-const styles = theme => ({
+const styles = (theme) => ({
 	container: {
 		display: "flex",
 		flexWrap: "wrap",

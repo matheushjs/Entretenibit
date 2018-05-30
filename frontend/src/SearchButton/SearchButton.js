@@ -8,7 +8,7 @@ import KeyboardVoice from "@material-ui/icons/KeyboardVoice";
 import Icon from "@material-ui/core/Icon";
 import Save from "@material-ui/icons/Save";
 
-const styles = theme => ({
+const styles = (theme) => ({
 	rightIcon: {
 		marginLeft: theme.spacing.unit,
 	},

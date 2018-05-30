@@ -14,11 +14,11 @@ class App extends Component {
 	}
 
 	updateSearchStringHandler = ( event ) => {
-		this.setState( { searchString: event.target.value } )
+		this.setState( { searchString: event.target.value } );
 	}
 
 	updatePageLinkHandler = ( event ) => {
-		this.setState( { searchEvent: true } )
+		this.setState( { searchEvent: true } );
 	}
 
 	render() {
@@ -81,7 +81,7 @@ class App extends Component {
 											onClick={ this.updatePageLinkHandler }/>
 									</Link>
 								</div>
-							)}} />
+							)}} />;
 
 					<Route 
 						path={this.props.pathComplement + ":searchString"}
