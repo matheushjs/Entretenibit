@@ -4,7 +4,7 @@ class ScraperBase():
     def __init__(self):
         pass
 
-    def scrapeEvents(self):
+    def scrape(self):
         raise NotImplementedError
 
     def getOccurences(self):

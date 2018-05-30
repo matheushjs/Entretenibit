@@ -36,7 +36,7 @@ class ICMCEventsScraper(ScraperBase):
             self.req = None
             traceback.print_exc(file=sys.stdout)
             
-    def scrapeEvents(self):
+    def scrape(self):
         try:
             quadros = self.soup.select(".bloco")[0].select(".quadro")
             
@@ -93,7 +93,7 @@ class ICMCEventsScraper(ScraperBase):
 
 if __name__ == "__main__":
     scraper = ICMCEventsScraper()
-    scraper.scrapeEvents()
+    scraper.scrape()
     
     for occ in scraper.getOccurences():
         print(occ)
