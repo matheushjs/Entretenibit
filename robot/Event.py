@@ -11,11 +11,12 @@ class Event():
     CINEMA   = 3
     _LAST    = 4
 
-    def __init__(self, title, description = None, eventType = None, cast = None):
+    def __init__(self, title, description = None, eventType = None, cast = None, link = None):
         """'title' is a string with the title of the event
         'description' is a string with the description of the event
         'eventType' is one among the enumeration within this class Event
-        'cast' is a list of pairs (name, role)"""
+        'cast' is a list of pairs (name, role)
+        'link' is the link to the official website of the event"""
 
         # Check types
         if type(title) is not str \

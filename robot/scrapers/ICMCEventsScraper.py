@@ -54,4 +54,4 @@ class ICMCEventsScraper(ScraperBase):
 if __name__ == "__main__":
     scraper = ICMCEventsScraper()
     scraper.scrapeEvents()
-    print(scraper.getEvents)
+    print(scraper.getEvents())
