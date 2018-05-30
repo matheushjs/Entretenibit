@@ -28,6 +28,17 @@ class Location():
         self.number = number
         self.district = district
 
+    def __str__(self):
+        format = "Location Name: {}\n" + \
+            "Address: {}, {} - {}"
+
+        return format.format(
+            self.name if self.name else "None",
+            self.street if self.street else "None",
+            self.number if self.number else "None",
+            self.district if self.district else "None"
+        )
+
 if __name__ == '__main__':
     ev = Location("Meu querido bar", "Rua santo antônio do satanas", 666, "polígono espectral")
     

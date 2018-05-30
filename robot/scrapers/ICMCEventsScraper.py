@@ -88,11 +88,12 @@ class ICMCEventsScraper(ScraperBase):
         # Change list of dictionaries with a list of Occurence objects
         self.items = occurs
 
-
-    def getEvents(self):
+    def getOccurences(self):
         return self.items
 
 if __name__ == "__main__":
     scraper = ICMCEventsScraper()
     scraper.scrapeEvents()
-    print(scraper.getEvents())
+    
+    for occ in scraper.getOccurences():
+        print(occ)

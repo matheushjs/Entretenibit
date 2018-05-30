@@ -37,7 +37,21 @@ class Event():
         self.description = description
         self.eventType = eventType
         self.cast = cast
+        self.link = link
 
+    def __str__(self):
+        format = "Event Title: {}\n" + \
+            "Description: {}\n" + \
+            "Type: {}\n" + \
+            "Cast: {}\n" + \
+            "Link: {}" \
+            
+        return format.format(
+            self.title, 
+            self.description if self.description else "None",
+            self.eventType if self.eventType else "None",
+            ' '.join([ "/".join(i) for i in self.cast ]) if self.cast else "None",
+            self.link if self.link else "None" )
 
 if __name__ == "__main__":
     ev = Event("O mágico de oz", "Um mágico legal", Event.THEATER, [])

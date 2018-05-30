@@ -21,7 +21,27 @@ class Occurence():
         self.event = event
         self.date = date
         self.location = location
-        self.pricing = pricing
+
+        # Normalize pricing
+        if pricing:
+            self.pricing = []
+            for tupl in pricing:
+                self.pricing.append(( str(i) for i in tupl ))
+        else:
+            self.pricing = None
+
+    def __str__(self):
+        format = "{}\n" + \
+            "Date: {}\n" + \
+            "{}\n" + \
+            "Pricing: {}\n"
+
+        return format.format(
+            str(self.event),
+            str(self.date),
+            str(self.location) if self.location else "No Location",
+            " ".join([ "/".join([i for i in self.pricing ])]) if self.pricing else "None"
+        )
 
 if __name__ == '__main__':
     ev1 = Event("O mágico de oz", "Um mágico legal", Event.THEATER, [])
