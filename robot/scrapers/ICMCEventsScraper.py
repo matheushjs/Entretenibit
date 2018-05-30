@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import sys, traceback
 
 from .ScraperBase import ScraperBase
+from Event import Event
 
 class ICMCEventsScraper(ScraperBase):
     """Scraper for events listed under the ICMC website."""
@@ -15,6 +16,7 @@ class ICMCEventsScraper(ScraperBase):
 
         self.req = None
         self.soup = None
+        self.items = [] # Will hold the scraped events
 
         # Try to get the page and the soup
         try:
@@ -24,7 +26,7 @@ class ICMCEventsScraper(ScraperBase):
                 headers=headers
             )
 
-            self.soup = BeautifulSoup(self.req.data)
+            self.soup = BeautifulSoup(self.req.data, "lxml")
         except:
             # Log the exception
             self.soup = None
@@ -32,7 +34,24 @@ class ICMCEventsScraper(ScraperBase):
             traceback.print_exc(file=sys.stdout)
             
     def scrapeEvents(self):
-        pass
+        try:
+            quadros = self.soup.select(".bloco")[0].select(".quadro")
+            
+            for quadro in quadros:
+                link = quadro.a["href"]
+                title = quadro.h4.text
+                date = quadro.p.text
+                eventType = Event.ACADEMIC
+                self.items.append([link, title, date, eventType])
+        except:
+            # Log any exception
+            self.items = []
+            traceback.print_exc(file=sys.stdout)
 
     def getEvents(self):
-        pass
+        return self.items
+
+if __name__ == "__main__":
+    scraper = ICMCEventsScraper()
+    scraper.scrapeEvents()
+    print(scraper.getEvents)
