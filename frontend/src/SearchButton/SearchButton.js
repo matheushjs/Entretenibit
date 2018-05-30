@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import FileUpload from '@material-ui/icons/FileUpload';
-import KeyboardVoice from '@material-ui/icons/KeyboardVoice';
-import Icon from '@material-ui/core/Icon';
-import Save from '@material-ui/icons/Save';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+import FileUpload from "@material-ui/icons/FileUpload";
+import KeyboardVoice from "@material-ui/icons/KeyboardVoice";
+import Icon from "@material-ui/core/Icon";
+import Save from "@material-ui/icons/Save";
 
 const styles = theme => ({
 	rightIcon: {
@@ -17,7 +17,7 @@ const styles = theme => ({
 function IconLabelButtons(props) {
 	const { classes } = props;
 	return (
-		<div style={{display:'inline-block', padding:'0px 30px'}}>
+		<div style={{display:"inline-block", padding:"0px 30px"}}>
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 				rel="stylesheet" />
 

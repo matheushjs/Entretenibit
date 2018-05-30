@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import SearchBar from './SearchBar/SearchBar';
-import SearchButton from './SearchButton/SearchButton';
-import { Parallax } from 'react-parallax';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom'
-import './App.css';
+import React, { Component } from "react";
+import SearchBar from "./SearchBar/SearchBar";
+import SearchButton from "./SearchButton/SearchButton";
+import { Parallax } from "react-parallax";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
+import "./App.css";
 
 class App extends Component {
 
 	state = {
-		searchString: '',
+		searchString: "",
 		searchEvent: false,
 	}
 
@@ -18,8 +18,7 @@ class App extends Component {
 	}
 
 	updatePageLinkHandler = ( event ) => {
-		console.log('To do.');
-		this.setState({ searchEvent: true })
+		this.setState( { searchEvent: true } )
 	}
 
 	render() {
@@ -33,21 +32,21 @@ class App extends Component {
 
 					<h1 
 						style={ {
-						fontSize: '6vw', 
-						color: 'white',
-						backgroundColor: 'rgba( 55, 55, 55, 0.55 )',
+						fontSize: "6vw", 
+						color: "white",
+						backgroundColor: "rgba( 55, 55, 55, 0.55 )",
 						} }> Entretenibit </h1>
 
 					<Route 
-						path='/' 
+						path="/" 
 						strict={true} 
 						exact={true} 
 						render={ () => {
-							return ( <Redirect to='/home' /> ) ;
+							return ( <Redirect to="/home" /> ) ;
 						} } />
 
 					<Route 
-						path='/home' 
+						path="/home" 
 						exact={true} 
 						render={ () => {
 							return (
@@ -59,9 +58,9 @@ class App extends Component {
 										} />
 								:	<div 
 										style={ {
-										lineHeight: '40vh',
-										display: 'inline', 
-										margin: 'auto',
+										lineHeight: "40vh",
+										display: "inline", 
+										margin: "auto",
 										} }>
 
 									<SearchBar 
@@ -69,8 +68,8 @@ class App extends Component {
 										onEnter={ this.updatePageLinkHandler }
 										value={ this.state.searchString }
 										textStyle={ {
-											margin: 'auto', 
-											width: '50vw',
+											margin: "auto", 
+											width: "50vw",
 										} } />
 
 									<Link 
@@ -85,7 +84,7 @@ class App extends Component {
 							)}} />
 
 					<Route 
-						path={this.props.pathComplement + ':searchString'}
+						path={this.props.pathComplement + ":searchString"}
 						exact={true} 
 						render={ ({match}) => {
 							return (
@@ -108,13 +107,13 @@ class App extends Component {
 
 App.defaultProps = {
 	backgroundImage: 
-		'https://images.pexels.com/photos/34650'+
-		'/pexels-photo.jpg?'+
-		'auto=compress&'+
-		'cs=tinysrgb&'+
-		'h=650&w=940',
-	searchLink: 'http://localhost:3000/',
-	pathComplement: '/search/',
+		"https://images.pexels.com/photos/34650"+
+		"/pexels-photo.jpg?"+
+		"auto=compress&"+
+		"cs=tinysrgb&"+
+		"h=650&w=940",
+	searchLink: "http://localhost:3000/",
+	pathComplement: "/search/",
 }
 
 export default (App);
