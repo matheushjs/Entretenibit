@@ -81,7 +81,7 @@ class App extends Component {
 											onClick={ this.updatePageLinkHandler }/>
 									</Link>
 								</div>
-							)}} />;
+							)}}; />
 
 					<Route 
 						path={this.props.pathComplement + ":searchString"}
