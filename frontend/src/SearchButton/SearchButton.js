@@ -7,8 +7,6 @@ import FileUpload from '@material-ui/icons/FileUpload';
 import KeyboardVoice from '@material-ui/icons/KeyboardVoice';
 import Icon from '@material-ui/core/Icon';
 import Save from '@material-ui/icons/Save';
-import { Link } from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom';
 
 const styles = theme => ({
 	rightIcon: {
@@ -23,18 +21,14 @@ function IconLabelButtons(props) {
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 				rel="stylesheet" />
 
-
-			<BrowserRouter>
-			<Link to={{pathname: props.searchLink}} className={classes.button}>
-				<Button 
-					size="large"
-					className={classes.button} 
-					variant="raised"
-					color="primary">
-					<Icon className={classes.rightIcon}>send</Icon>
-				</Button>
-			</Link>
-			</BrowserRouter>
+			<Button 
+				onClick={props.onClick}
+				size="large"
+				className={classes.button} 
+				variant="raised"
+				color="primary">
+				<Icon className={classes.rightIcon}>send</Icon>
+			</Button>
 		</div>
 	);
 }

@@ -10,6 +10,7 @@ class App extends Component {
 
 	state = {
 		searchString: '',
+		searchEvent: false,
 	}
 
 	updateSearchStringHandler = ( event ) => {
@@ -17,7 +18,8 @@ class App extends Component {
 	}
 
 	updatePageLinkHandler = ( event ) => {
-		console.log('To do.')
+		console.log('To do.');
+		this.setState({ searchEvent: true })
 	}
 
 	render() {
@@ -36,31 +38,54 @@ class App extends Component {
 						backgroundColor: 'rgba( 55, 55, 55, 0.55 )',
 						} }> Entretenibit </h1>
 
-					<Route path='/home' exact={true} render={ () => {
-						return (
-							<div 
-									style={ {
-									lineHeight: '40vh',
-									display: 'inline', 
-									margin: 'auto',
-									} }>
-
-								<SearchBar 
-									onChange={ this.updateSearchStringHandler }
-									onEnter={ this.updatePageLinkHandler }
-									value={ this.state.searchString }
-									textStyle={ {
-										margin: 'auto', 
-										width: '50vw',
-									} } />
-
-								<SearchButton 
-									onClick={ this.updatePageLinkHandler }/>
-							</div>
-						)}} />
+					<Route 
+						path='/' 
+						strict={true} 
+						exact={true} 
+						render={ () => {
+							return ( <Redirect to='/home' /> ) ;
+						} } />
 
 					<Route 
-						path='/search/:searchString' 
+						path='/home' 
+						exact={true} 
+						render={ () => {
+							return (
+								this.state.searchEvent ? 
+								<Redirect
+										to={
+										this.props.pathComplement + 
+										this.state.searchString
+										} />
+								:	<div 
+										style={ {
+										lineHeight: '40vh',
+										display: 'inline', 
+										margin: 'auto',
+										} }>
+
+									<SearchBar 
+										onChange={ this.updateSearchStringHandler }
+										onEnter={ this.updatePageLinkHandler }
+										value={ this.state.searchString }
+										textStyle={ {
+											margin: 'auto', 
+											width: '50vw',
+										} } />
+
+									<Link 
+										to={
+										this.props.pathComplement + 
+										this.state.searchString
+										} >
+										<SearchButton 
+											onClick={ this.updatePageLinkHandler }/>
+									</Link>
+								</div>
+							)}} />
+
+					<Route 
+						path={this.props.pathComplement + ':searchString'}
 						exact={true} 
 						render={ ({match}) => {
 							return (
@@ -69,20 +94,6 @@ class App extends Component {
 									<p> 
 										This will be used in future to 
 										facilitate the search mechanism 
-									</p>
-								</div>
-							);
-						} } />
-
-					<Route
-						path='/aboutus'
-						exact={true}
-						render={ () => {
-							return (
-								<div> 
-									<p> 
-										This will be used in future to 
-										facilitate the 'About us' display 
 									</p>
 								</div>
 							);
@@ -103,7 +114,7 @@ App.defaultProps = {
 		'cs=tinysrgb&'+
 		'h=650&w=940',
 	searchLink: 'http://localhost:3000/',
-	pathComplement: '',
+	pathComplement: '/search/',
 }
 
 export default (App);
