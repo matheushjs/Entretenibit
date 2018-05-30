@@ -7,5 +7,5 @@ $ sudo yarn install
 
 ## Run 
 ```bash
-$ sudo yarn dev 
+$ yarn dev 
 ```
