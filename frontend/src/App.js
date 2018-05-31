@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
 import "./App.css";
 import SelectPage from "./SelectPage/SelectPage";
+import Header from "./Header/Header";
 
 class App extends Component {
 
@@ -18,8 +19,12 @@ class App extends Component {
 		this.setState( { searchString: event.target.value } );
 	}
 
-	updatePageLinkHandler = ( event ) => {
+	turnOnPageLinkHandler = ( event ) => {
 		this.setState( { searchEvent: true } );
+	}
+
+	turnOffPageLinkHandler = ( event ) => {
+		this.setState( { searchEvent: false } );
 	}
 
 	render() {
@@ -30,6 +35,7 @@ class App extends Component {
 				<Parallax 
 					//bgImage={ this.props.backgroundImage }
 					blur={ { min: 1, max:2 } }>
+					<Header homeButton={this.turnOffPageLinkHandler}/>
 
 					<h1 
 						style={ {
@@ -57,7 +63,7 @@ class App extends Component {
 										this.props.pathComplement + 
 										this.state.searchString
 										} />
-								:	<div 
+								: <div 
 										style={ {
 										lineHeight: "40vh",
 										display: "inline", 
@@ -66,7 +72,7 @@ class App extends Component {
 
 									<SearchBar 
 										onChange={ this.updateSearchStringHandler }
-										onEnter={ this.updatePageLinkHandler }
+										onEnter={ this.turnOnPageLinkHandler }
 										value={ this.state.searchString }
 										textStyle={ {
 											margin: "auto", 
@@ -79,10 +85,12 @@ class App extends Component {
 										this.state.searchString
 										} >
 										<SearchButton 
-											onClick={ this.updatePageLinkHandler }/>
+											onClick={ this.turnOnPageLinkHandler }/>
 									</Link>
 								</div>
 							); }} />
+
+					<Route path="/search" component={SelectPage} />
 
 					<Route 
 						path={this.props.pathComplement + ":searchString"}
@@ -99,7 +107,6 @@ class App extends Component {
 							);
 						} } />
 					
-					<Route path="/search" component={SelectPage} />
 					<div>
 						<Link to="/home">Home</Link>
 					</div>
