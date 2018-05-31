@@ -5,6 +5,7 @@ import { Parallax } from "react-parallax";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
 import "./App.css";
+import SelectPage from "./SelectPage/SelectPage";
 
 class App extends Component {
 
@@ -27,7 +28,7 @@ class App extends Component {
 			<CssBaseline />
 			<Router>
 				<Parallax 
-					bgImage={ this.props.backgroundImage }
+					//bgImage={ this.props.backgroundImage }
 					blur={ { min: 1, max:2 } }>
 
 					<h1 
@@ -92,12 +93,20 @@ class App extends Component {
 									<h1> {match.params.searchString} </h1> 
 									<p> 
 										This will be used in future to 
-										facilitate the search mechanism 
+										facilitate the   mechanism 
 									</p>
 								</div>
 							);
 						} } />
-
+					
+					<Route path="/search" component={SelectPage} />
+					<div>
+						<Link to="/home">Home</Link>
+					</div>
+					<div>
+						<Link to="/search">Search</Link>
+					</div>
+					
 				</Parallax>
 			</Router>
 		</div>
