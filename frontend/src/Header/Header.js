@@ -31,7 +31,7 @@ function SimpleAppBar(props) {
 				<Toolbar>
 
 					<Link 
-						style={{textDecoration: 'none'}}
+						style={{textDecoration:"none"}}
 						to="/home" >
 						<Button 
 							variant="raised" 
