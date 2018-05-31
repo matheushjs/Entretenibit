@@ -10,6 +10,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import SearchBar from "../SearchBar/SearchBar";
+import SearchButton from "../SearchButton/SearchButton";
+import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
 
 class SearchBarSection extends React.Component{ //search bar section (the first one)
 	constructor(props){
@@ -19,11 +22,18 @@ class SearchBarSection extends React.Component{ //search bar section (the first 
 	render(){
 		return (
 			<div>
-				<h1>Here goes the search bar section.</h1>
-				<TextField name="searchText" id="search" label="Search Here!" type="search" margin="normal" autoComplete = "off" 
-					onChange={this.props.triggerParentHandleInputChange}/>
-				<Button name="searchButton" variant="fab" color="primary" aria-label="search" 
-					onClick={this.props.triggerParentHandleSubmit}> <SearchIcon /> </Button>
+				<div>
+					<h1>Here goes the search bar section.</h1>
+					<SearchBar
+						onChange={this.props.triggerParentHandleInputChange}
+						onEnter={this.props.triggerParentUpdatePageLinkHandler}
+						value={this.props.getParentSearchString}
+						textStyle={ {margin: "auto", width: "50vw", } } />
+					<Link to={ "/search/" + this.props.getParentSearchString } >
+						<SearchButton name="searchButton" ref={"searchButton"}
+							onClick={this.props.triggerParentUpdatePageLinkHandler}/>
+					</Link>
+				</div>
 			</div>
 		);
 	}
@@ -67,8 +77,10 @@ class SelectPage extends React.Component{ //select page (the main/parent page of
 	constructor(props){
 		super(props);
 		this.state = {
-			searchText: "",
-			configurationEventType: "Select"
+			searchString: "",
+			searchEvent: false,
+
+			configurationEventType: "Select",
 			};
 		
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -92,8 +104,13 @@ class SelectPage extends React.Component{ //select page (the main/parent page of
 	}
 
 	handleSubmit(event){ //for tests
-		alert("" + this.state.searchText + "\n" + this.state.configurationEventType);
+		alert("" + this.state.searchString + "\n" + this.state.configurationEventType);
 		event.preventDefault();
+	}
+	
+	updatePageLinkHandler = ( event ) => {
+		this.setState( { searchEvent: true } );
+		//this.handleSubmit(event);
 	}
 	
 	render(){
@@ -102,7 +119,9 @@ class SelectPage extends React.Component{ //select page (the main/parent page of
 				<div className = "SearchBarSection">
 					<SearchBarSection 
 					triggerParentHandleInputChange={this.handleInputChange}
-					triggerParentHandleSubmit={this.handleSubmit}/>
+					triggerParentHandleSubmit={this.handleSubmit}
+					triggerParentUpdatePageLinkHandler={this.updatePageLinkHandler}
+					getParentSearchString={this.state.searchString}/>
 				</div>
 				<div className = "ConfigurationSection">
 					<ConfigurationSection 
@@ -121,3 +140,12 @@ export default (SelectPage);
 
 //ReactDOM.render(<SelectPage />, document.getElementById("root"));
 //registerServiceWorker();
+
+/*
+<div>
+	<TextField name="searchString" id="search" label="Search Here!" type="search" margin="normal" autoComplete = "off" 
+		onChange={this.props.triggerParentHandleInputChange}/>
+	<Button name="searchButton" variant="fab" color="primary" aria-label="search" 
+		onClick={this.props.triggerParentHandleSubmit}> <SearchIcon /> </Button>
+</div>
+*/
