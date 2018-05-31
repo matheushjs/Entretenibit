@@ -48,8 +48,9 @@ class App extends Component {
 						strict={true} 
 						exact={true} 
 						render={ () => {
-							return ( <Redirect to="/home" /> ) ;
-						} } />
+							return ( 
+								<Redirect to="/home" /> 
+					); } } />
 
 					<Route 
 						path="/(home|search)/" 
@@ -62,14 +63,14 @@ class App extends Component {
 										this.state.searchString
 										} />
 								: null
-							); }} />
+							); } } />
 				
 					<Route 
 						path="/(home|search)/" 
 						render={ () => {
 							return (
 							<div 
-									style={ {
+								style={ {
 									lineHeight: "3vh",
 									display: "inline", 
 									margin: "auto",

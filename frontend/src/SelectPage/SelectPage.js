@@ -1,14 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import SearchIcon from "@material-ui/icons/Search";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
-import SearchBar from "../SearchBar/SearchBar";
-import SearchButton from "../SearchButton/SearchButton";
-import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
 
 class ConfigurationSection extends React.Component{ 
 	//configutarion settings section (the second one)
