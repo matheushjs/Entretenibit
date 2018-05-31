@@ -87,7 +87,7 @@ function CustomizedInputs(props) {
 
 	return (
 		<div style={{display: "inline-block"}} className={classes.container}>
-			<TextField
+			<TextField name="searchString"
 				onKeyPress={(event) => {
 					if (event.key === "Enter") {
 						props.onEnter(event);
