@@ -93,7 +93,7 @@ class App extends Component {
 									<h1> {match.params.searchString} </h1> 
 									<p> 
 										This will be used in future to 
-										facilitate the   mechanism 
+										facilitate the search mechanism 
 									</p>
 								</div>
 							);
