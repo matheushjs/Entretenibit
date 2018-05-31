@@ -16,21 +16,16 @@ class App extends Component {
 	}
 
 	updateSearchStringHandler = ( event ) => {
-		this.setState( { searchString: event.target.value } );
+		this.setState( { 
+			searchString: event.target.value, 
+			searchEvent: false 
+		} );
 	}
 
 	turnOnPageLinkHandler = ( event ) => {
 		this.setState( { searchEvent: true } );
 	}
 	
-	updatePageLinkHandlerFalse = ( event ) => {
-		this.setState( { searchEvent: false } );
-	}
-
-	turnOffPageLinkHandler = ( event ) => {
-		this.setState( { searchEvent: false } );
-	}
-
 	render() {
 		return (
 		<div className="App">
@@ -39,7 +34,7 @@ class App extends Component {
 				<Parallax 
 					//bgImage={ this.props.backgroundImage }
 					blur={ { min: 1, max:2 } }>
-					<Header homeButton={this.turnOffPageLinkHandler}/>
+					<Header />
 
 					<h1 
 						style={ {
@@ -57,8 +52,7 @@ class App extends Component {
 						} } />
 
 					<Route 
-						path="/home" 
-						exact={true} 
+						path="/(home|search)/" 
 						render={ () => {
 							return (
 								this.state.searchEvent ? 
@@ -67,57 +61,46 @@ class App extends Component {
 										this.props.pathComplement + 
 										this.state.searchString
 										} />
-								: <div 
-										style={ {
-										lineHeight: "40vh",
-										display: "inline", 
-										margin: "auto",
-										} }>
-
-									<SearchBar 
-										onChange={ this.updateSearchStringHandler }
-										onEnter={ this.turnOnPageLinkHandler }
-										value={ this.state.searchString }
-										textStyle={ {
-											margin: "auto", 
-											width: "50vw",
-										} } />
-
-									<Link 
-										to={
-										this.props.pathComplement + 
-										this.state.searchString
-										} >
-										<SearchButton 
-											onClick={ this.turnOnPageLinkHandler }/>
-									</Link>
-								</div>
+								: null
 							); }} />
+				
+					<Route 
+						path="/(home|search)/" 
+						render={ () => {
+							return (
+							<div 
+									style={ {
+									lineHeight: "3vh",
+									display: "inline", 
+									margin: "auto",
+									} }>
 
-					<Route path="/search" component={SelectPage} />
+								<SearchBar 
+									onChange={ this.updateSearchStringHandler }
+									onEnter={ this.turnOnPageLinkHandler }
+									value={ this.state.searchString }
+									textStyle={ {
+										margin: "auto", 
+										width: "50vw",
+									} } />
+
+								<Link 
+									to={
+									this.props.pathComplement + 
+									this.state.searchString
+									} >
+									<SearchButton />
+								</Link>
+							</div>
+							); } } />
 
 					<Route 
-						path={this.props.pathComplement + ":searchString"}
-						exact={true} 
-						render={ ({match}) => {
+						path="/search" 
+						render={() => {
 							return (
-								<div> 
-									<h1> {match.params.searchString} </h1> 
-									<p> 
-										This will be used in future to 
-										facilitate the search mechanism 
-									</p>
-								</div>
-							);
-						} } />
-					
-					<div>
-						<Link to="/" onClick={ this.updatePageLinkHandlerFalse }>Home</Link>
-					</div>
-					<div>
-						<Link to="/search">Search</Link>
-					</div>
-					
+								<SelectPage searchString={this.state.searchString} />
+							); } } />
+
 				</Parallax>
 			</Router>
 		</div>
