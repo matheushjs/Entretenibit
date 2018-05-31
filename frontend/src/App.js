@@ -5,6 +5,7 @@ import { Parallax } from "react-parallax";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
 import "./App.css";
+import SelectPage from "./SelectPage/SelectPage";
 
 class App extends Component {
 
@@ -20,6 +21,10 @@ class App extends Component {
 	updatePageLinkHandler = ( event ) => {
 		this.setState( { searchEvent: true } );
 	}
+	
+	updatePageLinkHandlerFalse = ( event ) => {
+		this.setState( { searchEvent: false } );
+	}
 
 	render() {
 		return (
@@ -27,7 +32,7 @@ class App extends Component {
 			<CssBaseline />
 			<Router>
 				<Parallax 
-					bgImage={ this.props.backgroundImage }
+					//bgImage={ this.props.backgroundImage }
 					blur={ { min: 1, max:2 } }>
 
 					<h1 
@@ -97,7 +102,15 @@ class App extends Component {
 								</div>
 							);
 						} } />
-
+					
+					<Route path="/search" component={SelectPage} />
+					<div>
+						<Link to="/" onClick={ this.updatePageLinkHandlerFalse }>Home</Link>
+					</div>
+					<div>
+						<Link to="/search">Search</Link>
+					</div>
+					
 				</Parallax>
 			</Router>
 		</div>
