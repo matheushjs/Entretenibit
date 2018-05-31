@@ -31,7 +31,7 @@ function SimpleAppBar(props) {
 				<Toolbar>
 
 					<Link 
-						style={{textDecoration:"none"}}
+						style= { { textDecoration:"none" } }
 						to="/home" >
 						<Button 
 							variant="raised" 
@@ -42,7 +42,7 @@ function SimpleAppBar(props) {
 					</Link>
 
 					<Link
-						style={{textDecoration: 'none'}}
+						style= { { textDecoration:"none" } }
 						to="/aboutus" >
 						<Button
 							variant="raised" 
@@ -54,7 +54,7 @@ function SimpleAppBar(props) {
 					<p className={classes.flex} />
 
 					<Link 
-						style={{textDecoration: 'none'}}
+						style= { { textDecoration:"none" } }
 						to="/signup" >
 						<Button 
 							variant="raised" 
