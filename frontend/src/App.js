@@ -21,6 +21,10 @@ class App extends Component {
 	updatePageLinkHandler = ( event ) => {
 		this.setState( { searchEvent: true } );
 	}
+	
+	updatePageLinkHandlerFalse = ( event ) => {
+		this.setState( { searchEvent: false } );
+	}
 
 	render() {
 		return (
@@ -101,7 +105,7 @@ class App extends Component {
 					
 					<Route path="/search" component={SelectPage} />
 					<div>
-						<Link to="/home">Home</Link>
+						<Link to="/" onClick={ this.updatePageLinkHandlerFalse }>Home</Link>
 					</div>
 					<div>
 						<Link to="/search">Search</Link>
