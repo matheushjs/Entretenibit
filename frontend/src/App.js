@@ -22,6 +22,13 @@ class App extends Component {
 		} );
 	}
 
+	cleanSearchStringHandler = ( ) => {
+		this.setState( { 
+			searchString: "", 
+			searchEvent: false 
+		} );
+	}
+
 	turnOnPageLinkHandler = ( event ) => {
 		this.setState( { searchEvent: true } );
 	}
@@ -34,7 +41,11 @@ class App extends Component {
 				<Parallax 
 					//bgImage={ this.props.backgroundImage }
 					blur={ { min: 1, max:2 } }>
-					<Header />
+
+					<Header 
+						homeButton={ this.cleanSearchStringHandler }
+						aboutusButton={ this.cleanSearchStringHandler }
+					/>
 
 					<h1 
 						style={ {

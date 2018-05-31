@@ -45,6 +45,7 @@ function SimpleAppBar(props) {
 						to="/aboutus" >
 						<Button
 							variant="raised" 
+							onClick={ props.homeButton } 
 							className={ classes.menuButton }> 
 							Sobre Nós
 						</Button>
