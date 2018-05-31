@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
 
 const styles = {
   root: {
@@ -30,6 +31,7 @@ function SimpleAppBar(props) {
 				<Toolbar>
 
 					<Link 
+						style={{textDecoration: 'none'}}
 						to="/home" >
 						<Button 
 							variant="raised" 
@@ -40,6 +42,7 @@ function SimpleAppBar(props) {
 					</Link>
 
 					<Link
+						style={{textDecoration: 'none'}}
 						to="/aboutus" >
 						<Button
 							variant="raised" 
@@ -50,7 +53,8 @@ function SimpleAppBar(props) {
 
 					<p className={classes.flex} />
 
-					<Link
+					<Link 
+						style={{textDecoration: 'none'}}
 						to="/signup" >
 						<Button 
 							variant="raised" 
