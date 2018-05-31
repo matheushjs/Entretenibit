@@ -22,6 +22,10 @@ class App extends Component {
 	turnOnPageLinkHandler = ( event ) => {
 		this.setState( { searchEvent: true } );
 	}
+	
+	updatePageLinkHandlerFalse = ( event ) => {
+		this.setState( { searchEvent: false } );
+	}
 
 	turnOffPageLinkHandler = ( event ) => {
 		this.setState( { searchEvent: false } );
@@ -108,7 +112,7 @@ class App extends Component {
 						} } />
 					
 					<div>
-						<Link to="/home">Home</Link>
+						<Link to="/" onClick={ this.updatePageLinkHandlerFalse }>Home</Link>
 					</div>
 					<div>
 						<Link to="/search">Search</Link>
