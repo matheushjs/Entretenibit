@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles, MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
+import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
 import purple from "@material-ui/core/colors/purple";
-import green from "@material-ui/core/colors/green";
 
 const styles = (theme) => ({
 	container: {
@@ -73,12 +70,6 @@ const styles = (theme) => ({
 	},
 	bootstrapFormLabel: {
 		fontSize: 32,
-	},
-});
-
-const theme = createMuiTheme({
-	palette: {
-		primary: green,
 	},
 });
 
