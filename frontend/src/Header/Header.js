@@ -5,7 +5,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
 
 const styles = {
   root: {
@@ -46,6 +45,7 @@ function SimpleAppBar(props) {
 						to="/aboutus" >
 						<Button
 							variant="raised" 
+							onClick={ props.homeButton } 
 							className={ classes.menuButton }> 
 							Sobre Nós
 						</Button>

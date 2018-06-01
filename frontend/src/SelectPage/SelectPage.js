@@ -1,56 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom";
-//import "./index.css";
-//import App from "./App";
-//import registerServiceWorker from "./registerServiceWorker";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import SearchIcon from "@material-ui/icons/Search";
-//import Icon from "@material-ui/core/Icon";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
-import SearchBar from "../SearchBar/SearchBar";
-import SearchButton from "../SearchButton/SearchButton";
-import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
 
-class SearchBarSection extends React.Component{ //search bar section (the first one)
-	constructor(props){
-		super(props);
-	}
-	
-	render(){
-		return (
-			<div>
-				<div>
-					<h1>Here goes the search bar section.</h1>
-					<SearchBar
-						onChange={this.props.triggerParentHandleInputChange}
-						onEnter={this.props.triggerParentUpdatePageLinkHandler}
-						value={this.props.getParentSearchString}
-						textStyle={ {margin: "auto", width: "50vw", } } />
-					<Link to={ "/search/" + this.props.getParentSearchString } >
-						<SearchButton name="searchButton" ref={"searchButton"}
-							onClick={this.props.triggerParentUpdatePageLinkHandler}/>
-					</Link>
-				</div>
-			</div>
-		);
-	}
-}
-
-class ConfigurationSection extends React.Component{ //configutarion settings section (the second one)
-	constructor(props){
-		super(props);
-	}
-	
+class ConfigurationSection extends React.Component{ 
+	//configutarion settings section (the second one)
 	render(){
 		return (
 			<div>
 				<h1>Here goes the search configuration settings section.</h1>
 				<InputLabel>Event Type: </InputLabel>
 				<Select value={this.props.getParentConfigurationEventType} 
-					onChange={this.props.triggerParentHandleInputChange} inputProps={{name: "configurationEventType"}}>
+					onChange={this.props.triggerParentHandleInputChange} 
+					inputProps={{name: "configurationEventType"}}>
 						<MenuItem value="Select"> <em>Select</em> </MenuItem>
 						<MenuItem value="Type1">Type 1</MenuItem>
 						<MenuItem value="Type2">Type 2</MenuItem>
@@ -62,10 +24,6 @@ class ConfigurationSection extends React.Component{ //configutarion settings sec
 }
 
 class CardsSection extends React.Component{ //cars section (the third one)
-	constructor(props){
-		super(props);
-	}
-	
 	render(){
 		return (
 			<h1>Here goes the cards section.</h1>
@@ -73,7 +31,8 @@ class CardsSection extends React.Component{ //cars section (the third one)
 	}
 }
 
-class SelectPage extends React.Component{ //select page (the main/parent page of this script)
+class SelectPage extends React.Component{ 
+	//select page (the main/parent page of this script)
 	constructor(props){
 		super(props);
 		this.state = {
@@ -85,13 +44,14 @@ class SelectPage extends React.Component{ //select page (the main/parent page of
 		
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	
 	handleInputChange(event){
 		const target = event.target;
-		//|v| verify type (put other types here too) [in this case verify target.value and checkbox.checked] |v|
-		const value = target.type === "checkbox" ? target.checked : target.value;
+		//|v| verify type (put other types here too) 
+		//[in this case verify target.value and checkbox.checked] |v|
+		const value = target.type === "checkbox" ? 
+			target.checked : target.value;
 		const name = target.name;
 		
 		this.setState({
@@ -103,26 +63,9 @@ class SelectPage extends React.Component{ //select page (the main/parent page of
 		this.setState({value: event.target.value});
 	}
 
-	handleSubmit(event){ //for tests
-		alert("" + this.state.searchString + "\n" + this.state.configurationEventType);
-		event.preventDefault();
-	}
-	
-	updatePageLinkHandler = ( event ) => {
-		this.setState( { searchEvent: true } );
-		//this.handleSubmit(event);
-	}
-	
-	render(){
+	render() {
 		return (
 			<div>
-				<div className = "SearchBarSection">
-					<SearchBarSection 
-					triggerParentHandleInputChange={this.handleInputChange}
-					triggerParentHandleSubmit={this.handleSubmit}
-					triggerParentUpdatePageLinkHandler={this.updatePageLinkHandler}
-					getParentSearchString={this.state.searchString}/>
-				</div>
 				<div className = "ConfigurationSection">
 					<ConfigurationSection 
 					triggerParentHandleInputChange={this.handleInputChange}
@@ -131,21 +74,12 @@ class SelectPage extends React.Component{ //select page (the main/parent page of
 				<div className = "CardsSection">
 					<CardsSection />
 				</div>
+				<div>
+					Just a test (use this props in the future): {this.props.searchString}
+				</div>
 			</div>
 		);
 	}
 }
 
 export default (SelectPage);
-
-//ReactDOM.render(<SelectPage />, document.getElementById("root"));
-//registerServiceWorker();
-
-/*
-<div>
-	<TextField name="searchString" id="search" label="Search Here!" type="search" margin="normal" autoComplete = "off" 
-		onChange={this.props.triggerParentHandleInputChange}/>
-	<Button name="searchButton" variant="fab" color="primary" aria-label="search" 
-		onClick={this.props.triggerParentHandleSubmit}> <SearchIcon /> </Button>
-</div>
-*/
