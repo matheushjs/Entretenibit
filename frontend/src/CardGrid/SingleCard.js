@@ -49,8 +49,21 @@ function SingleCard(props) {
 		link
 	} = props;
 
-	let alt = creditMapping[type];
-	let src = imageMapping[type];
+	/* Codacy forced me to do this. It wont allow creditMapping[type] */
+	let alt, src;
+	if(type === "academic"){
+		alt = creditMapping["academic"];
+		src = imageMapping["academic"];
+	} else if(type === "theater"){
+		alt = creditMapping["theater"];
+		src = imageMapping["theater"];
+	} else if(type === "musical"){
+		alt = creditMapping["musical"];
+		src = imageMapping["musical"];
+	} else {
+		alt = creditMapping["unknown"];
+		src = imageMapping["unknown"];
+	}
 
 	return (
 		<div>
