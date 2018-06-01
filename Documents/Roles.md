@@ -1,29 +1,29 @@
 ### PRODUCT OWNER
-▸ Define as funcionalidades do produto 
+▸ Defines the functionalities of the product
 
-▸ Decide datas de entrega mas não o que vai ser entregue 
+▸ Decides delivery deadlines but not what's going to be delivered
 
-▸ Prioriza funcionalidades 
+▸ Assigns priorities to functionalities
 
-▸ Interage com stakeholders e clientes (Product Backlog) 
+▸ Interacts with stakeholders and clients (Product Backlog) 
 
-▸ Ajusta funcionalidades e prioriza sprints 
+▸ Adjusts functionalities and prioritizes sprints
 
-▸ Aceita ou rejeita resultados do trabalho no sprint review 
+▸ In the sprint review, accepts or rejects results achieved
 
 
 
 ### SCRUM MASTER
-▸ Protege valores e princípios
+▸ Protects values and principles
 
-▸ Remove impedimentos
+▸ Removes obstructions
 
-▸ Mantém a equipe funcional e produtiva 
+▸ Keeps the team functional and productive
 
-▸ Facilita cooperação
+▸ Promotes cooperation
 
-▸ Protege a equipe do “lado negro da força” 
+▸ Protects the team from the "dark side of the force"
 
-▸ Facilita integração
+▸ Promotes integration
 
-▸ Não aloca tarefas 
+▸ Does not assign tasks
