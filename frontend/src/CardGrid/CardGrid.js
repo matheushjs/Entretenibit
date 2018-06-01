@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import SingleCard from "./SingleCard"
+import SingleCard from "./SingleCard";
 
 const example = [
 	[
@@ -39,7 +39,7 @@ const example = [
 			description: "Bleh.",
 		},
 	],
-]
+];
 
 class CardGrid extends React.Component { //cars section (the third one)
 	render() {

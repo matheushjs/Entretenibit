@@ -29,14 +29,14 @@ const imageMapping = {
 	"theater": "/card_icon_theater.png",
 	"musical": "/card_icon_trumpet.png",
 	"unknown": "/card_icon_box.png"
-}
+};
 
 const creditMapping = {
 	"academic": "Icon made by Freepik at www.flaticon.com",
 	"theater": "Icon made by Pixel Buddha at www.flaticon.com",
 	"musical": "Icon made by Freepik at www.flaticon.com",
 	"unknown": "Icon made by Good Ware at www.flaticon.com",
-}
+};
 
 
 function SingleCard(props) {
@@ -49,6 +49,8 @@ function SingleCard(props) {
 		link
 	} = props;
 
+	let alt = creditMapping[type];
+	let src = imageMapping[type];
 
 	return (
 		<div>
@@ -56,8 +58,8 @@ function SingleCard(props) {
 				<CardHeader
 					avatar={
 						<Avatar
-							alt={creditMapping[type]}
-							src={imageMapping[type]}
+							alt={alt}
+							src={src}
 							className={classes.avatar}
 						/>
 					}
@@ -114,6 +116,6 @@ SingleCard.defaultProps = {
 	type: "unknown",
 	description: "Description unavailable.",
 	link: "*"
-}
+};
 
 export default withStyles(styles)(SingleCard);
