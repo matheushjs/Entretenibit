@@ -56,7 +56,7 @@ function SingleCard(props) {
         <CardHeader
           avatar={
             <Avatar
-              alt="Thumbnail of an event."
+              alt={credit_mapping[type]}
               src={image_mapping[type]}
               className={classes.avatar}
             />
