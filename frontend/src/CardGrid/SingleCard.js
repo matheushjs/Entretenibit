@@ -27,17 +27,25 @@ const styles = {
 };
 
 const image_mapping = {
-  "academic": "/path_to_academic_image",
-  "theater": "/path_to_theater_image",
-  "musical": "/path_to_musical_image",
-  "unknown": "/path_to_unknown_image"
+  "academic": "/card_icon_academic.png",
+  "theater": "/card_icon_theater.png",
+  "musical": "/card_icon_trumpet.png",
+  "unknown": "/card_icon_box.png"
 }
+
+const credit_mapping = {
+  "academic": "Icon made by Freepik at www.flaticon.com",
+  "theater": "Icon made by Pixel Buddha at www.flaticon.com",
+  "musical": "Icon made by Freepik at www.flaticon.com",
+  "unknown": "Icon made by Good Ware at www.flaticon.com",
+}
+
 
 function SingleCard(props) {
   const {
     title,
     date,
-    cardType,
+    type,
     description,
     classes
   } = props;
@@ -50,7 +58,7 @@ function SingleCard(props) {
           avatar={
             <Avatar
               alt="Thumbnail of an event."
-              src={image_mapping[cardType]}
+              src={image_mapping[type]}
               className={classes.avatar}
             />
           }
@@ -87,7 +95,7 @@ SingleCard.propTypes = {
    * Type of the event that will be displayed in the card.
    * This determines the image that will be displayed in the card.
    */
-  cardType: PropTypes.oneOf(["academic", "musical", "theater", "unknown"]),
+  type: PropTypes.oneOf(["academic", "musical", "theater", "unknown"]),
   
   /* Description of the event */
   description: PropTypes.string,
@@ -98,7 +106,7 @@ SingleCard.propTypes = {
 
 
 SingleCard.defaultProps = {
-  cardType: "unknown",
+  type: "unknown",
   description: "Description unavailable."
 }
 
