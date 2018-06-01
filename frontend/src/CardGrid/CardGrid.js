@@ -70,8 +70,7 @@ class CardGrid extends React.Component{ //cars section (the third one)
 									</Grid>
 								: null
 								}
-								
-								
+
 								{
 									value[1] ?
 										<Grid item xs={6} key={index*2 + 1}>

@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { Link } from "react-router-dom";
 
 const styles = {
   card: {
@@ -47,7 +48,8 @@ function SingleCard(props) {
     date,
     type,
     description,
-    classes
+    classes,
+    link
   } = props;
   
   
@@ -75,9 +77,12 @@ function SingleCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
+          <Link 
+            to={link} >
           <Button size="small" color="primary">
             Ver Mais
           </Button>
+          </Link>
         </CardActions>
       </Card>
     </div>
@@ -100,6 +105,9 @@ SingleCard.propTypes = {
   /* Description of the event */
   description: PropTypes.string,
 
+  /* Link for the event page */
+  link: PropTypes.string,
+
   /* For use with withStyles() */
   classes: PropTypes.object.isRequired,
 };
@@ -107,7 +115,8 @@ SingleCard.propTypes = {
 
 SingleCard.defaultProps = {
   type: "unknown",
-  description: "Description unavailable."
+  description: "Description unavailable.",
+  link: "*"
 }
 
 export default withStyles(styles)(SingleCard);

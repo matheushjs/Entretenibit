@@ -64,7 +64,7 @@ class SelectPage extends React.Component{
 					triggerParentHandleInputChange={this.handleInputChange}
 					getParentConfigurationEventType={this.state.configurationEventType}/>
 				</div>
-				<div className = "CardsSection">
+				<div className = "CardsSection" style={{marginTop: 20, marginBottom: 20}}>
 					<CardGrid />
 				</div>
 				<div>
