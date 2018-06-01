@@ -29,7 +29,15 @@ const image_mapping = {
 }
 
 function SingleCard(props) {
-  const { classes } = props;
+  const {
+    title,
+    date,
+    cardType,
+    description,
+    classes
+  } = props;
+  
+  
   return (
     <div>
       <Card className={classes.card}>
@@ -60,7 +68,29 @@ function SingleCard(props) {
 }
 
 SingleCard.propTypes = {
+  /* Title of the card */
+  title: PropTypes.string.isRequired,
+
+  /* Date of the event. For now only strings are allowed */
+  subheader: PropTypes.string.isRequired,
+
+  /* 
+   * Type of the event that will be displayed in the card.
+   * This determines the image that will be displayed in the card.
+   */
+  cardType: PropTypes.oneOf(["academic", "musical", "theater", "unknown"]),
+  
+  /* Description of the event */
+  description: PropTypes.string,
+
+  /* For use with withStyles() */
   classes: PropTypes.object.isRequired,
 };
+
+
+SingleCard.defaultProps = {
+  cardType: "unknown",
+  description: "Description unavailable."
+}
 
 export default withStyles(styles)(SingleCard);
