@@ -15,7 +15,7 @@ A machine learning approach would require a recursive web scraping technology, p
 Scraping Workflow
 ---
 
-![](/home/mathjs/ComputerS/Entretenibit/robot/1-May31-robotCommDiagram.png)
+![](/robot/1-May31-robotCommDiagram.png)
 
 As can be seen in the diagram above, the main workflow begins with an external world entity that prompts Robot.py to start. This external world is yet to be decided; it could be periodically every day/hour or it could be through a GET HTTP request in a given port number.
 
