@@ -2,6 +2,8 @@ import React from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import CardGrid from "../CardGrid/CardGrid";
+import Grid from '@material-ui/core/Grid';
 
 class ConfigurationSection extends React.Component{ 
 	//configutarion settings section (the second one)
@@ -26,7 +28,22 @@ class ConfigurationSection extends React.Component{
 class CardsSection extends React.Component{ //cars section (the third one)
 	render(){
 		return (
-			<h1>Here goes the cards section.</h1>
+			<Grid container spacing={24}>
+				<Grid item xs={12} sm={6}>
+					<Grid container justify="center">
+						<Grid key={1} item>
+							<CardGrid />
+						</Grid>
+					</Grid>
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Grid container justify="center">
+						<Grid key={2} item>
+							<CardGrid />
+						</Grid>
+					</Grid>
+				</Grid>
+			</Grid>
 		);
 	}
 }
