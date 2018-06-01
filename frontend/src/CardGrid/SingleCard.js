@@ -14,7 +14,8 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = {
   card: {
-    width: "35vw;"
+    marginLeft: "10%",
+    marginRight: "10%",
   },
   media: {
     height: 0,
