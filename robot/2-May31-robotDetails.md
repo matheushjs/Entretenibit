@@ -24,3 +24,16 @@ After the start signal, the Robot creates an instance of each Scraper object, wh
 After instantiating all Scrapers, the Robot runs over the list of Scrapers, calling  scrape()  and then  getOccurences()  on each Scraper and finally appending the received Occurences into Robot’s own list of Occurences.
 
 After getting all Occurences from all Scrapers, the Robot is supposed to send the acquired data somewhere. This is also yet to be decided, but it makes sense to me that Robot inserts the data directly into the database, instead of giving the data to a middle-man that will then do the insertions.
+
+Python file-tree
+---
+
+- Event.py - **Object that represents an event**
+- Location.py - **Object that represents a location**
+- Occurence.py - **Object that represents an occurence. Has 1 Event and 1 optional Location**
+- Robot.py - **Entrypoint of the scraping module**
+- scrapers/ - **Directory holding the scrapers**
+	- ICMCEventsScraper.py - **Scraper for ICMC events website**
+	- MTScraper.py - **Scraper for municipal theater website**
+	- ScraperBase.py - **A fake abstract class merely for having it as a guideline**
+	- \_\_init\_\_.py - **Turns the directory into a python module**
