@@ -17,14 +17,21 @@ class CardGrid extends React.Component{ //cars section (the third one)
 				<Grid item xs={12} sm={6}>
 					<Grid container justify="center">
 						<Grid key={1} item>
-							<SingleCard />
+							<SingleCard
+								title="Evento muito legal"
+								date="1 de Janeiro"
+							/>
 						</Grid>
 					</Grid>
 				</Grid>
 				<Grid item xs={12} sm={6}>
 					<Grid container justify="center">
 						<Grid key={2} item>
-							<SingleCard />
+							<SingleCard
+								title="Segundo evento muito legal"
+								date="2 de Janeiro"
+								description="O Evento Muito Legal invade a cidade de São Carlos com toda a eloquência esperada de um grupo de música pop."
+							/>
 						</Grid>
 					</Grid>
 				</Grid>

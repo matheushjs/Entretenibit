@@ -14,18 +14,22 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = {
   card: {
-    width: "40vh;"
+    width: "35vw;"
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // Determines the size of the image
   },
+  avatar: {
+    margin: 3,
+  }
 };
 
 const image_mapping = {
   "academic": "/path_to_academic_image",
   "theater": "/path_to_theater_image",
-  "musical": "/path_to_musical_image"
+  "musical": "/path_to_musical_image",
+  "unknown": "/path_to_unknown_image"
 }
 
 function SingleCard(props) {
@@ -44,17 +48,21 @@ function SingleCard(props) {
         <CardHeader
           avatar={
             <Avatar
-              alt="Placeholder"
-              src="/card_image_placeholder.jpeg"
+              alt="Thumbnail of an event."
+              src={image_mapping[cardType]}
               className={classes.avatar}
             />
           }
-          title="Evento Muito Legal"
-          subheader="28 de Julho"
+          title={
+            <Typography gutterBottom variant="headline" component="h2">
+              {title}
+            </Typography>
+          }
+          subheader={date}
         />
         <CardContent>
           <Typography component="p">
-            O Evento Muito Legal invade a cidade de São Carlos com toda a eloquência esperada de um grupo de música pop.
+            {description}
           </Typography>
         </CardContent>
         <CardActions>
