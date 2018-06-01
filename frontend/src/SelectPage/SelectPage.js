@@ -2,6 +2,7 @@ import React from "react";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import CardGrid from "../CardGrid/CardGrid";
 
 class ConfigurationSection extends React.Component{ 
 	//configutarion settings section (the second one)
@@ -19,14 +20,6 @@ class ConfigurationSection extends React.Component{
 						<MenuItem value="Type3">Type 3</MenuItem>
 				</Select>
 			</div>
-		);
-	}
-}
-
-class CardsSection extends React.Component{ //cars section (the third one)
-	render(){
-		return (
-			<h1>Here goes the cards section.</h1>
 		);
 	}
 }
@@ -71,8 +64,8 @@ class SelectPage extends React.Component{
 					triggerParentHandleInputChange={this.handleInputChange}
 					getParentConfigurationEventType={this.state.configurationEventType}/>
 				</div>
-				<div className = "CardsSection">
-					<CardsSection />
+				<div className = "CardsSection" style={{marginTop: 20, marginBottom: 20}}>
+					<CardGrid />
 				</div>
 				<div>
 					Just a test (use this props in the future): {this.props.searchString}
