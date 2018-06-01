@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 
 const styles = {
@@ -17,21 +17,21 @@ const styles = {
 	},
 	media: {
 		height: 0,
-		paddingTop: '56.25%', // Determines the size of the image
+		paddingTop: "56.25%", // Determines the size of the image
 	},
 	avatar: {
 		margin: 3,
 	}
 };
 
-const image_mapping = {
+const imageMapping = {
 	"academic": "/card_icon_academic.png",
 	"theater": "/card_icon_theater.png",
 	"musical": "/card_icon_trumpet.png",
 	"unknown": "/card_icon_box.png"
 }
 
-const credit_mapping = {
+const creditMapping = {
 	"academic": "Icon made by Freepik at www.flaticon.com",
 	"theater": "Icon made by Pixel Buddha at www.flaticon.com",
 	"musical": "Icon made by Freepik at www.flaticon.com",
@@ -56,8 +56,8 @@ function SingleCard(props) {
 				<CardHeader
 					avatar={
 						<Avatar
-							alt={credit_mapping[type]}
-							src={image_mapping[type]}
+							alt={creditMapping[type]}
+							src={imageMapping[type]}
 							className={classes.avatar}
 						/>
 					}
