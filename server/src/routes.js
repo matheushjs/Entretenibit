@@ -9,5 +9,6 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/test", db.test);
+router.get("/devs", db.devs);
 
 module.exports = router;
