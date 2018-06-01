@@ -10,7 +10,12 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-  }
+    width: "40vh;"
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
 };
 
 function CardGrid(props) {
@@ -18,6 +23,11 @@ function CardGrid(props) {
   return (
     <div>
       <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image="/card_image_placeholder.jpeg"
+          title="Placeholder image"
+        />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
             Hello World
