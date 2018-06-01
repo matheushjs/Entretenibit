@@ -68,7 +68,7 @@ function SingleCard(props) {
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">
-            See More
+            Ver Mais
           </Button>
         </CardActions>
       </Card>
