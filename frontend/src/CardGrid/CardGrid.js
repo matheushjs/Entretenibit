@@ -32,6 +32,9 @@ function CardGrid(props) {
           <Typography gutterBottom variant="headline" component="h2">
             Hello World
           </Typography>
+          <Typography component="p">
+            This is some secondary text.
+          </Typography>
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">
