@@ -33,6 +33,11 @@ function CardGrid(props) {
             Hello World
           </Typography>
         </CardContent>
+        <CardActions>
+          <Button size="small" color="primary">
+            See More
+          </Button>
+        </CardActions>
       </Card>
     </div>
   );
