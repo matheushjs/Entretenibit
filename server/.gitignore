@@ -1,6 +1,7 @@
 # dependencies
 /node_modules
 
+*.swp
 .vscode
 .env
 npm-debug.log*
