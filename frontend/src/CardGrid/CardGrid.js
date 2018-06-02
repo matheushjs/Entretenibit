@@ -2,40 +2,43 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import SingleCard from "./SingleCard";
 
+const bigTextTest=
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste"+
+	"texto grande para teste";
+
 const example = [
 	[
 		{
 			title: "Workshop 1",
 			date: "2 de Janeiro",
 			type: "academic",
-			description: "Um grande workshop"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste"+
-				"texto grande para teste",
+			description: "Um grande workshop"+bigTextTest,
+			link: "http://randomeventlink.web/info",
 		},
 		{
 			title: "Teatro 1",
 			date: "2 de Janeiro",
 			type: "theater",
-			description: "Um pequeno teatro",
+			description: "Um pequeno teatro"+bigTextTest,
+			link: "http://randomeventlink.web/info",
 		},
 	],
 	[
@@ -44,12 +47,14 @@ const example = [
 			date: "2 de Janeiro",
 			type: "musical",
 			description: "OSUSP apresenta.",
+			link: "http://randomeventlink.web/info",
 		},
 		{
 			title: "Pré-Estreia dum filmão",
 			date: "5 de Janeiro",
 			type: "unknown",
 			description: "Nada a declarar.",
+			link: "http://randomeventlink.web/info",
 		},
 	],
 	[
@@ -58,6 +63,7 @@ const example = [
 			date: "6 de Janeiro",
 			type: "unknown",
 			description: "Bleh.",
+			link: "http://randomeventlink.web/info",
 		},
 	],
 ];
@@ -78,10 +84,12 @@ class CardGrid extends React.Component { //cars section (the third one)
 									value[0] ?
 										<Grid item xs={6} key={index * 2 + 0}>
 											<SingleCard
+												cardAlign="top left"
 												title={value[0].title}
 												date={value[0].date}
 												type={value[0].type}
 												description={value[0].description}
+												link={value[0].link}
 											/>
 										</Grid>
 										: null
@@ -91,10 +99,12 @@ class CardGrid extends React.Component { //cars section (the third one)
 									value[1] ?
 										<Grid item xs={6} key={index * 2 + 1}>
 											<SingleCard
+												cardAlign="top center"
 												title={value[1].title}
 												date={value[1].date}
 												type={value[1].type}
 												description={value[1].description}
+												link={value[1].link}
 											/>
 										</Grid>
 										: null
