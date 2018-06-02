@@ -7,17 +7,15 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Rectangle from "react-rectangle";
 import { Link } from "react-router-dom";
 
 const styles = {
 	card: {
+		display: 'block',
+		margin: 'auto',
+		width: '65vw',
 		minWidth: 275,
-	},
-	bullet: {
-		display: "inline-block",
-		margin: "0 2px",
-		transform: "scale(0.8)",
+		textAlign: "justify",
 	},
 	title: {
 		marginBottom: 16,
@@ -32,15 +30,9 @@ function SimpleCard(props) {
 	const { classes } = props;
 
 	return (
-		props.clicked ?
-		<div style={ { 
-			background: "#9e9e9e", 
-			width: "100vw", 
-			height: "100vh" 
-			} }>
-	
-		<Rectangle >
-			<Card className={classes.card}>
+		<div >
+			<Card 
+				className={classes.card}>
 				<CardHeader
 					title={
 					<Typography 
@@ -58,6 +50,7 @@ function SimpleCard(props) {
 				</CardContent>
 				<CardActions>
 					<Link
+						replace
 						to={props.link} >
 						<Button>
 							Saiba mais no site oficial do evento
@@ -65,8 +58,7 @@ function SimpleCard(props) {
 					</Link>
 				</CardActions>
 			</Card>
-			</Rectangle>
-		</div> : null
+		</div> 
 	);
 }
 
