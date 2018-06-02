@@ -8,11 +8,32 @@ const example = [
 			title: "Workshop 1",
 			date: "2 de Janeiro",
 			type: "academic",
-			description: "Um grande workshop",
+			description: "Um grande workshop"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste"+
+				"texto grande para teste",
 		},
 		{
 			title: "Teatro 1",
-			date: "3 de Janeiro",
+			date: "2 de Janeiro",
 			type: "theater",
 			description: "Um pequeno teatro",
 		},
@@ -20,7 +41,7 @@ const example = [
 	[
 		{
 			title: "Orquestra 1",
-			date: "4 de Janeiro",
+			date: "2 de Janeiro",
 			type: "musical",
 			description: "OSUSP apresenta.",
 		},
@@ -48,7 +69,10 @@ class CardGrid extends React.Component { //cars section (the third one)
 			<Grid container spacing={24}>
 				{
 					example.map((value, index) => (
-						<Grid item xs={12} >
+						<Grid 
+							item xs={12} 
+							key={-index}>
+
 							<Grid container justify="center" spacing={24}>
 								{
 									value[0] ?
