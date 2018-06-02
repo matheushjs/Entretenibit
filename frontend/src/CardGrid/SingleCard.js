@@ -8,7 +8,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import ClickedCard from './ClickedCard';
 
 const styles = {
 	card: {
@@ -54,17 +54,17 @@ class SingleCard extends Component {
 
 	/* Codacy forced me to do this. It wont allow creditMapping[type] */
 	componentWillMount = () => {
-		if (this.state.type === "academic"){
+		if (this.state.type === "academic") {
 			this.setState( { 
 				alt : creditMapping["academic"], 
 				src : imageMapping["academic"],
 				} );
-		} else if (this.state.type === "theater"){
+		} else if (this.state.type === "theater") {
 			this.setState( { 
 				alt : creditMapping["theater"], 
 				src : imageMapping["theater"],
 				} );
-		} else if(this.state.type === "musical"){
+		} else if(this.state.type === "musical") {
 			this.setState( { 
 				alt : creditMapping["musical"],
 				src : imageMapping["musical"],
@@ -75,6 +75,10 @@ class SingleCard extends Component {
 				src : imageMapping["unknown"], 
 				} );
 		}
+	}
+
+	clickedCardHandler = () => {
+		this.setState( { clicked : true } );
 	}
 
 	render() {
@@ -90,7 +94,10 @@ class SingleCard extends Component {
 							/>
 						}
 						title={
-							<Typography gutterBottom variant="headline" component="h2">
+							<Typography 
+								gutterBottom 
+								variant="headline" 
+								component="h2">
 								{this.state.title}
 							</Typography>
 						}
@@ -98,18 +105,26 @@ class SingleCard extends Component {
 					/>
 					<CardContent>
 						<Typography component="p">
-							{this.state.description}
+							{this.state.description.substr(0, 100) + "..."}
 						</Typography>
 					</CardContent>
 					<CardActions>
-						<Link
-							to={this.state.link} >
-							<Button size="small" color="primary">
-								Ver Mais
+						<Button 
+							onClick={ this.clickedCardHandler }
+							size="small" 
+							color="primary" >
+							Ver Mais
 						</Button>
-						</Link>
 					</CardActions>
 				</Card>
+
+			<ClickedCard 
+				title = { this.state.title }
+				date = { this.state.date }
+				link = { this.state.link } 
+				description = { this.state.description }
+				clicked = { this.state.clicked } />
+
 			</div>
 		);
 	}
@@ -120,13 +135,13 @@ SingleCard.propTypes = {
 	title: PropTypes.string.isRequired,
 
 	/* Date of the event. For now only strings are allowed */
-	subheader: PropTypes.string.isRequired,
+	date: PropTypes.string.isRequired,
 
 	/* 
 	 * Type of the event that will be displayed in the card.
 	 * This determines the image that will be displayed in the card.
 	 */
-	type: PropTypes.oneOf(["academic", "musical", "theater", "unknown"]),
+	type: PropTypes.oneOf( ["academic", "musical", "theater", "unknown"] ),
 
 	/* Description of the event */
 	description: PropTypes.string,
