@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -39,66 +39,80 @@ const creditMapping = {
 };
 
 
-function SingleCard(props) {
-	const {
-		title,
-		date,
-		type,
-		description,
-		classes,
-		link
-	} = props;
-
-	/* Codacy forced me to do this. It wont allow creditMapping[type] */
-	let alt, src;
-	if(type === "academic"){
-		alt = creditMapping["academic"];
-		src = imageMapping["academic"];
-	} else if(type === "theater"){
-		alt = creditMapping["theater"];
-		src = imageMapping["theater"];
-	} else if(type === "musical"){
-		alt = creditMapping["musical"];
-		src = imageMapping["musical"];
-	} else {
-		alt = creditMapping["unknown"];
-		src = imageMapping["unknown"];
+class SingleCard extends Component {
+	state = {
+		title: this.props.title,
+		date: this.props.date,
+		type: this.props.type,
+		description: this.props.description,
+		classes: this.props.classes,
+		link: this.props.link,
+		alt: null,
+		src: null,
+		clicked: false,
 	}
 
-	return (
-		<div>
-			<Card className={classes.card}>
-				<CardHeader
-					avatar={
-						<Avatar
-							alt={alt}
-							src={src}
-							className={classes.avatar}
-						/>
-					}
-					title={
-						<Typography gutterBottom variant="headline" component="h2">
-							{title}
+	/* Codacy forced me to do this. It wont allow creditMapping[type] */
+	componentWillMount = () => {
+		if (this.state.type === "academic"){
+			this.setState( { 
+				alt : creditMapping["academic"], 
+				src : imageMapping["academic"],
+				} );
+		} else if (this.state.type === "theater"){
+			this.setState( { 
+				alt : creditMapping["theater"], 
+				src : imageMapping["theater"],
+				} );
+		} else if(this.state.type === "musical"){
+			this.setState( { 
+				alt : creditMapping["musical"],
+				src : imageMapping["musical"],
+				} );
+		} else {
+			this.setState( { 
+				alt : creditMapping["unknown"], 
+				src : imageMapping["unknown"], 
+				} );
+		}
+	}
+
+	render() {
+		return (
+			<div>
+				<Card className={this.state.classes.card}>
+					<CardHeader
+						avatar={
+							<Avatar
+								alt={this.state.alt}
+								src={this.state.src}
+								className={this.state.classes.avatar}
+							/>
+						}
+						title={
+							<Typography gutterBottom variant="headline" component="h2">
+								{this.state.title}
+							</Typography>
+						}
+						subheader={this.state.date}
+					/>
+					<CardContent>
+						<Typography component="p">
+							{this.state.description}
 						</Typography>
-					}
-					subheader={date}
-				/>
-				<CardContent>
-					<Typography component="p">
-						{description}
-					</Typography>
-				</CardContent>
-				<CardActions>
-					<Link
-						to={link} >
-						<Button size="small" color="primary">
-							Ver Mais
-					</Button>
-					</Link>
-				</CardActions>
-			</Card>
-		</div>
-	);
+					</CardContent>
+					<CardActions>
+						<Link
+							to={this.state.link} >
+							<Button size="small" color="primary">
+								Ver Mais
+						</Button>
+						</Link>
+					</CardActions>
+				</Card>
+			</div>
+		);
+	}
 }
 
 SingleCard.propTypes = {
