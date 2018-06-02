@@ -7,13 +7,13 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 
 const styles = theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  withoutLabel: {
-    marginTop: theme.spacing.unit * 3,
-  }
+	root: {
+		display: "flex",
+		flexWrap: "wrap",
+	},
+	withoutLabel: {
+		marginTop: theme.spacing.unit * 3,
+	}
 });
 
 class PricePickers extends React.Component {
@@ -51,7 +51,7 @@ class PricePickers extends React.Component {
 }
 
 PricePickers.propTypes = {
-  classes: PropTypes.object.isRequired,
+	classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(PricePickers);

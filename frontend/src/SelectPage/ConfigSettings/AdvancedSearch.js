@@ -9,20 +9,20 @@ import PricePickers from "./PricePickers";
 import EventTypesCheckboxes from "./EventTypesCheckboxes";
 
 const styles = theme => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-  },
-  gridList: {
-    width: 800,
-    height: 200,
-  },
-  subheader: {
-    width: "100%",
-  },
+	root: {
+		display: "flex",
+		flexWrap: "wrap",
+		justifyContent: "space-around",
+		overflow: "hidden",
+		backgroundColor: theme.palette.background.paper,
+	},
+	gridList: {
+		width: 800,
+		height: 200,
+	},
+	subheader: {
+		width: "100%",
+	},
 });
 
 function AdvancedSearch(props) {
@@ -50,7 +50,7 @@ function AdvancedSearch(props) {
 }
 
 AdvancedSearch.propTypes = {
-  classes: PropTypes.object.isRequired,
+	classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(AdvancedSearch);
