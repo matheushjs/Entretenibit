@@ -9,11 +9,13 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ClickedCard from './ClickedCard';
+import Popup from "reactjs-popup";
 
 const styles = {
 	card: {
 		marginLeft: "10%",
 		marginRight: "10%",
+		textAlign: "justify",
 	},
 	media: {
 		height: 0,
@@ -47,9 +49,9 @@ class SingleCard extends Component {
 		description: this.props.description,
 		classes: this.props.classes,
 		link: this.props.link,
+		cardAlign: this.props.cardAlign,
 		alt: null,
 		src: null,
-		clicked: false,
 	}
 
 	/* Codacy forced me to do this. It wont allow creditMapping[type] */
@@ -77,10 +79,6 @@ class SingleCard extends Component {
 		}
 	}
 
-	clickedCardHandler = () => {
-		this.setState( { clicked : true } );
-	}
-
 	render() {
 		return (
 			<div>
@@ -105,25 +103,37 @@ class SingleCard extends Component {
 					/>
 					<CardContent>
 						<Typography component="p">
-							{this.state.description.substr(0, 100) + "..."}
+							{this.state.description.substr(0, 250) + 
+								(this.state.description.length > 250 ? 
+								"..." : '')}
 						</Typography>
 					</CardContent>
 					<CardActions>
-						<Button 
-							onClick={ this.clickedCardHandler }
-							size="small" 
-							color="primary" >
-							Ver Mais
-						</Button>
+						<Popup 
+							on={ ['hover'] }
+							trigger={
+							<Button 
+								onClick={ this.clickedCardHandler }
+								size="small" 
+								color="primary" >
+								Ver Mais
+							</Button> } 
+							position={ this.state.cardAlign }
+							contentStyle={ { 
+								padding: "0px", 
+								border: "none",
+								width: '65vw',
+								} }
+							>
+								<ClickedCard 
+									title = { this.state.title }
+									date = { this.state.date }
+									link = { this.state.link } 
+									description = { this.state.description } />
+						</Popup>
 					</CardActions>
 				</Card>
 
-			<ClickedCard 
-				title = { this.state.title }
-				date = { this.state.date }
-				link = { this.state.link } 
-				description = { this.state.description }
-				clicked = { this.state.clicked } />
 
 			</div>
 		);
