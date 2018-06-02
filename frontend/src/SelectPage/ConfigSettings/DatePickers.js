@@ -27,7 +27,7 @@ function DatePickers(props) {
 				defaultValue={props.getDate}
 				className={classes.textField}
 				InputLabelProps={{
-				  shrink: true,
+					shrink: true,
 				}}
 			/>
 		</form>
