@@ -7,13 +7,12 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
 
 const styles = {
 	card: {
-		display: 'block',
-		margin: 'auto',
-		width: '65vw',
+		display: "block",
+		margin: "auto",
+		width: "65vw",
 		minWidth: 275,
 		textAlign: "justify",
 	},
@@ -49,13 +48,12 @@ function SimpleCard(props) {
 					Sobre: {props.description}
 				</CardContent>
 				<CardActions>
-					<Link
-						replace
-						to={props.link} >
+					<a
+						href={props.link} >
 						<Button>
 							Saiba mais no site oficial do evento
 						</Button>
-					</Link>
+					</a>
 				</CardActions>
 			</Card>
 		</div> 

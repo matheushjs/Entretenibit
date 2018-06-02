@@ -8,7 +8,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import ClickedCard from './ClickedCard';
+import ClickedCard from "./ClickedCard";
 import Popup from "reactjs-popup";
 
 const styles = {
@@ -105,12 +105,12 @@ class SingleCard extends Component {
 						<Typography component="p">
 							{this.state.description.substr(0, 250) + 
 								(this.state.description.length > 250 ? 
-								"..." : '')}
+								"..." : "")}
 						</Typography>
 					</CardContent>
 					<CardActions>
 						<Popup 
-							on={ ['hover'] }
+							on={ ["hover"] }
 							trigger={
 							<Button 
 								onClick={ this.clickedCardHandler }
@@ -122,7 +122,7 @@ class SingleCard extends Component {
 							contentStyle={ { 
 								padding: "0px", 
 								border: "none",
-								width: '65vw',
+								width: "65vw",
 								} }
 							>
 								<ClickedCard 

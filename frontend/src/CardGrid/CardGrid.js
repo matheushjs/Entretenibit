@@ -31,14 +31,14 @@ const example = [
 			date: "2 de Janeiro",
 			type: "academic",
 			description: "Um grande workshop"+bigTextTest,
-			link: "http://randomeventlink.web/info",
+			link: "https://www.lollapaloozabr.com/",
 		},
 		{
 			title: "Teatro 1",
 			date: "2 de Janeiro",
 			type: "theater",
 			description: "Um pequeno teatro"+bigTextTest,
-			link: "http://randomeventlink.web/info",
+			link: "http://oasiseventossc.com.br/",
 		},
 	],
 	[
@@ -47,7 +47,7 @@ const example = [
 			date: "2 de Janeiro",
 			type: "musical",
 			description: "OSUSP apresenta.",
-			link: "http://randomeventlink.web/info",
+			link: "http://caipyra.python.org.br/",
 		},
 		{
 			title: "Pré-Estreia dum filmão",
