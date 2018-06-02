@@ -44,6 +44,7 @@ class App extends Component {
 
 					<Header 
 						homeButton={ this.cleanSearchStringHandler }
+						searchButton={ this.cleanSearchStringHandler }
 						aboutusButton={ this.cleanSearchStringHandler }
 					/>
 

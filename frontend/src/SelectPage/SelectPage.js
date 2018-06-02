@@ -1,37 +1,12 @@
 import React from "react";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
 import CardGrid from "../CardGrid/CardGrid";
-
-class ConfigurationSection extends React.Component{ 
-	//configutarion settings section (the second one)
-	render(){
-		return (
-			<div>
-				<h1>Here goes the search configuration settings section.</h1>
-				<InputLabel>Event Type: </InputLabel>
-				<Select value={this.props.getParentConfigurationEventType} 
-					onChange={this.props.triggerParentHandleInputChange} 
-					inputProps={{name: "configurationEventType"}}>
-						<MenuItem value="Select"> <em>Select</em> </MenuItem>
-						<MenuItem value="Type1">Type 1</MenuItem>
-						<MenuItem value="Type2">Type 2</MenuItem>
-						<MenuItem value="Type3">Type 3</MenuItem>
-				</Select>
-			</div>
-		);
-	}
-}
+import ConfigurationSettingsPanel from "./ConfigSettings/ConfigurationSettingsPanel";
 
 class SelectPage extends React.Component{ 
 	//select page (the main/parent page of this script)
 	constructor(props){
 		super(props);
 		this.state = {
-			searchString: "",
-			searchEvent: false,
-
 			configurationEventType: "Select",
 			};
 		
@@ -59,8 +34,8 @@ class SelectPage extends React.Component{
 	render() {
 		return (
 			<div>
-				<div className = "ConfigurationSection">
-					<ConfigurationSection 
+				<div className = "ConfigurationSection" style={{marginTop: "3vh", marginLeft: "5%", marginRight: "5%"}}>
+					<ConfigurationSettingsPanel 
 					triggerParentHandleInputChange={this.handleInputChange}
 					getParentConfigurationEventType={this.state.configurationEventType}/>
 				</div>
@@ -68,7 +43,7 @@ class SelectPage extends React.Component{
 					<CardGrid />
 				</div>
 				<div>
-					Just a test (use this props in the future): {this.props.searchString}
+					<b>Just a test (use this props in the future): {this.props.searchString}</b>
 				</div>
 			</div>
 		);
