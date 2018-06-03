@@ -13,8 +13,14 @@ Inserts occurences of events on the database
 
 # Connects with the database, returns the connection
 def connect():
-    conn = psycopg2.connect(host="179.234.180.71",database="entretenibit",
-            user="entretenibit")
+    # Reads the information from a .env file not provided
+    with open(".env", "r") as env_file:
+        user, host, database = [x.rstrip() for x in env_file.readlines()]
+    user = user[user.index("'") + 1:-1]
+    host = host[host.index("'") + 1:-1]
+    database = database[database.index("'") + 1:-1]
+
+    conn = psycopg2.connect(host=host, database=database, user=user)
     return conn
 
 # Scrape and get the occurences of events
@@ -38,6 +44,8 @@ def insertLocation(location):
 
 def insertEvent(event):
     conn = connect()
+    print(conn)
+    exit()
     cur = conn.cursor()
 
     insertEventSQL = """
