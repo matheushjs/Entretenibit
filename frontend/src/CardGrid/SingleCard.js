@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -8,12 +8,14 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import ClickedCard from "./ClickedCard";
+import Popup from "reactjs-popup";
 
 const styles = {
 	card: {
 		marginLeft: "10%",
 		marginRight: "10%",
+		textAlign: "justify",
 	},
 	media: {
 		height: 0,
@@ -39,66 +41,103 @@ const creditMapping = {
 };
 
 
-function SingleCard(props) {
-	const {
-		title,
-		date,
-		type,
-		description,
-		classes,
-		link
-	} = props;
-
-	/* Codacy forced me to do this. It wont allow creditMapping[type] */
-	let alt, src;
-	if(type === "academic"){
-		alt = creditMapping["academic"];
-		src = imageMapping["academic"];
-	} else if(type === "theater"){
-		alt = creditMapping["theater"];
-		src = imageMapping["theater"];
-	} else if(type === "musical"){
-		alt = creditMapping["musical"];
-		src = imageMapping["musical"];
-	} else {
-		alt = creditMapping["unknown"];
-		src = imageMapping["unknown"];
+class SingleCard extends Component {
+	state = {
+		title: this.props.title,
+		date: this.props.date,
+		type: this.props.type,
+		description: this.props.description,
+		classes: this.props.classes,
+		link: this.props.link,
+		cardAlign: this.props.cardAlign,
+		alt: null,
+		src: null,
 	}
 
-	return (
-		<div>
-			<Card className={classes.card}>
-				<CardHeader
-					avatar={
-						<Avatar
-							alt={alt}
-							src={src}
-							className={classes.avatar}
-						/>
-					}
-					title={
-						<Typography gutterBottom variant="headline" component="h2">
-							{title}
+	/* Codacy forced me to do this. It wont allow creditMapping[type] */
+	componentWillMount = () => {
+		if (this.state.type === "academic") {
+			this.setState( { 
+				alt : creditMapping["academic"], 
+				src : imageMapping["academic"],
+				} );
+		} else if (this.state.type === "theater") {
+			this.setState( { 
+				alt : creditMapping["theater"], 
+				src : imageMapping["theater"],
+				} );
+		} else if(this.state.type === "musical") {
+			this.setState( { 
+				alt : creditMapping["musical"],
+				src : imageMapping["musical"],
+				} );
+		} else {
+			this.setState( { 
+				alt : creditMapping["unknown"], 
+				src : imageMapping["unknown"], 
+				} );
+		}
+	}
+
+	render() {
+		return (
+			<div>
+				<Card className={this.state.classes.card}>
+					<CardHeader
+						avatar={
+							<Avatar
+								alt={this.state.alt}
+								src={this.state.src}
+								className={this.state.classes.avatar}
+							/>
+						}
+						title={
+							<Typography 
+								gutterBottom 
+								variant="headline" 
+								component="h2">
+								{this.state.title}
+							</Typography>
+						}
+						subheader={this.state.date}
+					/>
+					<CardContent>
+						<Typography component="p">
+							{this.state.description.substr(0, 250) + 
+								(this.state.description.length > 250 ? 
+								"..." : "")}
 						</Typography>
-					}
-					subheader={date}
-				/>
-				<CardContent>
-					<Typography component="p">
-						{description}
-					</Typography>
-				</CardContent>
-				<CardActions>
-					<Link
-						to={link} >
-						<Button size="small" color="primary">
-							Ver Mais
-					</Button>
-					</Link>
-				</CardActions>
-			</Card>
-		</div>
-	);
+					</CardContent>
+					<CardActions>
+						<Popup 
+							on={ ["hover"] }
+							trigger={
+							<Button 
+								onClick={ this.clickedCardHandler }
+								size="small" 
+								color="primary" >
+								Ver Mais
+							</Button> } 
+							position={ this.state.cardAlign }
+							contentStyle={ { 
+								padding: "0px", 
+								border: "none",
+								width: "65vw",
+								} }
+							>
+								<ClickedCard 
+									title = { this.state.title }
+									date = { this.state.date }
+									link = { this.state.link } 
+									description = { this.state.description } />
+						</Popup>
+					</CardActions>
+				</Card>
+
+
+			</div>
+		);
+	}
 }
 
 SingleCard.propTypes = {
@@ -106,13 +145,13 @@ SingleCard.propTypes = {
 	title: PropTypes.string.isRequired,
 
 	/* Date of the event. For now only strings are allowed */
-	subheader: PropTypes.string.isRequired,
+	date: PropTypes.string.isRequired,
 
 	/* 
 	 * Type of the event that will be displayed in the card.
 	 * This determines the image that will be displayed in the card.
 	 */
-	type: PropTypes.oneOf(["academic", "musical", "theater", "unknown"]),
+	type: PropTypes.oneOf( ["academic", "musical", "theater", "unknown"] ),
 
 	/* Description of the event */
 	description: PropTypes.string,
