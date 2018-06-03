@@ -3,24 +3,23 @@ import Occurence
 import Event
 import Location
 import psycopg2 # possibly for database connection
-import sqlite3 # for executing sql queries
 import datetime as dt
 
 
-"""
-Inserts occurences of events on the database
 
-"""
+# This file contains the functions for database interfacing
+
+
 
 # Converts from number to string event type
-def convertEventType(type):
-    if (type == 0):
+def convertEventType(tp):
+    if (tp == 0):
         return 'ACADEMIC'
-    elif (type == 1):
+    elif (tp == 1):
         return 'MUSICAL'
-    elif (type == 2):
+    elif (tp == 2):
         return 'THEATER'
-    elif (type == 3):
+    elif (tp == 3):
         return 'CINEMA'
     else:
         return 'NO TYPE'
@@ -84,8 +83,8 @@ def insertOccurence(occurence):
     event = occurence.event
     p = []
 
-    for (type, price) in occurence.pricing:
-        s = type + '-' + str(price)
+    for (tp, price) in occurence.pricing:
+        s = tp + '-' + str(price)
         p.append(s)
 
     insertOccurenceSQL= """
@@ -102,7 +101,7 @@ def insertOccurence(occurence):
 
 # Insert new occurences, locations and events
 def updateDB():
-    occurences = Robot.Robot.scrapeAll()
+#    occurences = Robot.Robot.scrapeAll()
 
     for occurence in occurences:
         insertLocation(occurence.location)
