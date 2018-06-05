@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.7
 
 MAINTAINER "gabs.oficial98@gmail.com"
 
