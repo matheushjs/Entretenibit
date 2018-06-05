@@ -1,3 +1,5 @@
+MAINTAINER mhjsaldanha@gmail.com
+
 FROM python:3.6.5
 
 WORKDIR /robot
