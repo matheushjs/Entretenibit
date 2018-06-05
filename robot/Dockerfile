@@ -1,6 +1,6 @@
-MAINTAINER mhjsaldanha@gmail.com
-
 FROM python:3.6.5
+
+MAINTAINER "mhjsaldanha@gmail.com"
 
 WORKDIR /robot
 
