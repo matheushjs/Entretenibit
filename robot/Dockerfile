@@ -6,5 +6,4 @@ COPY . /robot
 
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["python3"]
-CMD ["Robot.py"]
+CMD ["python3", "Robot.py"]
