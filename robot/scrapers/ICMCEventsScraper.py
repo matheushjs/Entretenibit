@@ -1,3 +1,4 @@
+import certifi
 import urllib3
 from bs4 import BeautifulSoup
 import sys, traceback
@@ -15,7 +16,7 @@ class ICMCEventsScraper(ScraperBase):
         """If 'localPath' is given, then the scraper will use the local file
         located in the given path instead of requesting the page from the web."""
 
-        http = urllib3.PoolManager()
+        http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED', ca_certs=certifi.where())
         headers = {}
         headers["User-Agent"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
         headers["X-Requested-With"] = "XMLHttpRequest"
