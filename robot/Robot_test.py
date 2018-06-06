@@ -1,5 +1,3 @@
-import pytest
-
 from scrapers import *
 from Robot import Robot
 
