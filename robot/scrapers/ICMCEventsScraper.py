@@ -1,3 +1,4 @@
+import certifi
 import urllib3
 from bs4 import BeautifulSoup
 import sys, traceback
@@ -11,8 +12,11 @@ from Occurence import Occurence
 class ICMCEventsScraper(ScraperBase):
     """Scraper for events listed under the ICMC website."""
 
-    def __init__(self):
-        http = urllib3.PoolManager()
+    def __init__(self, localPath=None):
+        """If 'localPath' is given, then the scraper will use the local file
+        located in the given path instead of requesting the page from the web."""
+
+        http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED', ca_certs=certifi.where())
         headers = {}
         headers["User-Agent"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
         headers["X-Requested-With"] = "XMLHttpRequest"
@@ -23,13 +27,19 @@ class ICMCEventsScraper(ScraperBase):
 
         # Try to get the page and the soup
         try:
-            self.req = http.request(
-                "GET",
-                "https://www.icmc.usp.br/eventos",
-                headers=headers
-            )
+            if not localPath:
+                self.req = http.request(
+                    "GET",
+                    "https://www.icmc.usp.br/eventos",
+                    headers=headers
+                )
 
-            self.soup = BeautifulSoup(self.req.data, "lxml")
+                page = self.req.data
+            else:
+                with open(localPath) as fp:
+                    page = fp.read()
+
+            self.soup = BeautifulSoup(page, "lxml")
         except Exception:
             # Log the exception
             self.soup = None
@@ -90,10 +100,3 @@ class ICMCEventsScraper(ScraperBase):
 
     def getOccurences(self):
         return self.items
-
-if __name__ == "__main__":
-    scraper = ICMCEventsScraper()
-    scraper.scrape()
-
-    for occ in scraper.getOccurences():
-        print(occ)
