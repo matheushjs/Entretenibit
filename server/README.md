@@ -1,11 +1,18 @@
 # Usage
 
-## Install
+## Installation
 
-You can use _yarn_ or _yarn install_
+If you'd like to install the server out of a container can use _yarn_ or _yarn install_
 
 ```bash
 $ sudo yarn install
+```
+
+Or you can install it inside a docker container (if you don't have docker installed already, check out the [Docker Installation Guide](https://docs.docker.com/install/))
+
+
+```bash
+$ docker image build -t server .
 ```
 
 ## Connection
@@ -21,9 +28,22 @@ DATABASE='entretenibit'
 But these are not the acctual variables to use. See Documents/Tutorial for more information
 
 
-## Run
-To run in development mode use _yarn run dev_ or _yarn dev_ 
+## Running
+To run in development mode use _yarn run dev_ or _yarn dev_
 
 ```bash
-$ yarn dev 
+$ yarn dev
+```
+
+Or, if you're running it from inside of a container
+
+```bash
+$ docker container run -p3000:3000 server yarn dev
+```
+
+Or simply
+
+
+```bash
+$ docker run --detach -p3000:3000 server yarn dev
 ```
