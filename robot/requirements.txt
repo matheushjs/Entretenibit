@@ -4,3 +4,4 @@ urllib3
 certifi
 psycopg2
 psycopg2-binary
+pytest
