@@ -105,7 +105,7 @@ class ICMCEventsScraper(ScraperBase):
         scraper.scrape()
 
         expected = [
-             'event Title: Caipyra,Description: None,Type: None,Cast: None,Link: http://caipyra.python.org.br/,Date: 2018-06-08,No Location,Pricing: None,',
+             'Event Title: Caipyra,Description: None,Type: None,Cast: None,Link: http://caipyra.python.org.br/,Date: 2018-06-08,No Location,Pricing: None,',
              'Event Title: SancaThon,Description: None,Type: None,Cast: None,Link: http://www.sel.eesc.usp.br/sel/?p=5844,Date: 2018-06-08,No Location,Pricing: None,',
              'Event Title: 6th Workshop on Poisson Geometry and Related Topics,Description: None,Type: None,Cast: None,Link: http://poisson.icmc.usp.br/,Date: 2018-06-13,No Location,Pricing: None,',
              'Event Title: Olimpíada Brasileira de Robótica - etapa regional (modalidade prática),Description: None,Type: None,Cast: None,Link: https://www.icmc.usp.br/eventos/3637-olimpiada-brasileira-de-robotica-etapa-regional-modalidade-pratica,Date: 2018-06-16,No Location,Pricing: None,',
