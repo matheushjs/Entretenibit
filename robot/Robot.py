@@ -31,6 +31,7 @@ class Robot():
         exceptionCount = 0
 
         for scrap in self.scrapers:
+            print("Testing: ", type(scrap))
             try:
                 success = scrap.test()
                 if not success:
