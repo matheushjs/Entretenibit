@@ -9,7 +9,3 @@ class ScraperBase():
 
     def getOccurences(self):
         raise NotImplementedError
-
-    @staticmethod
-    def tets():
-        raise NotImplementedError

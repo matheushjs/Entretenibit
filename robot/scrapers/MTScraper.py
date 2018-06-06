@@ -11,7 +11,3 @@ class MTScraper(ScraperBase):
 
     def getOccurences(self):
         pass
-
-    @staticmethod
-    def test():
-        pass
