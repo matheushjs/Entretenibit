@@ -32,8 +32,34 @@ Python file-tree
 - Location.py - **Object that represents a location**
 - Occurence.py - **Object that represents an occurence. Has 1 Event and 1 optional Location**
 - Robot.py - **Entrypoint of the scraping module**
+- Robot\_test.py - **Test file for Robot.py**
 - scrapers/ - **Directory holding the scrapers**
 	- ICMCEventsScraper.py - **Scraper for ICMC events website**
 	- MTScraper.py - **Scraper for municipal theater website**
 	- ScraperBase.py - **A fake abstract class merely for having it as a guideline**
 	- \_\_init\_\_.py - **Turns the directory into a python module**
+	- test\_pages/ - **Files saved locally, that are used for testing the scrapers**
+	- scrapers\_test.py - **Test file for scrapers**
+
+
+Tests
+---
+
+- The **pytest** module is being used for testing the Robot module.
+
+- The tests for each scraper should make a scrape using a page saved locally, and checking the scraped result with some **expected output**
+
+- The **expected output** should be hardcoded in the python code. If it is too long, save it in a file under the **test\_pages** directory
+
+- For every Scraper implemented, **there must be** a test method in the test class in scrapers/scrapers\_test.py!
+
+- For running the tests:
+```bash
+pytest
+```
+or, on docker,
+```bash
+docker run robot pytest
+```
+And it will print a message saying whether it was successful or not.
+

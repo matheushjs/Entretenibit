@@ -1,16 +1,12 @@
-sudo: required
-
-branches:
-  only: 
-    - master
-
 language: bash
 
+sudo: required
+
 services:
-  - docker
+    - docker
 
 before_install:
-  - echo "Random print"
+    - docker build -t robot ./robot/
 
-after_success:
-  - echo "It worked"
+script:
+    - bash test.bash

@@ -25,10 +25,8 @@ class Robot():
         return occurences
 
 if __name__ == '__main__':
-    # Testing procedures
     rb = Robot()
-
-    for i in rb.scrapeAll():
+    occ = rb.scrapeAll()
+    for i in occ:
         print(i)
-
     print("Gracefully ended.")
