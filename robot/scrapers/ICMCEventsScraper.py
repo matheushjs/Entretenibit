@@ -125,7 +125,7 @@ class ICMCEventsScraper(ScraperBase):
         count = 0
         errors = []
         for left, right in zip(expected, output):
-            
+
             if left != right:
                 count += 1
                 errors.append([left, right])
