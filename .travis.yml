@@ -7,7 +7,6 @@ services:
 
 before_install:
     - docker build -t robot ./robot/
-    - docker run robot pytest
 
 script:
     - bash test.bash
