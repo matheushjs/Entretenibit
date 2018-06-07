@@ -25,8 +25,7 @@ const connection = {
 const db = pgp(initOptions)(connection);
 
 function devs(req, res, next) {
-  db
-    .any("SELECT * FROM developers")
+  db.any("SELECT * FROM developers")
     .then(data => {
       res.status(200).json(data);
     })
@@ -41,7 +40,14 @@ function test(req, res, next) {
   });
 }
 
+function getAllEvents(req, res, next) {
+  return res.status(200).json({
+    test: "hi"
+  });
+}
+
 module.exports = {
   test,
-  devs
+  devs,
+  getAllEvents
 };
