@@ -38,12 +38,5 @@ $ yarn dev
 Or, if you're running it from inside of a container
 
 ```bash
-$ docker container run -p3000:3000 server yarn dev
-```
-
-Or simply
-
-
-```bash
-$ docker run --detach -p3000:3000 server yarn dev
+$ docker container run -d -p 3000:3000 -v $(pwd):/server --name api server yarn run dev
 ```

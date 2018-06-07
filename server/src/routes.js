@@ -10,5 +10,6 @@ router.get("/", function(req, res, next) {
 
 router.get("/test", db.test);
 router.get("/devs", db.devs);
+router.get("/eventsAll", db.getAllEvents);
 
 module.exports = router;
