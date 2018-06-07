@@ -41,9 +41,18 @@ function test(req, res, next) {
 }
 
 function getAllEvents(req, res, next) {
-  return res.status(200).json({
-    test: "hi"
-  });
+  db.one(
+    `SELECT e.*, t.type 
+    FROM event e 
+    INNER JOIN type t 
+    ON t.event = e.id;`
+  )
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err => {
+      return next(err);
+    });
 }
 
 module.exports = {
