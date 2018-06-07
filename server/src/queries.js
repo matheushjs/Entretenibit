@@ -41,10 +41,10 @@ function test(req, res, next) {
 }
 
 function getAllEvents(req, res, next) {
-  db.one(
+  db.any(
     `SELECT e.*, t.type 
     FROM event e 
-    INNER JOIN type t 
+    LEFT JOIN type t 
     ON t.event = e.id;`
   )
     .then(data => {
