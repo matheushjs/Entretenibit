@@ -15,6 +15,12 @@ class CardGrid extends React.Component {
     api.getEventType(type).then(cards => this.setState({ cards }));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.type !== this.props.type) {
+      api.getEventType(nextProps.type).then(cards => this.setState({ cards }));
+    }
+  }
+
   render() {
     const { cards } = this.state;
 
@@ -57,7 +63,18 @@ class CardGrid extends React.Component {
     }
 
     if (show.length === 0) {
-      show.push();
+      show.push(
+        <Grid item xs={12} key={0}>
+          <Grid container justify="center" spacing={24}>
+            <SingleCard
+              cardAlign="top left"
+              title="Sem eventos"
+              description="Não foram encontrados nenhum evento desse tipo.
+			  Pesquise novamente mais tarde"
+            />
+          </Grid>
+        </Grid>
+      );
     }
 
     return (
