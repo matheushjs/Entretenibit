@@ -1,4 +1,5 @@
-import sys, traceback
+import sys
+import traceback
 
 from scrapers import *
 
@@ -8,6 +9,7 @@ class Robot():
     def __init__(self):
         self.scrapers = [
                     ICMCEventsScraper(),
+                    UFSCarEventsScraper(),
                 ]
 
     def scrapeAll(self):
@@ -29,4 +31,5 @@ if __name__ == '__main__':
     occ = rb.scrapeAll()
     for i in occ:
         print(i)
+
     print("Gracefully ended.")
