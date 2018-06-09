@@ -1,9 +1,10 @@
+import datetime as dt
+import psycopg2 # possibly for database connection
+
 import Robot
 import Occurence
 import Event
 import Location
-import psycopg2 # possibly for database connection
-import datetime as dt
 
 
 
@@ -13,16 +14,15 @@ import datetime as dt
 
 # Converts from number to string event type
 def convertEventType(tp):
-    if (tp == 0):
+    if tp == 0:
         return 'ACADEMIC'
-    elif (tp == 1):
+    elif tp == 1:
         return 'MUSICAL'
-    elif (tp == 2):
+    elif tp == 2:
         return 'THEATER'
-    elif (tp == 3):
+    elif tp == 3:
         return 'CINEMA'
-    else:
-        return 'NO TYPE'
+    return 'NO TYPE'
 
 # Connects with the database, returns the connection
 def connect():
@@ -51,7 +51,7 @@ def insertLocation(location):
             VALUES ('{0}', '{1}', {2}, '{3}')
             ON CONFLICT DO NOTHING;
     """.format(location.name, location.street,
-            location.number, location.district)
+               location.number, location.district)
 
     cur.execute(insertLocationSQL)
     conn.commit() # commit saves changes to the database
@@ -87,7 +87,7 @@ def insertOccurence(occurence):
         s = tp + '-' + str(price)
         p.append(s)
 
-    insertOccurenceSQL= """
+    insertOccurenceSQL = """
         INSERT INTO occurence (event, location_name, location_street,
             location_number, date, pricing)
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')
@@ -101,7 +101,8 @@ def insertOccurence(occurence):
 
 # Insert new occurences, locations and events
 def updateDB():
-#    occurences = Robot.Robot.scrapeAll()
+    robot = Robot.Robot()
+    occurences = robot.scrapeAll()
 
     for occurence in occurences:
         insertLocation(occurence.location)
@@ -110,15 +111,17 @@ def updateDB():
 
 # Calling this file directly starts this test
 if __name__ == "__main__":
+    updateDB()
+    """
     mockLocation = Location.Location('festao', 'mock_rua', 123, 'centro')
-    mockEvent= Event.Event('titulo', 'uma descricao qualquer', 1,
+    mockEvent = Event.Event('titulo', 'uma descricao qualquer', 1,
             [("gabriel", "protagonista"), ("bruno", "coadjuvante")],
             "https://um.site.qualquer")
     mockOccurence = Occurence.Occurence(mockEvent, dt.date(1998, 9, 27),
-            mockLocation, [('inteira', 10), ('meia', 5)])
+                    mockLocation, [('inteira', 10), ('meia', 5)])
 
     #occurences = getOccurences()
     insertLocation(mockLocation)
     insertEvent(mockEvent)
     insertOccurence(mockOccurence)
-
+    """
