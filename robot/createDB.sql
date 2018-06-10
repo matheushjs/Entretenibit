@@ -12,7 +12,7 @@ CREATE TYPE EVENT_TYPE AS ENUM('ACADEMIC', 'MUSICAL', 'THEATER', 'CINEMA');
 
 
 CREATE TABLE event(
-    title VARCHAR(30) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     description VARCHAR(300) NOT NULL,
     type EVENT_TYPE NOT NULL,
     casting VARCHAR(400),       -- cast is a reserved word
