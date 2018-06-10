@@ -3,7 +3,7 @@ import database
 def main():
     connection = database.connect()
     current = connection.cursor()
-    
+
     # Change title size
     command = "ALTER TABLE event ALTER COLUMN title TYPE VARCHAR(150);"
     current.execute(command)
