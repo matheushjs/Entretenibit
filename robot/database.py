@@ -15,14 +15,14 @@ import Location
 
 
 # Converts from number to string event type
-def convertEventType(tp):
-    if tp == 0:
+def convertEventType(num_type):
+    if num_type == 0:
         return 'ACADEMIC'
-    elif tp == 1:
+    elif num_type == 1:
         return 'MUSICAL'
-    elif tp == 2:
+    elif num_type == 2:
         return 'THEATER'
-    elif tp == 3:
+    elif num_type == 3:
         return 'CINEMA'
     return 'NO TYPE'
 
@@ -40,12 +40,11 @@ def connect():
 
 # Scrape and get the occurences of events
 def getOccurences():
-    rb = Robot.Robot()
-    return rb.scrapeAll()
+    robot = Robot.Robot()
+    return robot.scrapeAll()
 
 def insertLocation(location):
     conn = connect()
-    print(conn)
     cur = conn.cursor()
 
     insertLocationSQL = """
@@ -60,19 +59,10 @@ def insertLocation(location):
 
 def insertEvent(event):
     conn = connect()
-    print(conn)
     cur = conn.cursor()
 
     # cast people need special handling for insertion on the database
     eventCasting = [""] if event.cast is None else ["-".join(x) for x in event.cast]
-
-    #insertEventSQL = """
-    #    INSERT INTO event (title, description, type, casting, link)
-    #        VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')
-    #        ON CONFLICT DO NOTHING;
-    #""".format(event.title, event.description, convertEventType(event.eventType),
-    #        "\n".join(eventCasting), event.link)
-    
 
     insertEventSQL = """
         INSERT INTO event (title, description, casting, link)
@@ -80,27 +70,22 @@ def insertEvent(event):
             ON CONFLICT DO NOTHING;
     """.format(event.title, event.description, "\n".join(eventCasting), event.link)
 
-    try:
-        cur.execute(insertEventSQL)
-        conn.commit() # commit saves changes to the database
-    except Exception:
-        print(event)
-        traceback.print_exc(file=sys.stdout)
+    cur.execute(insertEventSQL)
+    conn.commit() # commit saves changes to the database
 
 
 def insertOccurence(occurence):
     conn = connect()
-    print(conn)
     cur = conn.cursor()
 
     location = occurence.location
     event = occurence.event
-    p = []
+    pricing_string = []
 
     if occurence.pricing is not None:
         for (tp, price) in occurence.pricing:
             s = tp + '-' + str(price)
-            p.append(s)
+            pricing_string.append(s)
 
     insertOccurenceSQL = """
         INSERT INTO occurence (event, location_name, location_street,
@@ -108,36 +93,50 @@ def insertOccurence(occurence):
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')
             ON CONFLICT DO NOTHING;
     """.format(event.link, location.name, location.street, location.number,
-            occurence.date, "\n".join(p))
+               occurence.date, "\n".join(pricing_string))
 
     cur.execute(insertOccurenceSQL)
     conn.commit() # commit saves changes to the database
 
 
-# Insert new occurences, locations and events
-def updateDB():
+def updateDB(verbose=False):
+    """
+    Insert new occurences, locations and events.
+    By default, it only prints events that haven't been correctly inserted
+        into the database, which can be changed with the verbose parameter
+    """
+
     robot = Robot.Robot()
     occurences = robot.scrapeAll()
 
     for occurence in occurences:
-        if occurence.location is not None:
-            insertLocation(occurence.location)
-            insertOccurence(occurence)
-        insertEvent(occurence.event)
+        try:
+            if occurence.location is not None:
+                insertLocation(occurence.location)
+                insertOccurence(occurence)
+            insertEvent(occurence.event)
+            if verbose:
+                print("Event added with success: \n", occurence, sep="")
+        except Exception:
+            traceback.print_exc(file=sys.stdout)
+            print(occurence)
+
+
+def test():
+    # Tests the database
+    # OBS: The database has changed; this probably needs to be modified
+    mockLocation = Location.Location('festao', 'mock_rua', 123, 'centro')
+    mockEvent = Event.Event('titulo', 'uma descricao qualquer', 1,
+                [("gabriel", "protagonista"), ("bruno", "coadjuvante")],
+                "https://um.site.qualquer")
+    mockOccurence = Occurence.Occurence(mockEvent, dt.date(1998, 9, 27),
+                    mockLocation, [('inteira', 10), ('meia', 5)])
+
+    insertLocation(mockLocation)
+    insertEvent(mockEvent)
+    insertOccurence(mockOccurence)
+
 
 # Calling this file directly starts this test
 if __name__ == "__main__":
     updateDB()
-    """
-    mockLocation = Location.Location('festao', 'mock_rua', 123, 'centro')
-    mockEvent = Event.Event('titulo', 'uma descricao qualquer', 1,
-            [("gabriel", "protagonista"), ("bruno", "coadjuvante")],
-            "https://um.site.qualquer")
-    mockOccurence = Occurence.Occurence(mockEvent, dt.date(1998, 9, 27),
-                    mockLocation, [('inteira', 10), ('meia', 5)])
-
-    #occurences = getOccurences()
-    insertLocation(mockLocation)
-    insertEvent(mockEvent)
-    insertOccurence(mockOccurence)
-    """

@@ -2,6 +2,7 @@ import sys
 import traceback
 
 from scrapers import *
+import database
 
 class Robot():
     """Main class that will provide an API for usage by common users"""
@@ -27,9 +28,5 @@ class Robot():
         return occurences
 
 if __name__ == '__main__':
-    rb = Robot()
-    occ = rb.scrapeAll()
-    for i in occ:
-        print(i)
-
+    database.updateDB(verbose=False)
     print("Gracefully ended.")
