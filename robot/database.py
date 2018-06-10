@@ -1,5 +1,7 @@
 import datetime as dt
 import psycopg2 # possibly for database connection
+import sys
+import traceback
 
 import Robot
 import Occurence
@@ -62,17 +64,29 @@ def insertEvent(event):
     cur = conn.cursor()
 
     # cast people need special handling for insertion on the database
-    eventCasting = ["-".join(x) for x in event.cast]
+    eventCasting = [""] if event.cast is None else ["-".join(x) for x in event.cast]
+
+    #insertEventSQL = """
+    #    INSERT INTO event (title, description, type, casting, link)
+    #        VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')
+    #        ON CONFLICT DO NOTHING;
+    #""".format(event.title, event.description, convertEventType(event.eventType),
+    #        "\n".join(eventCasting), event.link)
+    
 
     insertEventSQL = """
-        INSERT INTO event (title, description, type, casting, link)
-            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')
+        INSERT INTO event (title, description, casting, link)
+            VALUES ('{0}', '{1}', '{2}', '{3}')
             ON CONFLICT DO NOTHING;
-    """.format(event.title, event.description, convertEventType(event.eventType),
-            "\n".join(eventCasting), event.link)
+    """.format(event.title, event.description, "\n".join(eventCasting), event.link)
 
-    cur.execute(insertEventSQL)
-    conn.commit() # commit saves changes to the database
+    try:
+        cur.execute(insertEventSQL)
+        conn.commit() # commit saves changes to the database
+    except Exception:
+        print(event)
+        traceback.print_exc(file=sys.stdout)
+
 
 def insertOccurence(occurence):
     conn = connect()
@@ -83,9 +97,10 @@ def insertOccurence(occurence):
     event = occurence.event
     p = []
 
-    for (tp, price) in occurence.pricing:
-        s = tp + '-' + str(price)
-        p.append(s)
+    if occurence.pricing is not None:
+        for (tp, price) in occurence.pricing:
+            s = tp + '-' + str(price)
+            p.append(s)
 
     insertOccurenceSQL = """
         INSERT INTO occurence (event, location_name, location_street,
@@ -105,9 +120,10 @@ def updateDB():
     occurences = robot.scrapeAll()
 
     for occurence in occurences:
-        insertLocation(occurence.location)
+        if occurence.location is not None:
+            insertLocation(occurence.location)
+            insertOccurence(occurence)
         insertEvent(occurence.event)
-        insertOccurence(occurence)
 
 # Calling this file directly starts this test
 if __name__ == "__main__":
