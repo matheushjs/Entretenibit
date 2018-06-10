@@ -2,120 +2,87 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import SingleCard from "./SingleCard";
 
-const bigTextTest=
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste"+
-	"texto grande para teste";
+import * as api from "../api/server";
 
-const example = [
-	[
-		{
-			title: "Workshop 1",
-			date: "2 de Janeiro",
-			type: "academic",
-			description: "Um grande workshop"+bigTextTest,
-			link: "https://www.lollapaloozabr.com/",
-		},
-		{
-			title: "Teatro 1",
-			date: "2 de Janeiro",
-			type: "theater",
-			description: "Um pequeno teatro"+bigTextTest,
-			link: "http://oasiseventossc.com.br/",
-		},
-	],
-	[
-		{
-			title: "Orquestra 1",
-			date: "2 de Janeiro",
-			type: "musical",
-			description: "OSUSP apresenta.",
-			link: "http://caipyra.python.org.br/",
-		},
-		{
-			title: "Pré-Estreia dum filmão",
-			date: "5 de Janeiro",
-			type: "unknown",
-			description: "Nada a declarar.",
-			link: "http://randomeventlink.web/info",
-		},
-	],
-	[
-		{
-			title: "Cansei de inventar títulos",
-			date: "6 de Janeiro",
-			type: "unknown",
-			description: "Bleh.",
-			link: "http://randomeventlink.web/info",
-		},
-	],
-];
+class CardGrid extends React.Component {
+  state = {
+    cards: []
+  };
 
-class CardGrid extends React.Component { //cars section (the third one)
-	render() {
+  componentWillMount() {
+    const { type } = this.props;
 
-		return (
-			<Grid container spacing={24}>
-				{
-					example.map((value, index) => (
-						<Grid 
-							item xs={12} 
-							key={-index}>
+    api.getEventType(type).then(cards => this.setState({ cards }));
+  }
 
-							<Grid container justify="center" spacing={24}>
-								{
-									value[0] ?
-										<Grid item xs={6} key={index * 2 + 0}>
-											<SingleCard
-												cardAlign="top left"
-												title={value[0].title}
-												date={value[0].date}
-												type={value[0].type}
-												description={value[0].description}
-												link={value[0].link}
-											/>
-										</Grid>
-										: null
-								}
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.type !== this.props.type) {
+      api.getEventType(nextProps.type).then(cards => this.setState({ cards }));
+    }
+  }
 
-								{
-									value[1] ?
-										<Grid item xs={6} key={index * 2 + 1}>
-											<SingleCard
-												cardAlign="top center"
-												title={value[1].title}
-												date={value[1].date}
-												type={value[1].type}
-												description={value[1].description}
-												link={value[1].link}
-											/>
-										</Grid>
-										: null
-								}
-							</Grid>
-						</Grid>
-					))
-				}
-			</Grid>
-		);
-	}
+  render() {
+    const { cards } = this.state;
+
+    let show = [];
+
+    for (let i = 0; i < cards.length; i += 2) {
+      const row = (
+        <Grid item xs={12} key={i}>
+          <Grid container justify="center" spacing={24}>
+            {cards[i] ? (
+              <Grid item xs={6} key={i * 2 + 0}>
+                <SingleCard
+                  cardAlign="top left"
+                  title={cards[i].title}
+                  //   date={cards[i].date}
+                  type={cards[i].type}
+                  description={cards[i].description}
+                  link={cards[i].link}
+                />
+              </Grid>
+            ) : null}
+
+            {cards[i + 1] ? (
+              <Grid item xs={6} key={i * 2 + 1}>
+                <SingleCard
+                  cardAlign="top center"
+                  title={cards[i + 1].title}
+                  //   date={cards[i + 1].date}
+                  type={cards[i + 1].type}
+                  description={cards[i + 1].description}
+                  link={cards[i + 1].link}
+                />
+              </Grid>
+            ) : null}
+          </Grid>
+        </Grid>
+      );
+
+      show.push(row);
+    }
+
+    if (show.length === 0) {
+      show.push(
+        <Grid item xs={12} key={0}>
+          <Grid container justify="center" spacing={24}>
+            <SingleCard
+              cardAlign="top left"
+              title="Sem eventos"
+              description="Não foram encontrados nenhum evento desse tipo.
+                           Pesquise novamente mais tarde"
+            />
+          </Grid>
+        </Grid>
+      );
+    }
+
+    return (
+      <Grid container spacing={24}>
+        {show.map(value => value)}
+      </Grid>
+    );
+  }
 }
 
 export default CardGrid;

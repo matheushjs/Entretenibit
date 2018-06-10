@@ -8,8 +8,8 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Entretenibit" });
 });
 
-router.get("/test", db.test);
 router.get("/devs", db.devs);
 router.get("/eventsAll", db.getAllEvents);
+router.get("/eventsType", db.getEventsByType);
 
 module.exports = router;
