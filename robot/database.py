@@ -1,7 +1,8 @@
-import datetime as dt
-import psycopg2 # possibly for database connection
 import sys
 import traceback
+
+import datetime as dt
+import psycopg2 # possibly for database connection
 
 import Robot
 import Occurence
@@ -108,6 +109,7 @@ def updateDB(verbose=False):
 
     robot = Robot.Robot()
     occurences = robot.scrapeAll()
+    errors = 0
 
     for occurence in occurences:
         try:
@@ -118,8 +120,13 @@ def updateDB(verbose=False):
             if verbose:
                 print("Event added with success: \n", occurence, sep="")
         except Exception:
+            errors += 1
             traceback.print_exc(file=sys.stdout)
             print(occurence)
+
+    print(len(occurences)-errors, "events were found and potentially added " +
+            "to the database if they were not duplicates")
+    print("There were", errors, "errors.")
 
 
 def test():
