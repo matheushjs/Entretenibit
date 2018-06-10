@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
-import image1 from "./Images/Generic_Avatar.png" 
+import image1 from "./Images/Generic_Avatar.png";
 /*credits: http://charmscrp.wikia.com/wiki/File:Generic_Avatar.png*/
 
 class AboutUsPage extends React.Component{ 
