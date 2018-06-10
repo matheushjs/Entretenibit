@@ -70,7 +70,7 @@ class CardGrid extends React.Component {
               cardAlign="top left"
               title="Sem eventos"
               description="Não foram encontrados nenhum evento desse tipo.
-	                   Pesquise novamente mais tarde"
+                           Pesquise novamente mais tarde"
             />
           </Grid>
         </Grid>
