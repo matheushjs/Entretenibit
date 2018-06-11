@@ -4,7 +4,7 @@
 
 	- Manter o estado do banco sincronizado com o que estiver nesse `.sql`!
 
-- Para essa semana, ficou:
+- Ainda falta:
 
 	- Interface
 	
