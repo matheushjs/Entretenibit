@@ -25,4 +25,4 @@ fi
 echo
 
 # Export error in the correct variable
-exit $(( $robot_error + $frontend_error ))
+exit $(( robot_error + frontend_error ))
