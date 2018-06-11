@@ -8,82 +8,72 @@ import { Link } from "react-router-dom";
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   flex: {
-    flex: 1,
+    flex: 1
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
-  },
+    marginRight: 20
+  }
 };
 
 function SimpleAppBar(props) {
-	const { classes } = props;
-	return (
-		<div className={classes.root}>
-			<AppBar 
-				position="static" 
-				color="default">
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" color="default">
+        <Toolbar>
+          <Link style={{ textDecoration: "none" }} to="/home">
+            <Button
+              variant="raised"
+              onClick={props.homeButton}
+              className={classes.menuButton}
+            >
+              Home
+            </Button>
+          </Link>
 
-				<Toolbar>
+          <Link style={{ textDecoration: "none" }} to="/search">
+            <Button
+              variant="raised"
+              onClick={props.searchButton}
+              className={classes.menuButton}
+            >
+              Buscar
+            </Button>
+          </Link>
 
-					<Link 
-						style= { { textDecoration:"none" } }
-						to="/home" >
-						<Button 
-							variant="raised" 
-							onClick={ props.homeButton } 
-							className={ classes.menuButton }> 
-							Home
-						</Button>
-					</Link>
-					
-					<Link 
-						style= { { textDecoration:"none" } }
-						to="/search" >
-						<Button 
-							variant="raised" 
-							onClick={ props.searchButton } 
-							className={ classes.menuButton }> 
-							Buscar
-						</Button>
-					</Link>
+          <Link style={{ textDecoration: "none" }} to="/aboutus">
+            <Button
+              variant="raised"
+              onClick={props.homeButton}
+              className={classes.menuButton}
+            >
+              Sobre Nós
+            </Button>
+          </Link>
 
-					<Link
-						style= { { textDecoration:"none" } }
-						to="/aboutus" >
-						<Button
-							variant="raised" 
-							onClick={ props.homeButton } 
-							className={ classes.menuButton }> 
-							Sobre Nós
-						</Button>
-					</Link>
+          <p className={classes.flex} />
 
-					<p className={classes.flex} />
-
-					<Link 
-						style= { { textDecoration:"none" } }
-						to="/signup" >
-						<Button 
-							variant="raised" 
-							color="primary" 
-							className={ classes.menuButton }> 
-							Cadastre-se!
-						</Button>
-					</Link>
-
-				</Toolbar>
-			</AppBar>
-		</div>
-	);
+          <Link style={{ textDecoration: "none" }} to="/signup">
+            <Button
+              variant="raised"
+              color="primary"
+              className={classes.menuButton}
+            >
+              Cadastre-se!
+            </Button>
+          </Link>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 }
 
 SimpleAppBar.propTypes = {
-	classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(SimpleAppBar);
-
