@@ -2,17 +2,11 @@ version: '3'
 services:
   frontend:
     build: ./frontend
-    volumes:
-      - ./frontend:/frontend
     ports:
       - "3000:3000"
   server:
     build: ./server
     ports:
-      - "3000:3000"
-    volumes:
-      - ./server:/server
+      - "5000:5000"
   robot:
     build: ./robot
-    volumes:
-      - ./robot:/robot
