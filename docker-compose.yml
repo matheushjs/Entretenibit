@@ -6,6 +6,7 @@ services:
       - "3000:3000"
   server:
     build: ./server
+    entrypoint: yarn start dev
     ports:
       - "5000:5000"
   robot:
