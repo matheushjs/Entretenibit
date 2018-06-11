@@ -4,38 +4,38 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
 const styles = theme => ({
-	container: {
-		display: "flex",
-		flexWrap: "wrap",
-	},
-	textField: {
-		marginLeft: theme.spacing.unit,
-		marginRight: theme.spacing.unit,
-		width: 200,
-	},
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200
+  }
 });
 
 function DatePickers(props) {
-	const { classes } = props;
+  const { classes } = props;
 
-	return (
-		<form className={classes.container} noValidate>
-			<TextField
-				id="date"
-				label={props.getName}
-				type="date"
-				defaultValue={props.getDate}
-				className={classes.textField}
-				InputLabelProps={{
-					shrink: true,
-				}}
-			/>
-		</form>
-	);
+  return (
+    <form className={classes.container} noValidate>
+      <TextField
+        id="date"
+        label={props.getName}
+        type="date"
+        defaultValue={props.getDate}
+        className={classes.textField}
+        InputLabelProps={{
+          shrink: true
+        }}
+      />
+    </form>
+  );
 }
 
 DatePickers.propTypes = {
-	classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(DatePickers);

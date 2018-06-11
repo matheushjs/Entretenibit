@@ -25,8 +25,7 @@ const connection = {
 const db = pgp(initOptions)(connection);
 
 function devs(req, res, next) {
-  db
-    .any("SELECT * FROM developers")
+  db.any("SELECT * FROM developers")
     .then(data => {
       res.status(200).json(data);
     })
@@ -36,13 +35,12 @@ function devs(req, res, next) {
 }
 
 function getAllEvents(req, res, next) {
-  db
-    .any(
-      `SELECT e.*, t.type 
+  db.any(
+    `SELECT e.*, t.type 
     FROM event e 
     LEFT JOIN type t 
     ON t.event = e.id`
-    )
+  )
     .then(data => {
       res.status(200).json(data);
     })
@@ -55,15 +53,14 @@ function getEventsByType(req, res, next) {
   const type = req.query.type;
 
   if (type) {
-    db
-      .any(
-        `SELECT e.*, t.type 
+    db.any(
+      `SELECT e.*, t.type 
     FROM event e 
     INNER JOIN type t 
       ON t.event = e.id
     WHERE UPPER(t.type) = UPPER($1)`,
-        [type]
-      )
+      [type]
+    )
       .then(data => {
         res.status(200).json(data);
       })

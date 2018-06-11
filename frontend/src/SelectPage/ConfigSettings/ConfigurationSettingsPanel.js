@@ -9,35 +9,37 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AdvancedSearch from "./AdvancedSearch";
 
 const styles = theme => ({
-	root: {
-		width: "100%",
-	},
-	heading: {
-		fontSize: theme.typography.pxToRem(15),
-		fontWeight: theme.typography.fontWeightRegular,
-	},
+  root: {
+    width: "100%"
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular
+  }
 });
 
 function ConfigurationSettingsPanel(props) {
-	const { classes } = props;
-	
-	return (
-		<div className={classes.root}>
-			<ExpansionPanel>
-				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-					<Typography className={classes.heading} style={{fontSize: "1.5vw"}}>Busca Avançada: </Typography>
-				</ExpansionPanelSummary>
+  const { classes } = props;
 
-				<ExpansionPanelDetails>
-					<AdvancedSearch />
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
-		</div>
-	);
+  return (
+    <div className={classes.root}>
+      <ExpansionPanel>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography className={classes.heading} style={{ fontSize: "1.5vw" }}>
+            Busca Avançada:{" "}
+          </Typography>
+        </ExpansionPanelSummary>
+
+        <ExpansionPanelDetails>
+          <AdvancedSearch />
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+    </div>
+  );
 }
 
 ConfigurationSettingsPanel.propTypes = {
-	classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ConfigurationSettingsPanel);
