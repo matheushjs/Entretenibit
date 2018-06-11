@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
 import "./App.css";
 import SelectPage from "./SelectPage/SelectPage";
+import AboutUsPage from "./AboutUsPage/AboutUsPage";
 import Header from "./Header/Header";
 
 class App extends Component {
@@ -112,6 +113,13 @@ class App extends Component {
 						render={() => {
 							return (
 								<SelectPage searchString={this.state.searchString} />
+							); } } />
+							
+					<Route 
+						path="/aboutUs" 
+						render={() => {
+							return (
+								<AboutUsPage />
 							); } } />
 
 				</Parallax>
