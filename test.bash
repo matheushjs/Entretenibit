@@ -4,10 +4,10 @@
 error=0
 
 docker run --rm robot pytest
-error=$( expr $error + $? )
+error=$(( $error + $? ))
 
 docker run --rm --tty frontend yarn build | grep "Compiled successfully."
-error=$( expr $error + $? )
+error=$(( $error + $? ))
 
 # Export error in the correct variable
 exit $error
