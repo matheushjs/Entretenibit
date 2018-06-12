@@ -35,6 +35,6 @@ CREATE TABLE occurrence(
 CREATE table type (
 	event INTEGER,
 	type TEXT,
-	PRIMARY KEY (event, type)
+	PRIMARY KEY (event, type),
 	CONSTRAINT fk_event FOREIGN KEY (event) REFERENCES event(id)
 );
