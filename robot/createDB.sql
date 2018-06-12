@@ -10,8 +10,8 @@ CREATE TABLE event(
     title VARCHAR(150) NOT NULL,
     description TEXT NOT NULL,
     casting VARCHAR(400),
-	link VARCHAR(70) NOT NULL,
-	id BIGSERIAL,
+    link VARCHAR(70) NOT NULL,
+    id BIGSERIAL,
     PRIMARY KEY(link)
 );
 
@@ -32,9 +32,9 @@ CREATE TABLE occurrence(
         ON DELETE CASCADE
 );
 
-CREATE table type (
-	event INTEGER,
-	type TEXT,
-	PRIMARY KEY (event, type),
-	CONSTRAINT fk_event FOREIGN KEY (event) REFERENCES event(id)
+CREATE TABLE type (
+    event INTEGER,
+    type TEXT,
+    PRIMARY KEY (event, type),
+    CONSTRAINT fk_event FOREIGN KEY (event) REFERENCES event(id)
 );
