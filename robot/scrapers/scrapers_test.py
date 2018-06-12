@@ -24,3 +24,23 @@ def test_ICMCEventsScraper():
 
     for left, right in zip(expected, output):
         assert left == right
+
+
+def test_UFSCarEventsScraper():
+    scraper = UFSCarEventsScraper()
+    scraper.scrape()
+
+    expected = [
+        'e',
+        'e',
+        'e',
+        'e',
+        'e',
+        'e'
+    ]
+
+    occurences = scraper.getOccurences()
+    output = [ ",".join(str(occ).split("\n")) for occ in occurences ]
+
+    for left, right in zip(expected, output):
+        assert left == right
