@@ -24,3 +24,23 @@ def test_ICMCEventsScraper():
 
     for left, right in zip(expected, output):
         assert left == right
+
+
+def test_UFSCarEventsScraper():
+    scraper = UFSCarEventsScraper("./scrapers/test_pages/UFSCarEventsScraper-test.html")
+    scraper.scrape()
+
+    expected = [
+        'Event Title: Debate - Nós Diversos - Pessoas LGBT com deficiência,Description: None,Type: None,Cast: None,Link: https://www2.ufscar.br/evento?codigo=2227,Date: 2018-06-13,No Location,Pricing: None,',
+        'Event Title: XIV Seminário Internacional Lahmiei e ABACare,Description: None,Type: None,Cast: None,Link: https://www2.ufscar.br/evento?codigo=2221,Date: 2018-06-30,No Location,Pricing: None,',
+        'Event Title: International Workshop on Partial Differential Equations and Complex Analysis,Description: None,Type: None,Cast: None,Link: https://www2.ufscar.br/evento?codigo=2224,Date: 2018-08-13,No Location,Pricing: None,',
+        'Event Title: V Colóquio Internacional de Análise do Discurso (V CIAD),Description: None,Type: None,Cast: None,Link: https://www2.ufscar.br/evento?codigo=2226,Date: 2018-09-12,No Location,Pricing: None,',
+        'Event Title: 13th International Meeting on High Performance Computing for Computational Science (VECPAR),Description: None,Type: None,Cast: None,Link: https://www2.ufscar.br/evento?codigo=2209,Date: 2018-09-17,No Location,Pricing: None,',
+        'Event Title: 1st Brazilian Symposium on Sustainable Chemistry (BSSC),Description: None,Type: None,Cast: None,Link: https://www2.ufscar.br/evento?codigo=2144,Date: 2018-10-01,No Location,Pricing: None,'
+    ]
+
+    occurences = scraper.getOccurences()
+    output = [ ",".join(str(occ).split("\n")) for occ in occurences ]
+
+    for left, right in zip(expected, output):
+        assert left == right
