@@ -9,5 +9,5 @@ class MTScraper(ScraperBase):
     def scrape(self):
         pass
 
-    def getOccurences(self):
+    def get_occurences(self):
         pass

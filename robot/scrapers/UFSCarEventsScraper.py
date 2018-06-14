@@ -101,5 +101,5 @@ class UFSCarEventsScraper(ScraperBase):
         # Change list of dictionaries with a list of Occurence objects
         self.items = occurs
 
-    def getOccurences(self):
+    def get_occurences(self):
         return self.items

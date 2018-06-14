@@ -7,6 +7,7 @@ services:
 
 before_install:
     - docker build -t robot ./robot/
+    - docker build -t frontend ./frontend/
 
 script:
     - bash test.bash
