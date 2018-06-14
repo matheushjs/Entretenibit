@@ -5,7 +5,7 @@ from Location import Location
 class Occurence():
     """Class representing an occurance of an event in our problem domain."""
 
-    def __init__(self, event, date, location = None, pricing = None):
+    def __init__(self, event, date, location=None, pricing=None):
         """'event' is an Event object related to the event that will happen
         'date' is either a dt.date or dt.datetime object signalling when the event will happen
         'location' is a Location object containing the location where the event will happen
@@ -26,7 +26,7 @@ class Occurence():
         if pricing:
             self.pricing = []
             for tupl in pricing:
-                self.pricing.append(( str(i) for i in tupl ))
+                self.pricing.append((str(i) for i in tupl))
         else:
             self.pricing = None
 
@@ -40,14 +40,14 @@ class Occurence():
             str(self.event),
             str(self.date),
             str(self.location) if self.location else "No Location",
-            " ".join([ "/".join([i for i in self.pricing ])]) if self.pricing else "None"
+            " ".join(["/".join([i for i in self.pricing])]) if self.pricing else "None"
         )
 
 if __name__ == '__main__':
     ev1 = Event("O mágico de oz", "Um mágico legal", Event.THEATER, [])
     ev2 = Event("O mágico de oz", "Um mágico legal", Event.THEATER, [
-            ("somebody", "violinist"),
-            ("second somebody", "second violinist"),
+        ("somebody", "violinist"),
+        ("second somebody", "second violinist"),
         ])
 
     loc = Location("Meu querido bar", "Rua santo antônio do satanas", 666, "polígono espectral")
@@ -71,5 +71,5 @@ if __name__ == '__main__':
 
     try:
         oc = Occurence(None, '10/08/1996', loc, 'pricing')
-    except Exception as e:
-        print(e)
+    except Exception as error:
+        print(error)

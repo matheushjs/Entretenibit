@@ -7,5 +7,5 @@ class ScraperBase():
     def scrape(self):
         raise NotImplementedError
 
-    def getOccurences(self):
+    def get_occurences(self):
         raise NotImplementedError

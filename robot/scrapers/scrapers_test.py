@@ -19,7 +19,7 @@ def test_ICMCEventsScraper():
          'Event Title: Escola Latino Americana de Matemática,Description: None,Type: None,Cast: None,Link: http://eventos.ufabc.edu.br/elam2018/,Date: 2018-08-27,No Location,Pricing: None,'
     ]
 
-    occurences = scraper.getOccurences()
+    occurences = scraper.get_occurences()
     output = [ ",".join(str(occ).split("\n")) for occ in occurences ]
 
     for left, right in zip(expected, output):
@@ -39,7 +39,7 @@ def test_UFSCarEventsScraper():
         'Event Title: 1st Brazilian Symposium on Sustainable Chemistry (BSSC),Description: None,Type: None,Cast: None,Link: https://www2.ufscar.br/evento?codigo=2144,Date: 2018-10-01,No Location,Pricing: None,'
     ]
 
-    occurences = scraper.getOccurences()
+    occurences = scraper.get_occurences()
     output = [ ",".join(str(occ).split("\n")) for occ in occurences ]
 
     for left, right in zip(expected, output):

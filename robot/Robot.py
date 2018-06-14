@@ -9,16 +9,16 @@ class Robot():
 
     def __init__(self):
         self.scrapers = [
-                    ICMCEventsScraper(),
-                    UFSCarEventsScraper(),
-                ]
+            ICMCEventsScraper(),
+            UFSCarEventsScraper(),
+        ]
 
-    def scrapeAll(self):
+    def scrape_all(self):
         occurences = []
         for scrap in self.scrapers:
             try:
                 scrap.scrape()
-                ret = scrap.getOccurences()
+                ret = scrap.get_occurences()
                 if ret:
                     occurences.extend(ret)
             except Exception:
@@ -28,5 +28,5 @@ class Robot():
         return occurences
 
 if __name__ == '__main__':
-    database.updateDB(verbose=False)
+    database.update_db(verbose=False)
     print("Gracefully ended.")

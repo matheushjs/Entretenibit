@@ -5,12 +5,12 @@ class Event():
 
     # Enumeration for class types
     ACADEMIC = 0
-    MUSICAL  = 1
-    THEATER  = 2
-    CINEMA   = 3
-    _LAST    = 4
+    MUSICAL = 1
+    THEATER = 2
+    CINEMA = 3
+    _LAST = 4
 
-    def __init__(self, title, description = None, eventType = None, cast = None, link = None):
+    def __init__(self, title, description=None, eventType=None, cast=None, link=None):
         """'title' is a string with the title of the event
         'description' is a string with the description of the event
         'eventType' is one among the enumeration within this class Event
@@ -49,14 +49,14 @@ class Event():
             self.title,
             self.description if self.description else "None",
             self.eventType if self.eventType else "None",
-            ' '.join([ "/".join(i) for i in self.cast ]) if self.cast else "None",
-            self.link if self.link else "None" )
+            ' '.join(["/".join(i) for i in self.cast]) if self.cast else "None",
+            self.link if self.link else "None")
 
 if __name__ == "__main__":
     ev = Event("O mágico de oz", "Um mágico legal", Event.THEATER, [])
     ev = Event("O mágico de oz", "Um mágico legal", Event.THEATER, [
-            ("somebody", "violinist"),
-            ("second somebody", "second violinist"),
+        ("somebody", "violinist"),
+        ("second somebody", "second violinist"),
         ])
 
     try:
