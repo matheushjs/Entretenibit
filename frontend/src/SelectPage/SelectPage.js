@@ -1,17 +1,28 @@
 import React from "react";
 import CardGrid from "../CardGrid/CardGrid";
 import ConfigurationSettingsPanel from "./ConfigSettings/ConfigurationSettingsPanel";
+import SearchBar from "./SearchBar/SearchBar";
+import SearchButton from "./SearchButton/SearchButton";
+
+import {
+  Route,
+  Redirect
+} from "react-router-dom";
 
 class SelectPage extends React.Component {
   //select page (the main/parent page of this script)
   constructor(props) {
     super(props);
     this.state = {
-      configurationEventType: "Select"
+      configurationEventType: "Select",
+      searchString: "",
+      searchEvent: false,
+      actualSearchString: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.cleanSearchStringHandler = this.cleanSearchStringHandler.bind(this);
   }
 
   handleInputChange(event) {
@@ -29,10 +40,66 @@ class SelectPage extends React.Component {
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
+  
+  updateSearchStringHandler = event => {
+    this.setState({
+      searchString: event.target.value,
+      searchEvent: false
+    });
+  };
+
+  cleanSearchStringHandler = () => {
+    this.setState({
+      searchString: "",
+      actualSearchString: "",
+      searchEvent: false
+    });
+  };
+
+  turnOnPageLinkHandler = event => {
+    //this.cleanSearchStringHandler();
+	this.setState({ searchEvent: true });
+    this.setState({
+      actualSearchString: this.state.searchString
+    });
+  };
 
   render() {
     return (
       <div>
+
+        <div className="SearchBarSection"
+          style={{
+            lineHeight: "3vh",
+            display: "inline",
+            margin: "auto"
+		  }}
+		>
+        <SearchBar
+          onChange={this.updateSearchStringHandler}
+          onEnter={this.turnOnPageLinkHandler}
+          getValue={this.state.searchString}
+          textStyle={{
+          margin: "auto",
+          width: "50vw"
+          }}
+        />
+
+        <SearchButton onClick={this.turnOnPageLinkHandler}/>
+
+		<Route
+          path="/(home|search)/"
+          render={() => {
+            return this.state.searchEvent ? (
+              <Redirect
+                to={this.props.pathComplement + this.state.actualSearchString}
+              />
+            ) : null;     
+		  }}
+        />
+
+        </div>
+
         <div
           className="ConfigurationSection"
           style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%" }}
@@ -42,21 +109,35 @@ class SelectPage extends React.Component {
             getParentConfigurationEventType={this.state.configurationEventType}
           />
         </div>
+
         <div
           className="CardsSection"
           style={{ marginTop: 20, marginBottom: 20 }}
         >
-          <CardGrid type={this.props.searchString} />
+          <CardGrid type={this.state.actualSearchString} />
         </div>
+
         <div>
           <b>
             Just a test (use this props in the future):{" "}
-            {this.props.searchString}
+            {this.state.actualSearchString}
           </b>
         </div>
+
       </div>
     );
   }
 }
+
+SelectPage.defaultProps = {
+  backgroundImage:
+    "https://images.pexels.com/photos/34650" +
+    "/pexels-photo.jpg?" +
+    "auto=compress&" +
+    "cs=tinysrgb&" +
+    "h=650&w=940",
+  searchLink: "http://localhost:3000/",
+  pathComplement: "/home/"
+};
 
 export default SelectPage;

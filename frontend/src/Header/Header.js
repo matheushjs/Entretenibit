@@ -35,16 +35,6 @@ function SimpleAppBar(props) {
             </Button>
           </Link>
 
-          <Link style={{ textDecoration: "none" }} to="/search">
-            <Button
-              variant="raised"
-              onClick={props.searchButton}
-              className={classes.menuButton}
-            >
-              Buscar
-            </Button>
-          </Link>
-
           <Link style={{ textDecoration: "none" }} to="/aboutus">
             <Button
               variant="raised"

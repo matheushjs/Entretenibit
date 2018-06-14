@@ -101,6 +101,7 @@ function CustomizedInputs(props) {
           className: classes.textFieldFormLabel
         }}
         style={{ marginRight: 10, width: "60vw" }}
+        value={props.getValue}
       />
     </div>
   );
