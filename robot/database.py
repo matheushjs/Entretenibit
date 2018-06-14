@@ -16,7 +16,7 @@ import Location
 
 
 # Converts from number to string event type
-def convertEventType(num_type):
+def convert_event_type(num_type):
     if num_type == 0:
         return 'ACADEMIC'
     elif num_type == 1:
@@ -40,42 +40,42 @@ def connect():
     return conn
 
 # Scrape and get the occurences of events
-def getOccurences():
+def get_occurences():
     robot = Robot.Robot()
-    return robot.scrapeAll()
+    return robot.scrape_all()
 
-def insertLocation(location):
+def insert_location(location):
     conn = connect()
     cur = conn.cursor()
 
-    insertLocationSQL = """
+    insert_location_sql = """
         INSERT INTO location (name, street, number, district)
             VALUES ('{0}', '{1}', {2}, '{3}')
             ON CONFLICT DO NOTHING;
     """.format(location.name, location.street,
                location.number, location.district)
 
-    cur.execute(insertLocationSQL)
+    cur.execute(insert_location_sql)
     conn.commit() # commit saves changes to the database
 
-def insertEvent(event):
+def insert_event(event):
     conn = connect()
     cur = conn.cursor()
 
     # cast people need special handling for insertion on the database
-    eventCasting = [""] if event.cast is None else ["-".join(x) for x in event.cast]
+    event_casting = [""] if event.cast is None else ["-".join(x) for x in event.cast]
 
-    insertEventSQL = """
+    insert_event_sql = """
         INSERT INTO event (title, description, casting, link)
             VALUES ('{0}', '{1}', '{2}', '{3}')
             ON CONFLICT DO NOTHING;
-    """.format(event.title, event.description, "\n".join(eventCasting), event.link)
+    """.format(event.title, event.description, "\n".join(event_casting), event.link)
 
-    cur.execute(insertEventSQL)
+    cur.execute(insert_event_sql)
     conn.commit() # commit saves changes to the database
 
 
-def insertOccurence(occurence):
+def insert_occurence(occurence):
     conn = connect()
     cur = conn.cursor()
 
@@ -84,11 +84,12 @@ def insertOccurence(occurence):
     pricing_string = []
 
     if occurence.pricing is not None:
-        for (tp, price) in occurence.pricing:
-            s = tp + '-' + str(price)
-            pricing_string.append(s)
+        for (occ_type, price) in occurence.pricing:
+            print(occ_type, price)
+            temp_s = occ_type + '-' + str(price)
+            pricing_string.append(temp_s)
 
-    insertOccurenceSQL = """
+    insert_occurence_sql = """
         INSERT INTO occurence (event, location_name, location_street,
             location_number, date, pricing)
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')
@@ -96,11 +97,11 @@ def insertOccurence(occurence):
     """.format(event.link, location.name, location.street, location.number,
                occurence.date, "\n".join(pricing_string))
 
-    cur.execute(insertOccurenceSQL)
+    cur.execute(insert_occurence_sql)
     conn.commit() # commit saves changes to the database
 
 
-def updateDB(verbose=False):
+def update_db(verbose=False):
     """
     Insert new occurences, locations and events.
     By default, it only prints events that haven't been correctly inserted
@@ -108,15 +109,15 @@ def updateDB(verbose=False):
     """
 
     robot = Robot.Robot()
-    occurences = robot.scrapeAll()
+    occurences = robot.scrape_all()
     errors = 0
 
     for occurence in occurences:
         try:
             if occurence.location is not None:
-                insertLocation(occurence.location)
-                insertOccurence(occurence)
-            insertEvent(occurence.event)
+                insert_location(occurence.location)
+                insert_occurence(occurence)
+            insert_event(occurence.event)
             if verbose:
                 print("Event added with success: \n", occurence, sep="")
         except Exception:
@@ -125,25 +126,25 @@ def updateDB(verbose=False):
             print(occurence)
 
     print(len(occurences)-errors, "events were found and potentially added " +
-            "to the database if they were not duplicates")
+          "to the database if they were not duplicates")
     print("There were", errors, "errors.")
 
 
 def test():
     # Tests the database
     # OBS: The database has changed; this probably needs to be modified
-    mockLocation = Location.Location('festao', 'mock_rua', 123, 'centro')
-    mockEvent = Event.Event('titulo', 'uma descricao qualquer', 1,
-                [("gabriel", "protagonista"), ("bruno", "coadjuvante")],
-                "https://um.site.qualquer")
-    mockOccurence = Occurence.Occurence(mockEvent, dt.date(1998, 9, 27),
-                    mockLocation, [('inteira', 10), ('meia', 5)])
+    mock_location = Location.Location('festao', 'mock_rua', 123, 'centro')
+    mock_event = Event.Event('titulo', 'uma descricao qualquer', 1,
+                             [("gabriel", "protagonista"), ("bruno", "coadjuvante")],
+                             "https://um.site.qualquer")
+    mock_occurence = Occurence.Occurence(mock_event, dt.date(1998, 9, 27),
+                                         mock_location, [('inteira', 10), ('meia', 5)])
 
-    insertLocation(mockLocation)
-    insertEvent(mockEvent)
-    insertOccurence(mockOccurence)
+    insert_location(mock_location)
+    insert_event(mock_event)
+    insert_occurence(mock_occurence)
 
 
 # Calling this file directly starts this test
 if __name__ == "__main__":
-    updateDB()
+    update_db()
