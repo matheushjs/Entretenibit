@@ -60,7 +60,7 @@ class App extends Component {
               path="/(home|search)/"
               render={() => {
                 return (
-		          <SelectPage />
+                  <SelectPage />
                 );
               }}
             />
