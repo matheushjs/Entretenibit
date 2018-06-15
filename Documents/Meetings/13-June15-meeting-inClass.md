@@ -1,0 +1,1 @@
+- Fizemos o plano de teste, de acordo com o modelo dado no edisciplinas.com
