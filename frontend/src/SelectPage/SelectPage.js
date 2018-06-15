@@ -55,8 +55,8 @@ class SelectPage extends React.Component {
             lineHeight: "3vh",
             display: "inline",
             margin: "auto"
-		  }}
-		>
+          }}
+        >
         <SearchBar
           onChange={this.handleInputChange}
           onEnter={this.turnOnPageLinkHandler}
@@ -77,7 +77,7 @@ class SelectPage extends React.Component {
                 to={this.props.pathComplement + this.state.actualSearchString}
               />
             );     
-		  }}
+           }}
         />
 
         </div>
