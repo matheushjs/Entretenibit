@@ -25,7 +25,7 @@ function SimpleAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Toolbar>
-          <Link style={{ textDecoration: "none" }} to="/home">
+          <Link style={{ textDecoration: "none" }} to="/home/">
             <Button
               variant="raised"
               onClick={props.homeButton}
@@ -35,7 +35,7 @@ function SimpleAppBar(props) {
             </Button>
           </Link>
 
-          <Link style={{ textDecoration: "none" }} to="/aboutus">
+          <Link style={{ textDecoration: "none" }} to="/aboutus/">
             <Button
               variant="raised"
               onClick={props.homeButton}
@@ -47,7 +47,7 @@ function SimpleAppBar(props) {
 
           <p className={classes.flex} />
 
-          <Link style={{ textDecoration: "none" }} to="/signup">
+          <Link style={{ textDecoration: "none" }} to="/signup/">
             <Button
               variant="raised"
               color="primary"

@@ -12,13 +12,14 @@ import AboutUsPage from "./AboutUsPage/AboutUsPage";
 import Header from "./Header/Header";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.selectPageChild = React.createRef();
-  }
+  //constructor(props) {
+  //  super(props);
+  //  this.selectPageChild = React.createRef(); ref={this.selectPageChild}
+  //}
   
   onChangePage = () => {
-    this.selectPageChild.current.cleanSearchStringHandler();
+  //  this.selectPageChild.current.cleanSearchStringHandler();
+    window.location.reload();
   }
 
   render() {
@@ -51,7 +52,7 @@ class App extends Component {
               strict={true}
               exact={true}
               render={() => {
-                return <Redirect to="/home" />;
+                return <Redirect to="/home/" />;
               }}
             />
 
@@ -59,13 +60,13 @@ class App extends Component {
               path="/(home|search)/"
               render={() => {
                 return (
-		          <SelectPage ref={this.selectPageChild} />
+		          <SelectPage />
                 );
               }}
             />
 
             <Route
-              path="/aboutUs"
+              path="/aboutUs/"
               render={() => {
                 return <AboutUsPage />;
               }}

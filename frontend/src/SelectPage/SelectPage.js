@@ -16,13 +16,11 @@ class SelectPage extends React.Component {
     this.state = {
       configurationEventType: "Select",
       searchString: "",
-      searchEvent: false,
       actualSearchString: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.cleanSearchStringHandler = this.cleanSearchStringHandler.bind(this);
   }
 
   handleInputChange(event) {
@@ -40,25 +38,9 @@ class SelectPage extends React.Component {
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
-  
-  updateSearchStringHandler = event => {
-    this.setState({
-      searchString: event.target.value,
-      searchEvent: false
-    });
-  };
-
-  cleanSearchStringHandler = () => {
-    this.setState({
-      searchString: "",
-      actualSearchString: "",
-      searchEvent: false
-    });
-  };
 
   turnOnPageLinkHandler = event => {
     //this.cleanSearchStringHandler();
-	this.setState({ searchEvent: true });
     this.setState({
       actualSearchString: this.state.searchString
     });
@@ -76,12 +58,12 @@ class SelectPage extends React.Component {
 		  }}
 		>
         <SearchBar
-          onChange={this.updateSearchStringHandler}
+          onChange={this.handleInputChange}
           onEnter={this.turnOnPageLinkHandler}
           getValue={this.state.searchString}
           textStyle={{
-          margin: "auto",
-          width: "50vw"
+            margin: "auto",
+            width: "50vw"
           }}
         />
 
@@ -90,11 +72,11 @@ class SelectPage extends React.Component {
 		<Route
           path="/(home|search)/"
           render={() => {
-            return this.state.searchEvent ? (
+            return (
               <Redirect
                 to={this.props.pathComplement + this.state.actualSearchString}
               />
-            ) : null;     
+            );     
 		  }}
         />
 
@@ -120,7 +102,7 @@ class SelectPage extends React.Component {
         <div>
           <b>
             Just a test (use this props in the future):{" "}
-            {this.state.actualSearchString}
+              {this.state.actualSearchString}
           </b>
         </div>
 
