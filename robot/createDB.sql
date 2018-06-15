@@ -10,7 +10,7 @@ CREATE TABLE event(
     title VARCHAR(150) NOT NULL,
     description TEXT NOT NULL,
     casting VARCHAR(400),
-    link VARCHAR(70) NOT NULL,
+    link VARCHAR(150) NOT NULL,
     id BIGSERIAL,
     PRIMARY KEY(link)
 );
