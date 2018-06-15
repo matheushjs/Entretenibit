@@ -1,7 +1,7 @@
 Plano de Testes
 ===
 
-1) Identificação
+1 Identificação
 ---
 
 - Projeto: Entretenibit
@@ -22,7 +22,7 @@ Plano de Testes
 
 - Data de criação: 15/06/2018
 
-2) Introdução e Planejamento
+2 Introdução e Planejamento
 ---
 
 O projeto é composto pelos módulos Robot, Frontend, Server e Database. O Robot é o módulo que realiza o web scraping de páginas da web pré-definidas e deposita os dados no banco de dados. O Frontend é a parte da interface web com o usuário e consiste em arquivos HTML, CSS e Javascript a serem servidos. O Server é reponsável por servir a página da web. A Database é o servidor de banco de dados onde são armazenados os dados sobre eventos obtidos via web scraping.
@@ -36,7 +36,7 @@ O módulo Server serve somente um único arquivo HTML (o próprio javascript des
 Não pretende-se testar o módulo Database diretamente, pois sua funcionalidade já estará sendo testada junto com a busca no Frontend.
 
 
-3) Projeto dos Casos de Teste
+3 Projeto dos Casos de Teste
 ---
 
 
@@ -44,12 +44,12 @@ Não pretende-se testar o módulo Database diretamente, pois sua funcionalidade 
 
 #### Descrição do Input/Output da Busca
 
-![](/home/mathjs/ComputerS/Entretenibit/Documents/Construction/IMG_20180615_132335.jpg)
+![](./3-June15-files/imagem1.jpg)
 
 #### Casos de Teste da Busca
 
-![](/home/mathjs/ComputerS/Entretenibit/Documents/Construction/IMG_20180615_132358.jpg)
+![](./3-June15-files/imagem2.jpg)
 
 #### Casos de Teste da Máquina de Estado
 
-![](/home/mathjs/ComputerS/Entretenibit/Documents/Construction/IMG_20180615_132422.jpg)
+![](./3-June15-files/imagem3.jpg)
