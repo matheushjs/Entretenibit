@@ -32,8 +32,8 @@ class App extends Component {
             blur={{ min: 1, max: 2 }}
           >
             <Header
-              homeButton={this.onChangePage}
-              aboutusButton={this.onChangePage}
+              homeButton={null}
+              aboutusButton={null}
             />
 
             <h1
