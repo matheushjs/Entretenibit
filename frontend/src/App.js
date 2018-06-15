@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import SearchBar from "./SearchBar/SearchBar";
-import SearchButton from "./SearchButton/SearchButton";
 import { Parallax } from "react-parallax";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   BrowserRouter as Router,
-  Link,
   Route,
   Redirect
 } from "react-router-dom";
@@ -15,28 +12,15 @@ import AboutUsPage from "./AboutUsPage/AboutUsPage";
 import Header from "./Header/Header";
 
 class App extends Component {
-  state = {
-    searchString: "",
-    searchEvent: false
-  };
-
-  updateSearchStringHandler = event => {
-    this.setState({
-      searchString: event.target.value,
-      searchEvent: false
-    });
-  };
-
-  cleanSearchStringHandler = () => {
-    this.setState({
-      searchString: "",
-      searchEvent: false
-    });
-  };
-
-  turnOnPageLinkHandler = event => {
-    this.setState({ searchEvent: true });
-  };
+  //constructor(props) {
+  //  super(props);
+  //  this.selectPageChild = React.createRef(); ref={this.selectPageChild}
+  //}
+  
+  onChangePage = () => {
+  //  this.selectPageChild.current.cleanSearchStringHandler();
+    window.location.reload();
+  }
 
   render() {
     return (
@@ -48,9 +32,8 @@ class App extends Component {
             blur={{ min: 1, max: 2 }}
           >
             <Header
-              homeButton={this.cleanSearchStringHandler}
-              searchButton={this.cleanSearchStringHandler}
-              aboutusButton={this.cleanSearchStringHandler}
+              homeButton={null}
+              aboutusButton={null}
             />
 
             <h1
@@ -69,18 +52,7 @@ class App extends Component {
               strict={true}
               exact={true}
               render={() => {
-                return <Redirect to="/home" />;
-              }}
-            />
-
-            <Route
-              path="/(home|search)/"
-              render={() => {
-                return this.state.searchEvent ? (
-                  <Redirect
-                    to={this.props.pathComplement + this.state.searchString}
-                  />
-                ) : null;
+                return <Redirect to="/home/" />;
               }}
             />
 
@@ -88,42 +60,13 @@ class App extends Component {
               path="/(home|search)/"
               render={() => {
                 return (
-                  <div
-                    style={{
-                      lineHeight: "3vh",
-                      display: "inline",
-                      margin: "auto"
-                    }}
-                  >
-                    <SearchBar
-                      onChange={this.updateSearchStringHandler}
-                      onEnter={this.turnOnPageLinkHandler}
-                      value={this.state.searchString}
-                      textStyle={{
-                        margin: "auto",
-                        width: "50vw"
-                      }}
-                    />
-
-                    <Link
-                      to={this.props.pathComplement + this.state.searchString}
-                    >
-                      <SearchButton />
-                    </Link>
-                  </div>
+                  <SelectPage />
                 );
               }}
             />
 
             <Route
-              path="/search"
-              render={() => {
-                return <SelectPage searchString={this.state.searchString} />;
-              }}
-            />
-
-            <Route
-              path="/aboutUs"
+              path="/aboutUs/"
               render={() => {
                 return <AboutUsPage />;
               }}
@@ -143,7 +86,7 @@ App.defaultProps = {
     "cs=tinysrgb&" +
     "h=650&w=940",
   searchLink: "http://localhost:3000/",
-  pathComplement: "/search/"
+  pathComplement: "/home/"
 };
 
 export default App;
