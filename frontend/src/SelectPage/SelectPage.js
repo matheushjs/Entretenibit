@@ -97,7 +97,7 @@ class SelectPage extends React.Component {
 
         <SearchButton onClick={this.turnOnPageLinkHandler.bind(this)}/>
 
-		    <Route
+        <Route
           path="/(home|search)/"
           render={() => {
             return (
