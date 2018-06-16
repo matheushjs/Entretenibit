@@ -21,7 +21,7 @@ function LabelButtons(props) {
         variant="raised"
         color="primary"
       >
-	    {props.getText}
+        {props.getText}
       </Button>
     </div>
   );
