@@ -51,7 +51,7 @@ function SimpleAppBar(props) {
             <Button
               variant="raised"
               color="primary"
-			  onClick={props.signUpButton}
+              onClick={props.signUpButton}
               className={classes.menuButton}
             >
               Cadastre-se!
