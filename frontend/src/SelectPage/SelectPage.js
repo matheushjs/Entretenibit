@@ -3,79 +3,17 @@ import CardGrid from "../CardGrid/CardGrid";
 import ConfigurationSettingsPanel from "./ConfigSettings/ConfigurationSettingsPanel";
 import SearchBar from "./SearchBar/SearchBar";
 import SearchButton from "./SearchButton/SearchButton";
+import LabelButtons from "../SignUpPage/LabelButtons/LabelButtons";
 
 import {
   Route,
-  Redirect
+  Redirect,
+  Link
 } from "react-router-dom";
 
-class SelectPage extends React.Component {
-  state = {
-    configurationEventType: "Select",
-    searchString: "",
-    actualSearchString: "",
-    checkBoxes: {
-      academic: true,
-      music: true,
-      theater: true,
-      others: true,
-    },
-    date: {
-      min: null,
-      max: null,
-    },
-    price: {
-      min: "0",
-      max: "0",
-    },
-    cards: [],
-  };
+function SelectPage(props) {
+  //const { classes } = props;
 
-  handleStateParameters = (event) => {
-    var curValue = null;
-    var attr = null;
-
-    if (event.target.type === "checkbox") {
-      curValue = event.target.checked;
-      attr = event.target.value;
-      var checkBoxes = {...this.state.checkBoxes};
-      checkBoxes[attr] = curValue;
-      this.setState( { checkBoxes } );
-
-    } else if (event.target.type === "date"){
-      curValue = event.target.value;
-      attr = event.target.id;
-      var date = {...this.state.date};
-      date[attr] = curValue;
-      this.setState( { date } );
-
-    } else if (event.target.type === "number"){
-      curValue = event.target.value;
-      attr = event.target.id;
-      var price = {...this.state.price};
-      price[attr] = curValue;
-      this.setState( { price } );
-    }
-  
-  }
-
-  handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-  turnOnPageLinkHandler = (event) => {
-    this.setState({
-      actualSearchString: this.state.searchString
-    });
-  };
-
-  render() {
     return (
       <div>
 
@@ -85,28 +23,35 @@ class SelectPage extends React.Component {
             display: "inline",
             margin: "auto"
           }} >
-        <SearchBar
-          onChange={this.handleInputChange}
-          onEnter={this.turnOnPageLinkHandler.bind(this)}
-          getValue={this.state.searchString}
-          textStyle={{
-            margin: "auto",
-            width: "50vw"
-          }}
-        />
 
-        <SearchButton onClick={this.turnOnPageLinkHandler.bind(this)}/>
+          <SearchBar
+            onChange={props.handleInputChange}
+            onEnter={props.turnOnPageLinkHandler}
+            getValue={props.searchString}
+            textStyle={{
+              margin: "auto",
+              width: "50vw"
+            }}
+            placeHolder={"O que você procura?"}
+            getName={"searchString"}
+          />
 
-        <Route
-          path="/(home|search)/"
-          render={() => {
-            return (
-              <Redirect
-                to={this.props.pathComplement + this.state.actualSearchString}
-              />
-            ); 
-           }}
-        />
+          <SearchButton onClick={props.turnOnPageLinkHandler}/>
+
+          <Link style={{ textDecoration: "none" }} to="/signup/">
+            <LabelButtons onClick={null} getText={"Cadastrar"}/>
+          </Link>
+
+          <Route
+            path="/(home|search)/"
+            render={() => {
+              return (
+                <Redirect
+                  to={"/home/" + props.actualSearchString}
+                />
+              ); 
+            }}
+          />
 
         </div>
 
@@ -114,12 +59,12 @@ class SelectPage extends React.Component {
           className="ConfigurationSection"
           style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%" }} >
           <ConfigurationSettingsPanel
-            triggerParentHandleInputChange={this.handleInputChange}
-            getParentConfigurationEventType={this.state.configurationEventType}
-            date={this.state.date}
-            price={this.state.price}
-            changeHandler={this.handleStateParameters.bind(this)}
-            checkBoxes={this.state.checkBoxes}
+            triggerParentHandleInputChange={props.handleInputChange}
+            getParentConfigurationEventType={props.configurationEventType}
+            date={props.date}
+            price={props.price}
+            changeHandler={props.handleStateParameters}
+            checkBoxes={props.checkBoxes}
           />
         </div>
 
@@ -128,24 +73,12 @@ class SelectPage extends React.Component {
           style={{ marginTop: 20, marginBottom: 20 }} >
 
           <CardGrid 
-            cards={this.state.cards} 
-            type={this.state.actualSearchString} />
+            cards={props.cards} 
+            type={props.actualSearchString} />
         </div>
 
       </div>
     );
-  }
 }
-
-SelectPage.defaultProps = {
-  backgroundImage:
-    "https://images.pexels.com/photos/34650" +
-    "/pexels-photo.jpg?" +
-    "auto=compress&" +
-    "cs=tinysrgb&" +
-    "h=650&w=940",
-  searchLink: "http://localhost:3000/",
-  pathComplement: "/home/"
-};
 
 export default SelectPage;

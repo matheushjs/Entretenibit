@@ -79,15 +79,15 @@ function CustomizedInputs(props) {
   return (
     <div style={{ display: "inline-block" }} className={classes.container}>
       <TextField
-        name="searchString"
+        name={props.getName}
         onKeyPress={event => {
-          if (event.key === "Enter") {
+          if (event.key === "Enter" && props.onEnter !== null) {
             props.onEnter(event);
             event.preventDefault();
           }
         }}
         onChange={props.onChange}
-        placeholder="O que você procura?"
+        placeholder={props.placeHolder}
         id="bootstrap-input"
         InputProps={{
           disableUnderline: true,
