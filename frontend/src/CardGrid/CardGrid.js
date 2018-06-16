@@ -6,7 +6,7 @@ import * as api from "../api/server";
 
 class CardGrid extends React.Component {
   state = {
-    cards: []
+    cards: this.props.cards,
   };
 
   componentWillMount() {
@@ -35,7 +35,7 @@ class CardGrid extends React.Component {
                 <SingleCard
                   cardAlign="top left"
                   title={cards[i].title}
-                  //   date={cards[i].date}
+                  date={cards[i].date}
                   type={cards[i].type}
                   description={cards[i].description}
                   link={cards[i].link}
@@ -48,7 +48,7 @@ class CardGrid extends React.Component {
                 <SingleCard
                   cardAlign="top center"
                   title={cards[i + 1].title}
-                  //   date={cards[i + 1].date}
+                  date={cards[i + 1].date}
                   type={cards[i + 1].type}
                   description={cards[i + 1].description}
                   link={cards[i + 1].link}
@@ -69,6 +69,7 @@ class CardGrid extends React.Component {
             <SingleCard
               cardAlign="top left"
               title="Sem eventos"
+              date={Date()}
               description="Não foram encontrados nenhum evento desse tipo.
                            Pesquise novamente mais tarde"
             />

@@ -28,6 +28,7 @@ class SelectPage extends React.Component {
       min: "0",
       max: "0",
     },
+    cards: [],
   };
 
   handleStateParameters = (event) => {
@@ -58,7 +59,17 @@ class SelectPage extends React.Component {
   
   }
 
-  turnOnPageLinkHandler = event => {
+  handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  turnOnPageLinkHandler = (event) => {
     this.setState({
       actualSearchString: this.state.searchString
     });
@@ -73,11 +84,10 @@ class SelectPage extends React.Component {
             lineHeight: "3vh",
             display: "inline",
             margin: "auto"
-          }}
-        >
+          }} >
         <SearchBar
           onChange={this.handleInputChange}
-          onEnter={this.turnOnPageLinkHandler}
+          onEnter={this.turnOnPageLinkHandler.bind(this)}
           getValue={this.state.searchString}
           textStyle={{
             margin: "auto",
@@ -85,9 +95,9 @@ class SelectPage extends React.Component {
           }}
         />
 
-        <SearchButton onClick={this.turnOnPageLinkHandler}/>
+        <SearchButton onClick={this.turnOnPageLinkHandler.bind(this)}/>
 
-		<Route
+		    <Route
           path="/(home|search)/"
           render={() => {
             return (
@@ -117,14 +127,9 @@ class SelectPage extends React.Component {
           className="CardsSection"
           style={{ marginTop: 20, marginBottom: 20 }} >
 
-          <CardGrid type={this.state.actualSearchString} />
-        </div>
-
-        <div>
-          <b>
-            Just a test (use this props in the future):{" "}
-              {this.state.actualSearchString}
-          </b>
+          <CardGrid 
+            cards={this.state.cards} 
+            type={this.state.actualSearchString} />
         </div>
 
       </div>
