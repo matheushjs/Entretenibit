@@ -124,7 +124,7 @@ class App extends Component {
             <Header
               homeButton={this.onChangePage}
               aboutUsButton={this.onChangePage}
-			  signUpButton={this.onChangePage}
+              signUpButton={this.onChangePage}
             />
 
             <h1
