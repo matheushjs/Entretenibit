@@ -97,7 +97,7 @@ class SelectPage extends React.Component {
 
         <SearchButton onClick={this.turnOnPageLinkHandler.bind(this)}/>
 
-		    <Route
+        <Route
           path="/(home|search)/"
           render={() => {
             return (
@@ -129,7 +129,10 @@ class SelectPage extends React.Component {
 
           <CardGrid 
             cards={this.state.cards} 
-            type={this.state.actualSearchString} />
+            date={this.state.date}
+            price={this.state.price}
+            title={this.state.actualSearchString}
+            type={this.state.checkBoxes} />
         </div>
 
       </div>

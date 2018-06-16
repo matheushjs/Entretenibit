@@ -50,7 +50,15 @@ function getAllEvents(req, res, next) {
 }
 
 function getEventsByType(req, res, next) {
-  const type = req.query.type;
+  const title = req.query.title;
+  const academic = req.query.academic;
+  const music = req.query.music;
+  const theater = req.query.theater;
+  const others = req.query.others;
+  const dateMin = req.query.dateMin;
+  const dateMax = req.query.dateMax;
+  const priceMin = req.query.priceMin;
+  const priceMax = req.query.priceMax;
 
   if (type) {
     db.any(
