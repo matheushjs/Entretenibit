@@ -21,10 +21,11 @@ function DatePickers(props) {
   return (
     <form className={classes.container} noValidate>
       <TextField
-        id="date"
+        id={props.id}
         label={props.getName}
         type="date"
         defaultValue={props.getDate}
+	onChange={props.handleChange}
         className={classes.textField}
         InputLabelProps={{
           shrink: true

@@ -10,23 +10,28 @@ import {
 } from "react-router-dom";
 
 class SelectPage extends React.Component {
-  //select page (the main/parent page of this script)
-  constructor(props) {
-    super(props);
-    this.state = {
-      configurationEventType: "Select",
-      searchString: "",
-      actualSearchString: ""
-    };
+  state = {
+    configurationEventType: "Select",
+    searchString: "",
+    actualSearchString: "",
+    checkBoxes: {
+      academic: true,
+      music: true,
+      theater: true,
+      others: true,
+    },
+    date: {
+      min: null,
+      max: null,
+    },
+    price: {
+      min: "0",
+      max: "0",
+    },
+  };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const target = event.target;
-    //|v| verify type (put other types here too)
-    //[in this case verify target.value and checkbox.checked] |v|
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
@@ -35,12 +40,35 @@ class SelectPage extends React.Component {
     });
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  handleStateParameters = (event) => {
+    var curValue = null;
+    var attr = null;
+
+    if (event.target.type === "checkbox") {
+      curValue = event.target.checked;
+      attr = event.target.value;
+      var checkBoxes = {...this.state.checkBoxes};
+      checkBoxes[attr] = curValue;
+      this.setState( { checkBoxes } );
+
+    } else if (event.target.type === "date"){
+      curValue = event.target.value;
+      attr = event.target.id;
+      var date = {...this.state.date};
+      date[attr] = curValue;
+      this.setState( { date } );
+
+    } else if (event.target.type === "number"){
+      curValue = event.target.value;
+      attr = event.target.id;
+      var price = {...this.state.price};
+      price[attr] = curValue;
+      this.setState( { price } );
+    }
+  
   }
 
   turnOnPageLinkHandler = event => {
-    //this.cleanSearchStringHandler();
     this.setState({
       actualSearchString: this.state.searchString
     });
@@ -76,7 +104,7 @@ class SelectPage extends React.Component {
               <Redirect
                 to={this.props.pathComplement + this.state.actualSearchString}
               />
-            );     
+            ); 
            }}
         />
 
@@ -84,18 +112,21 @@ class SelectPage extends React.Component {
 
         <div
           className="ConfigurationSection"
-          style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%" }}
-        >
+          style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%" }} >
           <ConfigurationSettingsPanel
             triggerParentHandleInputChange={this.handleInputChange}
             getParentConfigurationEventType={this.state.configurationEventType}
+            date={this.state.date}
+            price={this.state.price}
+            changeHandler={this.handleStateParameters.bind(this)}
+            checkBoxes={this.state.checkBoxes}
           />
         </div>
 
         <div
           className="CardsSection"
-          style={{ marginTop: 20, marginBottom: 20 }}
-        >
+          style={{ marginTop: 20, marginBottom: 20 }} >
+
           <CardGrid type={this.state.actualSearchString} />
         </div>
 

@@ -5,19 +5,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-class EventTypesCheckboxes extends React.Component {
-  state = {
-    academic: true,
-    music: false,
-    theater: true,
-    others: false
-  };
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
-
-  render() {
+function EventTypesCheckboxes(props) {
     return (
       <FormControl component="fieldset">
         <FormLabel component="legend">Tipos de Eventos</FormLabel>
@@ -25,8 +13,8 @@ class EventTypesCheckboxes extends React.Component {
           <FormControlLabel
             control={
               <Checkbox
-                checked={this.state.academic}
-                onChange={this.handleChange("academic")}
+                checked={props.checkBoxes.academic}
+                onChange={props.handleChange}
                 name="academic"
                 value="academic"
               />
@@ -36,8 +24,8 @@ class EventTypesCheckboxes extends React.Component {
           <FormControlLabel
             control={
               <Checkbox
-                checked={this.state.music}
-                onChange={this.handleChange("music")}
+                checked={props.checkBoxes.music}
+                onChange={props.handleChange}
                 name="music"
                 value="music"
               />
@@ -47,8 +35,8 @@ class EventTypesCheckboxes extends React.Component {
           <FormControlLabel
             control={
               <Checkbox
-                checked={this.state.theater}
-                onChange={this.handleChange("theater")}
+                checked={props.checkBoxes.theater}
+                onChange={props.handleChange}
                 name="theater"
                 value="theater"
               />
@@ -58,8 +46,8 @@ class EventTypesCheckboxes extends React.Component {
           <FormControlLabel
             control={
               <Checkbox
-                checked={this.state.others}
-                onChange={this.handleChange("others")}
+                checked={props.checkBoxes.others}
+                onChange={props.handleChange}
                 name="others"
                 value="others"
               />
@@ -69,7 +57,6 @@ class EventTypesCheckboxes extends React.Component {
         </FormGroup>
       </FormControl>
     );
-  }
 }
 
 export default EventTypesCheckboxes;

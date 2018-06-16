@@ -31,7 +31,12 @@ function ConfigurationSettingsPanel(props) {
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails>
-          <AdvancedSearch />
+          <AdvancedSearch 
+            date={props.date} 
+            price={props.price}
+            changeHandler={props.changeHandler}
+            checkBoxes={props.checkBoxes}
+          />
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
