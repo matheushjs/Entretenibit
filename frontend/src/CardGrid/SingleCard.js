@@ -50,7 +50,7 @@ class SingleCard extends Component {
     link: this.props.link,
     cardAlign: this.props.cardAlign,
     alt: null,
-    src: null
+    src: null,
   };
 
   /* Codacy forced me to do this. It wont allow creditMapping[type] */

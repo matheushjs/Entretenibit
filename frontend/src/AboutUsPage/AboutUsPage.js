@@ -59,7 +59,7 @@ class AboutUsPage extends React.Component {
             <b>Integrantes</b>
           </Typography>
 
-          <GridList cellHeight={125} cellWidht="45%" cols={2} style={{}}>
+          <GridList cellHeight={125} cellWidth="45%" cols={2} style={{}}>
             <GridListTile cols={1}>
               <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
                 <img

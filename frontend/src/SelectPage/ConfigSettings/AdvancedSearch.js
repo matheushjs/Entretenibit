@@ -32,19 +32,45 @@ function AdvancedSearch(props) {
     <div className={classes.root}>
       <GridList cellHeight={50} className={classes.gridList} cols={2}>
         <GridListTile cols={1}>
-          <DatePickers getName="Data Inicial" getDate={new Date()} />
+          <DatePickers 
+            getName="Data Inicial" 
+            id="min"
+            getDate={props.date.min} 
+            handleChange={props.changeHandler}
+            updateInfo={props.updateInfo} />
         </GridListTile>
+
         <GridListTile cols={1}>
-          <DatePickers getName="Data Final" getDate={new Date()} />
+          <DatePickers 
+            getName="Data Final" 
+            id="max"
+            getDate={props.date.max} 
+            handleChange={props.changeHandler}
+            updateInfo={props.updateInfo} />
         </GridListTile>
+
         <GridListTile cols={1}>
-          <PricePickers getName="Preco Inicial" getPrice="0" />
+          <PricePickers 
+            getName="Preço Inicial" 
+            id="min"
+            getPrice={props.price.min} 
+            handleChange={props.changeHandler}
+            updateInfo={props.updateInfo} />
         </GridListTile>
+
         <GridListTile cols={1}>
-          <PricePickers getName="Preco Final" getPrice="0" />
+          <PricePickers 
+            getName="Preço Final" 
+            id="max"
+            getPrice={props.price.max} 
+            handleChange={props.changeHandler}
+            updateInfo={props.updateInfo} />
         </GridListTile>
       </GridList>
-      <EventTypesCheckboxes />
+
+      <EventTypesCheckboxes 
+        checkBoxes={props.checkBoxes} 
+        handleChange={props.changeHandler} />
     </div>
   );
 }

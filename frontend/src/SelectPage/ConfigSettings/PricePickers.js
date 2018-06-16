@@ -16,40 +16,25 @@ const styles = theme => ({
   }
 });
 
-class PricePickers extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      price: props.getPrice
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
-
-  render() {
-    const { classes } = this.props;
+function PricePickers(props) {
+    const { classes } = props;
 
     return (
       <div className={classes.root}>
         <FormControl className={classes.margin}>
           <InputLabel htmlFor="adornment-price">
-            {this.props.getName}
+            {props.getName}
           </InputLabel>
           <Input
-            id="adornment-price"
+            id={props.id}
             type="number"
-            value={this.state.price}
-            onChange={this.handleChange("price")}
+            value={props.price}
+            onChange={props.handleChange}
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
         </FormControl>
       </div>
     );
-  }
 }
 
 PricePickers.propTypes = {
