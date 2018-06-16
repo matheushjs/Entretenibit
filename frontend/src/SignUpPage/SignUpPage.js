@@ -52,7 +52,7 @@ function SignUpPage(props) {
             }}
           >Nome: &emsp;
           
-	        <SearchBar
+            <SearchBar
               onChange={props.handleInputChange}
               onEnter={null}
               getValue={props.name}
