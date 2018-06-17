@@ -44,7 +44,7 @@ function SignUpPage(props) {
           >Email: &emsp;
           </p>
           
-	      <SearchBar
+          <SearchBar
             onChange={props.handleInputChange}
             onEnter={null}
             getValue={props.email}
@@ -109,7 +109,7 @@ function SignUpPage(props) {
             }}
           >Busca: &emsp;
           </p>
-	        
+
           <SearchBar
             onChange={props.handleInputChange}
             onEnter={null}
