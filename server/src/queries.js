@@ -91,19 +91,19 @@ function getEventsByType(req, res, next) {
   // the outter front-end, for any reason that is 
   // not this module concern.
   var query = 
-    ` SELECT e.*, t.type `+
-    ` FROM event e `+
-    ` LEFT OUTER JOIN type t `+
-    `   ON t.event = e.id `+
-    ` LEFT OUTER JOIN occurence o` +
-    `   ON e.link = o.event `+
-    ` WHERE true `;
+    " SELECT e.*, t.type "+
+    " FROM event e "+
+    " LEFT OUTER JOIN type t "+
+    "   ON t.event = e.id "+
+    " LEFT OUTER JOIN occurence o" +
+    "   ON e.link = o.event "+
+    " WHERE true ";
 
   // Here I check if there is a "title" specified.
   // Note that this is a pretty nasty direct comparison,
   // and should be improved on a future update.
-  query += title !== "null" ? 
-    ` AND UPPER(e.title) LIKE UPPER(` + "\'" + `${title}` + "\') " : null;
+  query += title !== "null" && title !== "" ? 
+    " AND UPPER(e.title) LIKE UPPER(\'" + `${title}` + "\') " : null;
 
   // Here comes the "type" paramaters. The "TEATRO", 
   // "MUSICA" and "ACADEMICO" are all pretty straighforward to
@@ -116,24 +116,24 @@ function getEventsByType(req, res, next) {
 
   // All SQL type-related will be kept inside
   // a parenthesis in the query to work together:
-  let types = ` AND (`
-  types += ` UPPER(t.type) IN (`;
+  let types = " AND ("
+  types += " UPPER(t.type) IN (";
   types += theater === "true" ? "\'TEATRO\'," : "\'INV\',";
   types += music === "true" ? "\'MUSICA\'," : "\'INV\'," ;
   types += academic === "true" ? "\'ACADEMICO\'" : "\'INV\'";
-  types += `) `;
+  types += ") ";
 
   // The "Others" event type are special: it means "anything
   // other than the supported types existent", so a NOT IN
   // works wonders right here.
   if (others === "true") {
-          types += ` OR t.type IS NULL OR UPPER(t.type) NOT IN `+
+          types += " OR t.type IS NULL OR UPPER(t.type) NOT IN "+
           " (\'TEATRO\', \'MUSICA\', \'ACADEMICO\') ";
   }
 
   // Closing the "SQL type-related code" parenthesis, opened
   // when the "types" variable was declared.
-  types += ` ) `
+  types += " ) ";
 
   // Concatenate the type section with the
   // search query
@@ -143,23 +143,23 @@ function getEventsByType(req, res, next) {
   // on the "occurence" table, now aliased as "o", is between
   // min and max dates.  Again, for simplicity, if a date is 
   // null, then just replace that date comparison with a "true".
-  let dateCode = ` AND ( `;
+  let dateCode = " AND ( ";
 
   // First, check the dateMin
   dateCode += dateMin !== "null" && dateMin !== "" ? 
-    ` o.date >= ` + '\'' + `${dateMin}` + "\'::date" 
-    : " true "; 
+    " o.date >= \'" + `${dateMin}` + "\'::date" 
+    : " true ";
 
   // AND to dateMin work together, if needed, with dateMax
-  dateCode += ` AND `
+  dateCode += " AND ";
 
   // Now check dateMax
   dateCode += dateMax !== "null" && dateMax !== "" ? 
-    ` o.date <= ` + '\'' + `${dateMax}` + "\'::date" 
+    " o.date <= \'" + `${dateMax}` + "\'::date" 
     : " true ";
 
   // End date-related parenthesis
-  dateCode += ` ) `;
+  dateCode += " ) ";
   
   // Concatenate date stuff to the query, ending date-related
   // SQL code.
@@ -170,7 +170,7 @@ function getEventsByType(req, res, next) {
   // how exactly this will be stored in database.
   
   // End query
-  query += `;`
+  query += ";";
 
   // Finally, send the mounted query to the database.
   db.any(query)
