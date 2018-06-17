@@ -28,7 +28,7 @@ function PricePickers(props) {
           <Input
             id={props.id}
             type="number"
-            value={props.price}
+            value={props.getPrice}
             onChange={props.handleChange}
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
