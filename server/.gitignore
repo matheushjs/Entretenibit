@@ -10,3 +10,7 @@ yarn-error.log*
 
 # NPM lock file, just supporting yarn.lock
 package-lock.json
+
+# Debug and testing files
+create_local_db.sql
+schema.sql

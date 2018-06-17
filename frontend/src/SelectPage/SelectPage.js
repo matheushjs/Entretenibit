@@ -74,7 +74,10 @@ function SelectPage(props) {
 
           <CardGrid 
             cards={props.cards} 
-            type={props.actualSearchString} />
+            date={props.date}
+            price={props.price}
+            title={props.actualSearchString}
+            type={props.checkBoxes} />
         </div>
 
       </div>

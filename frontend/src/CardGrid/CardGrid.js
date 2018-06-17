@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import SingleCard from "./SingleCard";
-
 import * as api from "../api/server";
 
 class CardGrid extends React.Component {
@@ -10,14 +9,27 @@ class CardGrid extends React.Component {
   };
 
   componentWillMount() {
-    const { type } = this.props;
-
-    api.getEventType(type).then(cards => this.setState({ cards }));
+    api.getEventType(
+      this.props.title,
+      this.props.type, 
+      this.props.date, 
+      this.props.price).then(cards => this.setState({ cards }));
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.type !== this.props.type) {
-      api.getEventType(nextProps.type).then(cards => this.setState({ cards }));
+    if ( nextProps.title !== this.props.title
+      || nextProps.type !== this.props.type 
+      || nextProps.date !== this.props.date 
+      || nextProps.price !== this.props.price) {
+
+      // Force the clean up the last search
+      this.setState({ cards : [] });
+
+      api.getEventType(
+        nextProps.title,
+        nextProps.type,
+        nextProps.date, 
+        nextProps.price).then(cards => this.setState({ cards }));
     }
   }
 
