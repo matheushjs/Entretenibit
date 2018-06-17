@@ -116,7 +116,7 @@ function getEventsByType(req, res, next) {
 
   // All SQL type-related will be kept inside
   // a parenthesis in the query to work together:
-  let types = " AND ("
+  let types = " AND (";
   types += " UPPER(t.type) IN (";
   types += theater === "true" ? "\'TEATRO\'," : "\'INV\',";
   types += music === "true" ? "\'MUSICA\'," : "\'INV\'," ;
