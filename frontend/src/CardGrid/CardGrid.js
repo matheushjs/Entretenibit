@@ -22,6 +22,9 @@ class CardGrid extends React.Component {
       || nextProps.date !== this.props.date 
       || nextProps.price !== this.props.price) {
 
+      // Force the clean up the last search
+      this.setState({ cards : [] });
+
       api.getEventType(
         nextProps.title,
         nextProps.type,
