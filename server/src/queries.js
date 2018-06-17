@@ -60,15 +60,18 @@ function getEventsByType(req, res, next) {
   const priceMin = req.query.priceMin;
   const priceMax = req.query.priceMax;
 
-  console.log(title, academic, music, theater, others, dateMin, dateMax, priceMin, priceMax)
+  // For now, I can only search by title and type,
+  // as all other information are now stored on the database.
+  // All the information needed for any complex
+  // query are already here.
 
   if (title) {
     db.any(
-      `SELECT e.*, t.title 
+      `SELECT e.*, t.type
     FROM event e 
-    INNER JOIN type t 
+    INNER JOIN type t
       ON t.event = e.id
-    WHERE UPPER(t.title) = UPPER($1)`,
+    WHERE UPPER(e.title) = UPPER($1)`,
       [title]
     )
       .then(data => {
@@ -77,7 +80,7 @@ function getEventsByType(req, res, next) {
       .catch(err => next(err));
   }
 
-  if (type && false) {
+  if (false) {
     db.any(
       `SELECT e.*, t.type 
     FROM event e 
