@@ -38,7 +38,7 @@ function SimpleAppBar(props) {
           <Link style={{ textDecoration: "none" }} to="/aboutus/">
             <Button
               variant="raised"
-              onClick={props.homeButton}
+              onClick={props.aboutUsButton}
               className={classes.menuButton}
             >
               Sobre Nós
@@ -51,6 +51,7 @@ function SimpleAppBar(props) {
             <Button
               variant="raised"
               color="primary"
+              onClick={props.signUpButton}
               className={classes.menuButton}
             >
               Cadastre-se!
