@@ -60,7 +60,24 @@ function getEventsByType(req, res, next) {
   const priceMin = req.query.priceMin;
   const priceMax = req.query.priceMax;
 
-  if (type) {
+  console.log(title, academic, music, theater, others, dateMin, dateMax, priceMin, priceMax)
+
+  if (title) {
+    db.any(
+      `SELECT e.*, t.title 
+    FROM event e 
+    INNER JOIN type t 
+      ON t.event = e.id
+    WHERE UPPER(t.title) = UPPER($1)`,
+      [title]
+    )
+      .then(data => {
+        res.status(200).json(data);
+      })
+      .catch(err => next(err));
+  }
+
+  if (type && false) {
     db.any(
       `SELECT e.*, t.type 
     FROM event e 
