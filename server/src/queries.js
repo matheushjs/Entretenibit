@@ -103,7 +103,7 @@ function getEventsByType(req, res, next) {
   // Note that this is a pretty nasty direct comparison,
   // and should be improved on a future update.
   query += title !== "null" && title !== "" ? 
-    " AND UPPER(e.title) LIKE UPPER(\'" + `${title}` + "\') " : null;
+    " AND UPPER(e.title) LIKE UPPER(\'" + `${title}` + "\') " : "";
 
   // Here comes the "type" paramaters. The "TEATRO", 
   // "MUSICA" and "ACADEMICO" are all pretty straighforward to
