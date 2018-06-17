@@ -21,7 +21,7 @@ or access [the link](https://www.mjsaldanha.com/myip) on your browser and copy a
 
 Verify if the following command works in your command line:
 
-	postgresql -U entretenibit -h [MY IP]
+	psql -U entretenibit -h [MY IP]
 
 Your terminal should switch to a postgres prompt.
 
