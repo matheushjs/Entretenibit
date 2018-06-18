@@ -57,8 +57,10 @@ CREATE TABLE users (
     type_music    BOOLEAN DEFAULT FALSE,
     type_theater  BOOLEAN DEFAULT FALSE,
     type_others   BOOLEAN DEFAULT FALSE,
-    price_min      INTEGER DEFAULT 0,
-    price_max      INTEGER DEFAULT 100000,
+    price_min     INTEGER DEFAULT 0,
+    price_max     INTEGER DEFAULT 100000,
+    date_min      DATE,
+    date_max      DATE,
     CONSTRAINT pk_users
         PRIMARY KEY (email),
     CONSTRAINT ck1_users
@@ -66,5 +68,7 @@ CREATE TABLE users (
     CONSTRAINT ck2_users
         CHECK (price_max >= price_min),
     CONSTRAINT ck3_users
-        CHECK (email ~ '^[^@]+@[^@]+$')
+        CHECK (email ~ '^[^@]+@[^@]+$'),
+    CONSTRAINT ck4_users
+        CHECK (date_max >= date_min)
 );

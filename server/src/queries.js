@@ -193,13 +193,17 @@ function insertUser(req, res, next) {
   const others = req.query.others;
   const pmin = req.query.pmin;
   const pmax = req.query.pmax;
+  const dateMin = req.query.dateMin;
+  const dateMax = req.query.dateMax;
 
   db.none(
     "INSERT INTO" +
     "  users (email, name, searchString, type_academic, type_music, type_theater," +
-    "         type_others, price_min, price_max)" +
+    "         type_others, price_min, price_max, date_min, date_max)" +
     "  VALUES (${email}, ${name}, ${searchStr}, ${academic}, ${music}, " +
-    "          ${theater}, ${others}, ${pmin}, ${pmax});", {
+    "          ${theater}, ${others}, ${pmin}, ${pmax}, " +
+    "          to_date(${dateMin}, 'dd/mm/yyyy'), " +
+    "          to_date(${dateMax}, 'dd/mm/yyyy'));", {
     email: email,
     name: name == null ? "DEFAULT" : name,
     searchStr: searchStr,
@@ -208,7 +212,9 @@ function insertUser(req, res, next) {
     theater: theater == null ? false : theater,
     others: others == null ? false : others,
     pmin: pmin == null ? 0 : Number(pmin),
-    pmax: pmax == null ? 100000 : Number(pmax)
+    pmax: pmax == null ? 100000 : Number(pmax),
+    dateMin: dateMin,
+    dateMax: dateMax
   })
   .then( () => {
     res.status(200).send("Success");
