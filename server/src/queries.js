@@ -195,21 +195,25 @@ function insertUser(req, res, next) {
   const pmax = req.query.pmax;
 
   db.none(
-    'INSERT INTO' +
-    '  users (email, name, searchString, type_academic, type_music, type_theater, type_others)' +
-    '  VALUES (${email}, ${name}, ${searchStr}, ${academic}, ${music}, ' +
-    '          ${theater}, ${others}, ${pmin}, ${pmax});', {
+    "INSERT INTO" +
+    "  users (email, name, searchString, type_academic, type_music, type_theater," +
+    "         type_others, price_min, price_max)" +
+    "  VALUES (${email}, ${name}, ${searchStr}, ${academic}, ${music}, " +
+    "          ${theater}, ${others}, ${pmin}, ${pmax});", {
     email: email,
-    name: name,
+    name: name == null ? "DEFAULT" : name,
     searchStr: searchStr,
-    academic: academic,
-    music: music,
-    theater: theater,
-    others: others,
-    pmin: pmin,
-    pmax: pmax
+    academic: academic == null ? false : academic,
+    music: music == null ? false : music,
+    theater: theater == null ? false : theater,
+    others: others == null ? false : others,
+    pmin: pmin == null ? 0 : Number(pmin),
+    pmax: pmax == null ? 100000 : Number(pmax)
   })
-  .catch(err => next(err));
+  .then( () => {
+    res.status(200).send("Success");
+  })
+  .catch(err => next(err))
 }
 
 module.exports = {
