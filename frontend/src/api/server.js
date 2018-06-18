@@ -34,7 +34,7 @@ function getEventType(title=null, type=null, date=null, price=null) {
   return axios.get(endpoint).then(res => res.data);
 }
 
-function insertUser(email, name=null, searchStr=null, type=null, price=null){
+function insertUser(email, name=null, searchStr=null, type=null, price=null, date=null){
   var params = {};
 
   params["email"] = email;
@@ -54,6 +54,10 @@ function insertUser(email, name=null, searchStr=null, type=null, price=null){
     params["pmin"] = price.min;
   if(price && price.max)
     params["pmax"] = price.max;
+  if(date && date.min)
+    params["dateMin"] = date.min;
+  if(date && date.max)
+    params["dateMax"] = date.max;
 
   return axios({
     method: "get",

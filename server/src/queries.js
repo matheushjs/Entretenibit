@@ -202,8 +202,8 @@ function insertUser(req, res, next) {
     "         type_others, price_min, price_max, date_min, date_max)" +
     "  VALUES (${email}, ${name}, ${searchStr}, ${academic}, ${music}, " +
     "          ${theater}, ${others}, ${pmin}, ${pmax}, " +
-    "          to_date(${dateMin}, 'dd/mm/yyyy'), " +
-    "          to_date(${dateMax}, 'dd/mm/yyyy'));", {
+    "          to_date(${dateMin}, 'yyyy-mm-dd'), " +
+    "          to_date(${dateMax}, 'yyyy-mm-dd'));", {
     email: email,
     name: name == null ? "DEFAULT" : name,
     searchStr: searchStr,

@@ -120,6 +120,7 @@ class App extends Component {
       this.state.searchString,
       this.state.checkBoxes,
       this.state.price,
+      this.state.date
     )
     .then(res => {
       alert("Usuário cadastrado com sucesso!");
