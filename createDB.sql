@@ -52,18 +52,19 @@ CREATE TABLE type (
 CREATE TABLE users (
     email         VARCHAR(128) NOT NULL,
     name          VARCHAR(128) DEFAULT 'Unnamed User',
+    searchString  VARCHAR(150),
     type_academic BOOLEAN DEFAULT FALSE,
     type_music    BOOLEAN DEFAULT FALSE,
     type_theater  BOOLEAN DEFAULT FALSE,
     type_others   BOOLEAN DEFAULT FALSE,
-    priceMin      INTEGER DEFAULT 0,
-    priceMax      INTEGER DEFAULT 100000,
+    price_min      INTEGER DEFAULT 0,
+    price_max      INTEGER DEFAULT 100000,
     CONSTRAINT pk_users
         PRIMARY KEY (email),
     CONSTRAINT ck1_users
-        CHECK (priceMin >= 0),
+        CHECK (price_min >= 0),
     CONSTRAINT ck2_users
-        CHECK (priceMax >= priceMin),
+        CHECK (price_max >= price_min),
     CONSTRAINT ck3_users
         CHECK (email ~ '^[^@]+@[^@]+$')
 );

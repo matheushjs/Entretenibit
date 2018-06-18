@@ -11,5 +11,6 @@ router.get("/", function(req, res, next) {
 router.get("/devs", db.devs);
 router.get("/eventsAll", db.getAllEvents);
 router.get("/eventsType", db.getEventsByType);
+router.get("/insertUser", db.insertUser);
 
 module.exports = router;

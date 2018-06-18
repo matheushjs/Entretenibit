@@ -183,8 +183,38 @@ function getEventsByType(req, res, next) {
 
 }
 
+function insertUser(req, res, next) {
+  const email = req.query.email;
+  const name = req.query.name;
+  const searchStr = req.query.searchStr;
+  const academic = req.query.academic;
+  const music = req.query.music;
+  const theater = req.query.theater;
+  const others = req.query.others;
+  const pmin = req.query.pmin;
+  const pmax = req.query.pmax;
+
+  db.none(
+    'INSERT INTO' +
+    '  users (email, name, searchString, type_academic, type_music, type_theater, type_others)' +
+    '  VALUES (${email}, ${name}, ${searchStr}, ${academic}, ${music}, ' +
+    '          ${theater}, ${others}, ${pmin}, ${pmax});', {
+    email: email,
+    name: name,
+    searchStr: searchStr,
+    academic: academic,
+    music: music,
+    theater: theater,
+    others: others,
+    pmin: pmin,
+    pmax: pmax
+  })
+  .catch(err => next(err));
+}
+
 module.exports = {
   devs,
   getAllEvents,
-  getEventsByType
+  getEventsByType,
+  insertUser
 };
