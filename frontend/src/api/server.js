@@ -55,8 +55,6 @@ function insertUser(email, name=null, searchStr=null, type=null, price=null){
   if(price && price.max)
     params["pmax"] = price.max;
 
-  console.log(params);
-
   axios({
     method: "get",
     url: "/insertUser",
