@@ -120,7 +120,25 @@ class App extends Component {
       this.state.searchString,
       this.state.checkBoxes,
       this.state.price,
-    );
+    )
+    .then(res => {
+      alert("Usuário cadastrado com sucesso!");
+    })
+    .catch(err => {
+      alert(
+        "Sentimos muito! Não foi possível cadastrá-lo no sistema.\n" +
+        "Possivelmente o e-mail utilizado já está cadastrado."
+      );
+      
+      if(err.response){
+        console.log(err.response.data);
+      } else if (err.request){
+        console.log(err.request);
+      } else {
+        console.log(err.message);
+      }
+      console.log(err.config);
+    });
   };
 
   render() {
