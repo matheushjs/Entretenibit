@@ -204,22 +204,22 @@ function insertUser(req, res, next) {
     "          ${theater}, ${others}, ${pmin}, ${pmax}, " +
     "          to_date(${dateMin}, 'yyyy-mm-dd'), " +
     "          to_date(${dateMax}, 'yyyy-mm-dd'));", {
-    email: email,
+    email,
     name: name == null ? "DEFAULT" : name,
-    searchStr: searchStr,
+    searchStr,
     academic: academic == null ? false : academic,
     music: music == null ? false : music,
     theater: theater == null ? false : theater,
     others: others == null ? false : others,
     pmin: pmin == null ? 0 : Number(pmin),
     pmax: pmax == null ? 100000 : Number(pmax),
-    dateMin: dateMin,
-    dateMax: dateMax
+    dateMin,
+    dateMax
   })
   .then( () => {
     res.status(200).send("Success");
   })
-  .catch(err => next(err))
+  .catch(err => next(err));
 }
 
 module.exports = {

@@ -38,31 +38,41 @@ function insertUser(email, name=null, searchStr=null, type=null, price=null, dat
   var params = {};
 
   params["email"] = email;
-  if(name)
+  if(name){
     params["name"] = name;
-  if(searchStr)
+  }
+  if(searchStr){
     params["searchStr"] = searchStr;
-  if(type && type.academic)
+  }
+  if(type && type.academic){
     params["academic"] = type.academic;
-  if(type && type.music)
+  }
+  if(type && type.music){
     params["music"] = type.music;
-  if(type && type.theater)
+  }
+  if(type && type.theater){
     params["theater"] = type.theater;
-  if(type && type.others)
+  }
+  if(type && type.others){
     params["others"] = type.others;
-  if(price && price.min)
+  }
+  if(price && price.min){
     params["pmin"] = price.min;
-  if(price && price.max)
+  }
+  if(price && price.max){
     params["pmax"] = price.max;
-  if(date && date.min)
+  }
+  if(date && date.min){
     params["dateMin"] = date.min;
-  if(date && date.max)
+  }
+  if(date && date.max){
     params["dateMax"] = date.max;
+  }
 
   return axios({
     method: "get",
     url: "/insertUser",
-    params: params
+    params
   });
 }
 

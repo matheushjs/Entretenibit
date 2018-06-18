@@ -130,15 +130,6 @@ class App extends Component {
         "Sentimos muito! Não foi possível cadastrá-lo no sistema.\n" +
         "Possivelmente o e-mail utilizado já está cadastrado."
       );
-      
-      if(err.response){
-        console.log(err.response.data);
-      } else if (err.request){
-        console.log(err.request);
-      } else {
-        console.log(err.message);
-      }
-      console.log(err.config);
     });
   };
 
