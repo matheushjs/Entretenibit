@@ -129,7 +129,7 @@ function SignUpPage(props) {
           style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%"}} >
           
           <LabelButtons 
-            onClick={null}
+            onClick={props.handleSignUpButton}
             getText={"Cadastrar-se"}/>
           
         </div>

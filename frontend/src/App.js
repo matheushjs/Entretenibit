@@ -11,6 +11,7 @@ import SelectPage from "./SelectPage/SelectPage";
 import AboutUsPage from "./AboutUsPage/AboutUsPage";
 import Header from "./Header/Header";
 import SignUpPage from "./SignUpPage/SignUpPage";
+import { insertUser } from "./api/server";
 
 class App extends Component {
   //constructor(props) {
@@ -112,6 +113,16 @@ class App extends Component {
   //window.location.reload();
   }
 
+  handleSignUpButton = (event) => {
+    insertUser(
+      this.state.email,
+      this.state.name,
+      this.state.searchString,
+      this.state.checkBoxes,
+      this.state.price,
+    );
+  };
+
   render() {
     return (
       <div className="App">
@@ -188,6 +199,7 @@ class App extends Component {
                   handleInputChange={this.handleInputChange}
                   handleStateParameters={this.handleStateParameters}
                   turnOnPageLinkHandler={this.turnOnPageLinkHandler}
+                  handleSignUpButton={this.handleSignUpButton}
                 />;
               }}
             />
