@@ -2,7 +2,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:5000/";
 
-export function getEventType(title=null, type=null, date=null, price=null) {
+function getEventType(title=null, type=null, date=null, price=null) {
   // Defining query parameters
 
   // Date parameters
@@ -33,3 +33,47 @@ export function getEventType(title=null, type=null, date=null, price=null) {
 
   return axios.get(endpoint).then(res => res.data);
 }
+
+function insertUser(email, name=null, searchStr=null, type=null, price=null, date=null){
+  var params = {};
+
+  params["email"] = email;
+  if(name){
+    params["name"] = name;
+  }
+  if(searchStr){
+    params["searchStr"] = searchStr;
+  }
+  if(type && type.academic){
+    params["academic"] = type.academic;
+  }
+  if(type && type.music){
+    params["music"] = type.music;
+  }
+  if(type && type.theater){
+    params["theater"] = type.theater;
+  }
+  if(type && type.others){
+    params["others"] = type.others;
+  }
+  if(price && price.min){
+    params["pmin"] = price.min;
+  }
+  if(price && price.max){
+    params["pmax"] = price.max;
+  }
+  if(date && date.min){
+    params["dateMin"] = date.min;
+  }
+  if(date && date.max){
+    params["dateMax"] = date.max;
+  }
+
+  return axios({
+    method: "get",
+    url: "/insertUser",
+    params
+  });
+}
+
+export { getEventType, insertUser };

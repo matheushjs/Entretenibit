@@ -1,3 +1,7 @@
+/*
+ * Tables concerning the Robot
+ */
+
 CREATE TABLE location(
     name VARCHAR(30) NOT NULL,
     street VARCHAR(50) NOT NULL,
@@ -37,4 +41,34 @@ CREATE TABLE type (
     type TEXT,
     PRIMARY KEY (event, type),
     CONSTRAINT fk_event FOREIGN KEY (event) REFERENCES event(id)
+);
+
+
+
+/*
+ * Tables concerning users
+ */
+
+CREATE TABLE users (
+    email         VARCHAR(128) NOT NULL,
+    name          VARCHAR(128) DEFAULT 'Unnamed User',
+    searchString  VARCHAR(150),
+    type_academic BOOLEAN DEFAULT FALSE,
+    type_music    BOOLEAN DEFAULT FALSE,
+    type_theater  BOOLEAN DEFAULT FALSE,
+    type_others   BOOLEAN DEFAULT FALSE,
+    price_min     INTEGER DEFAULT 0,
+    price_max     INTEGER DEFAULT 100000,
+    date_min      DATE,
+    date_max      DATE,
+    CONSTRAINT pk_users
+        PRIMARY KEY (email),
+    CONSTRAINT ck1_users
+        CHECK (price_min >= 0),
+    CONSTRAINT ck2_users
+        CHECK (price_max >= price_min),
+    CONSTRAINT ck3_users
+        CHECK (email ~ '^[^@]+@[^@]+$'),
+    CONSTRAINT ck4_users
+        CHECK (date_max >= date_min)
 );

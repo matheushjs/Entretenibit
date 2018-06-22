@@ -183,8 +183,48 @@ function getEventsByType(req, res, next) {
 
 }
 
+function insertUser(req, res, next) {
+  const email = req.query.email;
+  const name = req.query.name;
+  const searchStr = req.query.searchStr;
+  const academic = req.query.academic;
+  const music = req.query.music;
+  const theater = req.query.theater;
+  const others = req.query.others;
+  const pmin = req.query.pmin;
+  const pmax = req.query.pmax;
+  const dateMin = req.query.dateMin;
+  const dateMax = req.query.dateMax;
+
+  db.none(
+    "INSERT INTO" +
+    "  users (email, name, searchString, type_academic, type_music, type_theater," +
+    "         type_others, price_min, price_max, date_min, date_max)" +
+    "  VALUES (${email}, ${name}, ${searchStr}, ${academic}, ${music}, " +
+    "          ${theater}, ${others}, ${pmin}, ${pmax}, " +
+    "          to_date(${dateMin}, 'yyyy-mm-dd'), " +
+    "          to_date(${dateMax}, 'yyyy-mm-dd'));", {
+    email,
+    name: name == null ? "DEFAULT" : name,
+    searchStr,
+    academic: academic == null ? false : academic,
+    music: music == null ? false : music,
+    theater: theater == null ? false : theater,
+    others: others == null ? false : others,
+    pmin: pmin == null ? 0 : Number(pmin),
+    pmax: pmax == null ? 100000 : Number(pmax),
+    dateMin,
+    dateMax
+  })
+  .then( () => {
+    res.status(200).send("Success");
+  })
+  .catch(err => next(err));
+}
+
 module.exports = {
   devs,
   getAllEvents,
-  getEventsByType
+  getEventsByType,
+  insertUser
 };
