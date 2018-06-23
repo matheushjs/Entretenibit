@@ -3,6 +3,7 @@
 
 *.swp
 .vscode
+.email_info
 .env
 npm-debug.log*
 yarn-debug.log*

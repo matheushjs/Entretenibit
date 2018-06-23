@@ -22,7 +22,7 @@ CREATE TABLE event(
 CREATE UNIQUE INDEX id_index ON event(id);
 
 CREATE TABLE occurrence(
-    event VARCHAR(70) NOT NULL,
+    event VARCHAR(150) NOT NULL,
     location_name VARCHAR(30) NOT NULL,
     location_street VARCHAR(50) NOT NULL,
     location_number INTEGER NOT NULL,
