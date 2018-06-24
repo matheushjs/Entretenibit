@@ -1,0 +1,15 @@
+Maybe the e-mail should be set up to run automatically every Sunday/other day.
+	We could easily do this with crontab inside Docker (https://www.ekito.fr/people/run-a-cron-job-with-docker/)
+	For now, it runs alongside the robot.
+
+We do not scrape any events that have a location; we also do not store the type.
+	Therefore, for now the users "interest" is considered to be for all users.
+
+We should implement a SECURE page that lets our user unsubscribe.
+	When the page has been built, we can add it to the bottom of the e-mail.
+	Also, the user should NOT be able to unsubscribe other people with his link.
+		Not sure how to go about this; propose to discuss in a daily
+
+The email file CANNOT be named email.py otherwise there are conflicts in the import system
+
+We could prettify the e-mail using Markdown/HTML instead of just text.
