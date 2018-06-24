@@ -6,10 +6,10 @@ import GridListTile from "@material-ui/core/GridListTile";
 
 import image1 from "./Images/Generic_Avatar.png";
 
-import photo_marcello from "./Images/marcello.jpeg";
-import photo_matheus from "./Images/matheus.jpeg";
-import photo_bruno from "./Images/bruno.jpeg";
-import photo_gabriel from "./Images/gabriel.jpg";
+import photoMarcello from "./Images/marcello.jpeg";
+import photoMatheus from "./Images/matheus.jpeg";
+import photoBruno from "./Images/bruno.jpeg";
+import photoGabriel from "./Images/gabriel.jpg";
 
 import about from "./text";
 
@@ -67,7 +67,7 @@ class AboutUsPage extends React.Component {
             <GridListTile cols={1}>
               <GridList cellHeight={150} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={photo_marcello}
+                  src={photoMarcello}
                   alt="Generic_Avatar_1"
                   style={{ objectFit: "contain" }}
                 />
@@ -86,7 +86,7 @@ class AboutUsPage extends React.Component {
             <GridListTile cols={1}>
               <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={photo_bruno}
+                  src={photoBruno}
                   alt="Generic_Avatar_2"
                   style={{ objectFit: "contain" }}
                 />
@@ -124,7 +124,7 @@ class AboutUsPage extends React.Component {
             <GridListTile cols={1}>
               <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={photo_gabriel}
+                  src={photoGabriel}
                   alt="Generic_Avatar_4"
                   style={{ objectFit: "contain" }}
                 />
@@ -143,7 +143,7 @@ class AboutUsPage extends React.Component {
             <GridListTile cols={1}>
               <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={photo_matheus}
+                  src={photoMatheus}
                   alt="Generic_Avatar_5"
                   style={{ objectFit: "contain" }}
                 />

@@ -7,10 +7,12 @@ export default {
   Software da Universidade de São Paulo, no ano de 2018 sobre a supervisão 
   da Prof. Dr. Simone do Rocio Senger de Souza.
     `,
-  Marcello: `PO do projeto e desenvoledor Full Stack, responsável pelo servidor.`,
-  Bruno: `Scrum Master e desenvolvedor Back End, responsável pelo robot do site.`,
-  Felipe: `Desenvolvedor Full Stack, responsável pela interface do site.`,
-  Gabriel: `Desenvolvedor Back End, responsável pelo robot do site.`,
-  Matheus: `Desenvolvedor Full Stack, responsável banco de dados do site.`,
-  Tiago: `Desenvolvedor Front End, responsável pela interface do site.`
+  Marcello:
+    "PO do projeto e desenvoledor Full Stack, responsável pelo servidor.",
+  Bruno:
+    "Scrum Master e desenvolvedor Back End, responsável pelo robot do site.",
+  Felipe: "Desenvolvedor Full Stack, responsável pela interface do site.",
+  Gabriel: "Desenvolvedor Back End, responsável pelo robot do site.",
+  Matheus: "Desenvolvedor Full Stack, responsável banco de dados do site.",
+  Tiago: "Desenvolvedor Front End, responsável pela interface do site."
 };
