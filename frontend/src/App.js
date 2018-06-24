@@ -12,6 +12,7 @@ import AboutUsPage from "./AboutUsPage/AboutUsPage";
 import Header from "./Header/Header";
 import SignUpPage from "./SignUpPage/SignUpPage";
 import { insertUser } from "./api/server";
+import SweetAlert from "sweetalert2-react";
 
 class App extends Component {
   //constructor(props) {
@@ -40,6 +41,9 @@ class App extends Component {
       max: "0",
     },
     cards: [],
+    alertShow: false,
+    alertTitle: "",
+    alertText: ""
   };
 
   handleStateParameters = (event) => {
@@ -123,13 +127,19 @@ class App extends Component {
       this.state.date
     )
     .then(res => {
-      alert("Usuário cadastrado com sucesso!");
+      this.setState({
+        alertShow: true,
+        alertTitle: "Usuário cadastrado com sucesso!",
+        alertText: "",
+      });
     })
     .catch(err => {
-      alert(
-        "Sentimos muito! Não foi possível cadastrá-lo no sistema.\n" +
-        "Possivelmente o e-mail utilizado já está cadastrado."
-      );
+      this.setState({
+        alertShow: true,
+        alertTitle: "Cadastro não realizado :(",
+        alertText: "Sentimos muito! Não foi possível cadastrá-lo no sistema.\n" +
+          "Possivelmente o e-mail utilizado já está cadastrado.",
+      });
     });
   };
 
@@ -137,6 +147,12 @@ class App extends Component {
     return (
       <div className="App">
         <CssBaseline />
+        <SweetAlert
+          show={this.state.alertShow}
+          title={this.state.alertTitle}
+          text={this.state.alertText}
+          onConfirm={() => this.setState({ alertShow: false })}
+        />
         <Router>
           <Parallax
             //bgImage={ this.props.backgroundImage }
