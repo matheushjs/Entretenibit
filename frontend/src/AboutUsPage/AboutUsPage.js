@@ -5,6 +5,14 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
 import image1 from "./Images/Generic_Avatar.png";
+
+import photo_marcello from "./Images/marcello.jpeg";
+import photo_matheus from "./Images/matheus.jpeg";
+import photo_bruno from "./Images/bruno.jpeg";
+import photo_gabriel from "./Images/gabriel.jpg";
+
+import about from "./text";
+
 /*credits: http://charmscrp.wikia.com/wiki/File:Generic_Avatar.png*/
 
 class AboutUsPage extends React.Component {
@@ -31,15 +39,11 @@ class AboutUsPage extends React.Component {
 
           <Typography
             style={{
-              fontSize: "1.5vw",
+              fontSize: "1vw",
               textAlign: "left"
             }}
           >
-            Descricao do projeto, do grupo, etc. Descricao do projeto, do grupo,
-            etc. Descricao do projeto, do grupo, etc. Descricao do projeto, do
-            grupo, etc. Descricao do projeto, do grupo, etc. Descricao do
-            projeto, do grupo, etc. Descricao do projeto, do grupo, etc.
-            Descricao do projeto, do grupo, etc.
+            {about.Info}
           </Typography>
         </div>
         <div
@@ -56,47 +60,45 @@ class AboutUsPage extends React.Component {
               textAlign: "left"
             }}
           >
-            <b>Integrantes</b>
+            <b>Desenvolvedores</b>
           </Typography>
 
-          <GridList cellHeight={125} cellWidth="45%" cols={2} style={{}}>
+          <GridList cellHeight={350} cellWidth="45%" cols={2} style={{}}>
             <GridListTile cols={1}>
-              <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
+              <GridList cellHeight={150} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={image1}
+                  src={photo_marcello}
                   alt="Generic_Avatar_1"
                   style={{ objectFit: "contain" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.2vw",
+                    fontSize: "1.1vw",
                     textAlign: "left"
                   }}
                 >
-                  Descricao do integrante.<br />
-                  Descricao do integrante. Descricao do integrante. Descricao do
-                  integrante.
+                  Marcello Pagano<br />
+                  {about.Marcello}
                 </Typography>
               </GridList>
             </GridListTile>
             <GridListTile cols={1}>
               <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={image1}
+                  src={photo_bruno}
                   alt="Generic_Avatar_2"
                   style={{ objectFit: "contain" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.2vw",
+                    fontSize: "1.1vw",
                     textAlign: "left"
                   }}
                 >
-                  Descricao do integrante.<br />
-                  Descricao do integrante. Descricao do integrante. Descricao do
-                  integrante.
+                  Bruno Coelho<br />
+                  {about.Bruno}
                 </Typography>
               </GridList>
             </GridListTile>
@@ -110,53 +112,50 @@ class AboutUsPage extends React.Component {
 
                 <Typography
                   style={{
-                    fontSize: "1.2vw",
+                    fontSize: "1.1vw",
                     textAlign: "left"
                   }}
                 >
-                  Descricao do integrante.<br />
-                  Descricao do integrante. Descricao do integrante. Descricao do
-                  integrante.
+                  Felipe Siqueira<br />
+                  {about.Felipe}
                 </Typography>
               </GridList>
             </GridListTile>
             <GridListTile cols={1}>
               <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={image1}
+                  src={photo_gabriel}
                   alt="Generic_Avatar_4"
                   style={{ objectFit: "contain" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.2vw",
+                    fontSize: "1.1vw",
                     textAlign: "left"
                   }}
                 >
-                  Descricao do integrante.<br />
-                  Descricao do integrante. Descricao do integrante. Descricao do
-                  integrante.
+                  Gabriel Cruz<br />
+                  {about.Gabriel}
                 </Typography>
               </GridList>
             </GridListTile>
             <GridListTile cols={1}>
               <GridList cellHeight={125} cols={2} style={{ marginTop: "4%" }}>
                 <img
-                  src={image1}
+                  src={photo_matheus}
                   alt="Generic_Avatar_5"
                   style={{ objectFit: "contain" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.2vw",
+                    fontSize: "1.1vw",
                     textAlign: "left"
                   }}
                 >
-                  Descricao do integrante.<br />
-                  Descricao do integrante. Descricao do integrante. Descricao do
-                  integrante.
+                  Matheus Saldanha<br />
+                  {about.Matheus}
                 </Typography>
               </GridList>
             </GridListTile>
@@ -170,13 +169,12 @@ class AboutUsPage extends React.Component {
 
                 <Typography
                   style={{
-                    fontSize: "1.2vw",
+                    fontSize: "1.1vw",
                     textAlign: "left"
                   }}
                 >
-                  Descricao do integrante.<br />
-                  Descricao do integrante. Descricao do integrante. Descricao do
-                  integrante.
+                  Tiago Miranda<br />
+                  {about.Tiago}
                 </Typography>
               </GridList>
             </GridListTile>
