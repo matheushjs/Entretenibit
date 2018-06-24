@@ -7,7 +7,7 @@ CREATE TABLE location(
     street VARCHAR(50) NOT NULL,
     number INTEGER NOT NULL,
     district VARCHAR(10),
-    PRIMARY KEY(name, street, number)
+    CONSTRAINT pk_location PRIMARY KEY(name, street, number)
 );
 
 CREATE TABLE event(
@@ -16,7 +16,7 @@ CREATE TABLE event(
     casting VARCHAR(400),
     link VARCHAR(150) NOT NULL,
     id BIGSERIAL,
-    PRIMARY KEY(link)
+    CONSTRAINT pk_event PRIMARY KEY(link)
 );
 
 CREATE UNIQUE INDEX id_index ON event(id);
@@ -28,19 +28,23 @@ CREATE TABLE occurrence(
     location_number INTEGER NOT NULL,
     date DATE NOT NULL,
     pricing VARCHAR(50),
-    PRIMARY KEY(event, date),
-    FOREIGN KEY(location_name, location_street, location_number)
+    CONSTRAINT pk_occurrence PRIMARY KEY(event, date),
+    CONSTRAINT fk_occurrence_location FOREIGN KEY(location_name, location_street, location_number)
         REFERENCES location(name, street, number)
         ON DELETE CASCADE,
-    FOREIGN KEY(event) REFERENCES event(link)
+    CONSTRAINT fk_occurrence_event FOREIGN KEY(event) REFERENCES event(link)
         ON DELETE CASCADE
 );
+
+
 
 CREATE TABLE type (
     event INTEGER,
     type TEXT,
-    PRIMARY KEY (event, type),
-    CONSTRAINT fk_event FOREIGN KEY (event) REFERENCES event(id)
+    CONSTRAINT pk_type PRIMARY KEY (event, type),
+    CONSTRAINT fk_type_event FOREIGN KEY (event)
+        REFERENCES event(id)
+        ON DELETE SET NULL
 );
 
 
@@ -61,14 +65,9 @@ CREATE TABLE users (
     price_max     INTEGER DEFAULT 100000,
     date_min      DATE,
     date_max      DATE,
-    CONSTRAINT pk_users
-        PRIMARY KEY (email),
-    CONSTRAINT ck1_users
-        CHECK (price_min >= 0),
-    CONSTRAINT ck2_users
-        CHECK (price_max >= price_min),
-    CONSTRAINT ck3_users
-        CHECK (email ~ '^[^@]+@[^@]+$'),
-    CONSTRAINT ck4_users
-        CHECK (date_max >= date_min)
+    CONSTRAINT pk_users PRIMARY KEY (email),
+    CONSTRAINT ck_users_price_min CHECK (price_min >= 0),
+    CONSTRAINT ck_users_price_max CHECK (price_max >= price_min),
+    CONSTRAINT ck_users_email CHECK (email ~ '^[^@]+@[^@]+$'),
+    CONSTRAINT ck_users_date CHECK (date_max >= date_min)
 );
