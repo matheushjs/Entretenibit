@@ -2,6 +2,10 @@ const promise = require("bluebird");
 const moment = require("moment");
 const pgp = require("pg-promise");
 const monitor = require("pg-monitor");
+const crypto = require("crypto");
+
+// Size of the salt to be used with Hmac
+const cryptoSaltBytes = 16;
 
 require("dotenv").config();
 
@@ -177,9 +181,31 @@ function insertUser(req, res, next) {
   .catch(err => next(err));
 }
 
+/* Unsubscribes a user from receiving e-mails.
+ * We hash the e-mail and check if it is equal 'hash'. It has to be equal.
+ */
+function unsubscribeUser(req, res, next){
+  const email = req.query.email;
+  const hash = req.query.hash;
+
+  // Get the salt, which is embedded in the hash
+  // Times 2 because each byte uses 2 hexadecimals
+  const salt = hash.substr(0, cryptoSaltBytes*2);
+  const reHash = crypto.createHmac("sha256", salt).update(email).digest("hex");
+
+  if(hash === salt + reHash){
+    // Unsubscribe user
+    console.log("Unsubscribed " + email);
+  } else {
+    // Do nothing, throw error, log, idk
+    console.log("Nothing has been done.");
+  }
+}
+
 module.exports = {
   devs,
   getAllEvents,
   getEventsByType,
-  insertUser
+  insertUser,
+  unsubscribeUser
 };
