@@ -1,6 +1,9 @@
 import sys
+import os
 import smtplib  # e-mail library
 import traceback
+import hashlib  # Hashing algorithms
+from urllib.parse import urlencode  # Build URL query strings
 
 # For using utf-8 characters in the e-mail
 from email.mime.multipart import MIMEMultipart
@@ -99,7 +102,23 @@ def send_email(user_info, events, server, from_address):
 
 
 def get_unsubscribe_link(user_info):
-    return "www.naoIimplentado.com"
+    email = user_info[EMAIL].encode('utf8')
+    
+    # Get the salt
+    salt = 'sardinha e limao'.encode('utf8')
+    
+    string = email + salt
+    hashing = hashlib.sha256(string)
+
+    print('localhost:5000/unsubscribeUser?' + urlencode({
+        'email': email,
+        'hash': hashing.hexdigest()}
+        ))
+
+    return 'localhost:5000/unsubscribeUser?' + urlencode({
+        'email': email,
+        'hash': hashing.hexdigest()}
+        )
 
 
 def user_has_interest(user, event):
