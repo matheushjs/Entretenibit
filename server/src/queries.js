@@ -4,9 +4,6 @@ const pgp = require("pg-promise");
 const monitor = require("pg-monitor");
 const crypto = require("crypto");
 
-// Size of the salt to be used with Hmac
-const cryptoSaltBytes = 16;
-
 require("dotenv").config();
 
 const initOptions = {
@@ -187,13 +184,13 @@ function insertUser(req, res, next) {
 function unsubscribeUser(req, res, next){
   const email = req.query.email;
   const hash = req.query.hash;
+  
+  const salt = "sardinha e limao"
+  const reHash = crypto.createHash("sha256").update(email + salt).digest("hex");
 
-  // Get the salt, which is embedded in the hash
-  // Times 2 because each byte uses 2 hexadecimals
-  const salt = hash.substr(0, cryptoSaltBytes*2);
-  const reHash = crypto.createHmac("sha256", salt).update(email).digest("hex");
+  console.log(email, hash, reHash)
 
-  if(hash === salt + reHash){
+  if(hash === reHash){
     // Unsubscribe user
     db.none("DELETE FROM users WHERE email = ${email}", { email })
     .then( () => {
