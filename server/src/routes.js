@@ -12,5 +12,6 @@ router.get("/devs", db.devs);
 router.get("/eventsAll", db.getAllEvents);
 router.get("/eventsType", db.getEventsByType);
 router.get("/insertUser", db.insertUser);
+router.get("/unsubscribeUser", db.unsubscribeUser);
 
 module.exports = router;

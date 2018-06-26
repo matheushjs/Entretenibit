@@ -195,10 +195,13 @@ function unsubscribeUser(req, res, next){
 
   if(hash === salt + reHash){
     // Unsubscribe user
-    console.log("Unsubscribed " + email);
+    db.none("DELETE FROM users WHERE email = ${email}", { email })
+    .then( () => {
+      res.status(200).send("Success");
+    })
+    .catch(err => next(err));
   } else {
-    // Do nothing, throw error, log, idk
-    console.log("Nothing has been done.");
+    res.status(500).send("Hash is not valid.");
   }
 }
 
