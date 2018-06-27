@@ -112,12 +112,7 @@ def get_unsubscribe_link(user_info):
     string = email + salt
     hashing = hashlib.sha256(string)
 
-    print('localhost:5000/unsubscribeUser?' + urlencode({
-        'email': email,
-        'hash': hashing.hexdigest()}
-        ))
-
-    return 'localhost:5000/unsubscribeUser?' + urlencode({
+    return 'http://localhost:5000/unsubscribeUser?' + urlencode({
         'email': email,
         'hash': hashing.hexdigest()}
         )

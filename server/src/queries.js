@@ -194,7 +194,7 @@ function unsubscribeUser(req, res, next){
     // Unsubscribe user
     db.none("DELETE FROM users WHERE email = ${email}", { email })
     .then( () => {
-      res.status(200).send("Success");
+      res.status(200).send("<h1>Sentiremos sua falta :(</h1><p>Você foi descadastrado com sucesso.</p>");
     })
     .catch(err => next(err));
   } else {
