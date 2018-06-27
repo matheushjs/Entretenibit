@@ -184,11 +184,9 @@ function insertUser(req, res, next) {
 function unsubscribeUser(req, res, next){
   const email = req.query.email;
   const hash = req.query.hash;
-  
-  const salt = process.env.SALT
-  const reHash = crypto.createHash("sha256").update(email + salt).digest("hex");
 
-  console.log(email, hash, reHash)
+  const salt = process.env.SALT;
+  const reHash = crypto.createHash("sha256").update(email + salt).digest("hex");
 
   if(hash === reHash){
     // Unsubscribe user

@@ -1,5 +1,4 @@
 import sys
-import os
 import smtplib  # e-mail library
 import traceback
 import hashlib  # Hashing algorithms
@@ -104,11 +103,11 @@ def send_email(user_info, events, server, from_address):
 
 def get_unsubscribe_link(user_info):
     email = user_info[EMAIL].encode('utf8')
-    
+
     # Get the salt
     _, _, salt = read_email_info()
     salt = salt.encode('utf8')
-    
+
     string = email + salt
     hashing = hashlib.sha256(string)
 
