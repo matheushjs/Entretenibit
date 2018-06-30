@@ -1,6 +1,8 @@
 import sys
 import smtplib  # e-mail library
 import traceback
+import hashlib  # Hashing algorithms
+from urllib.parse import urlencode  # Build URL query strings
 
 # For using utf-8 characters in the e-mail
 from email.mime.multipart import MIMEMultipart
@@ -43,10 +45,11 @@ def read_email_info():
     Not hardcoded for security.
     """
     with open(".email_info", "r") as email_file:
-        username, password = [x.rstrip() for x in email_file.readlines()]
+        username, password, salt = [x.rstrip() for x in email_file.readlines()]
     username = username[username.index("'") + 1:-1]
     password = password[password.index("'") + 1:-1]
-    return username, password
+    salt = salt[salt.index("'") + 1:-1]
+    return username, password, salt
 
 
 def connect_email_server(username, password):
@@ -99,7 +102,19 @@ def send_email(user_info, events, server, from_address):
 
 
 def get_unsubscribe_link(user_info):
-    return "www.naoIimplentado.com"
+    email = user_info[EMAIL].encode('utf8')
+
+    # Get the salt
+    _, _, salt = read_email_info()
+    salt = salt.encode('utf8')
+
+    string = email + salt
+    hashing = hashlib.sha256(string)
+
+    return 'http://localhost:5000/unsubscribeUser?' + urlencode({
+        'email': email,
+        'hash': hashing.hexdigest()}
+        )
 
 
 def user_has_interest(user, event):
@@ -141,7 +156,7 @@ def main(verbose=False):
 
     # Initial connection
     connection = database.connect()
-    username, password = read_email_info()
+    username, password, _ = read_email_info()
     server = connect_email_server(username, password)
 
     # Get information from database

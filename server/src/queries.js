@@ -2,6 +2,7 @@ const promise = require("bluebird");
 const moment = require("moment");
 const pgp = require("pg-promise");
 const monitor = require("pg-monitor");
+const crypto = require("crypto");
 
 require("dotenv").config();
 
@@ -177,9 +178,32 @@ function insertUser(req, res, next) {
   .catch(err => next(err));
 }
 
+/* Unsubscribes a user from receiving e-mails.
+ * We hash the e-mail and check if it is equal 'hash'. It has to be equal.
+ */
+function unsubscribeUser(req, res, next){
+  const email = req.query.email;
+  const hash = req.query.hash;
+
+  const salt = process.env.SALT;
+  const reHash = crypto.createHash("sha256").update(email + salt).digest("hex");
+
+  if(hash === reHash){
+    // Unsubscribe user
+    db.none("DELETE FROM users WHERE email = ${email}", { email })
+    .then( () => {
+      res.status(200).send("<h1>Sentiremos sua falta :(</h1><p>Você foi descadastrado com sucesso.</p>");
+    })
+    .catch(err => next(err));
+  } else {
+    res.status(500).send("Hash is not valid.");
+  }
+}
+
 module.exports = {
   devs,
   getAllEvents,
   getEventsByType,
-  insertUser
+  insertUser,
+  unsubscribeUser
 };
