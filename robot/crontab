@@ -1,0 +1,12 @@
+# This prints the message to the standard docker output every minute
+* * * * * root echo "hello, cron seems to be working as intended" > /proc/1/fd/1 2>/proc/1/fd/2
+
+# This runs our send-email every sunday at midnight
+0 0 * * sun root python3 send_emails.py
+
+# This runs our scraper every day at 20:00
+# The reason for being this time is to give plenty of time for the scrapper to run before sending the e-mails at midnight on sundays
+ 0 20 * * * root python3 Robot.py 
+
+# Don't remove the empty line at the end of this file. It is required to run the cron job
+
