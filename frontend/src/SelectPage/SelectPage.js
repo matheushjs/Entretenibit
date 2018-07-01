@@ -38,6 +38,7 @@ function SelectPage(props) {
 
           <SearchButton onClick={props.turnOnPageLinkHandler}/>
 
+
           <Link style={{ textDecoration: "none" }} to="/signup/">
             <LabelButtons onClick={null} getText={"Cadastrar"}/>
           </Link>

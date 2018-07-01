@@ -146,6 +146,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'/>
         <CssBaseline />
         <SweetAlert
           show={this.state.alertShow}
@@ -167,8 +168,8 @@ class App extends Component {
             <h1
               style={{
                 fontSize: "6vw",
-                color: "white",
-                backgroundColor: "rgba( 55, 55, 55, 0.55 )"
+                fontFamily: "Kalam",
+                color: "black",
               }}
             >
               {" "}

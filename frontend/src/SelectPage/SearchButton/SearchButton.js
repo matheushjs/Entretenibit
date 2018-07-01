@@ -15,11 +15,7 @@ function IconLabelButtons(props) {
   const { classes } = props;
 
   return (
-    <div style={{ display: "inline-block", padding: "0px 30px" }}>
-      <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-      />
+    <div style={{ display: "inline-block"}}>
 
       <Button
         onClick={props.onClick}
