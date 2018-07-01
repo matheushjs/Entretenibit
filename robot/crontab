@@ -6,7 +6,7 @@
 
 # This runs our scraper every day at 20:00
 # The reason for being this time is to give plenty of time for the scrapper to run before sending the e-mails at midnight on sundays
- 0 22 * * * root python3 Robot.py 
+ 0 20 * * * root python3 Robot.py 
 
 # Don't remove the empty line at the end of this file. It is required to run the cron job
 
