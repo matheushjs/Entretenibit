@@ -9,10 +9,13 @@ COPY . /robot
 RUN pip3 install -r requirements.txt
 
 # Update and install cron
-RUN apt-get update && apt-get -y install -qq --force-yes cron
+RUN apt-get update \
+		&& apt-get -y install -qq --force-yes --no-install-recommends cron=3.0pl1-128+deb9u1 \
+		&& apt-get clean \
+		&& rm -rf /var/lib/apt/lists/*
 
 # Add crontab file in the cron directory
-ADD crontab /etc/cron.d/hello-cron
+COPY crontab /etc/cron.d/hello-cron
 
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/hello-cron
