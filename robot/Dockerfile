@@ -9,8 +9,7 @@ COPY . /robot
 RUN pip3 install -r requirements.txt
 
 # Update and install cron
-RUN apt-get update \
-		&& apt-get -y install -qq --force-yes --no-install-recommends cron=3.0pl1-128+deb9u1 \
+RUN apt-get update && apt-get -y install -qq --force-yes --no-install-recommends cron=3.0pl1-128+deb9u1 \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*
 
