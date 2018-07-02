@@ -25,8 +25,8 @@ function ConfigurationSettingsPanel(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading} style={{ fontSize: "1.5vw" }}>
-            Informações Avançadas:{" "}
+          <Typography className={classes.heading} style={{ fontSize: "1.1vw" }}>
+            Pesquisa Avançada:{" "}
           </Typography>
         </ExpansionPanelSummary>
 

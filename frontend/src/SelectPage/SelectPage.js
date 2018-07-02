@@ -16,14 +16,12 @@ function SelectPage(props) {
 
     return (
       <div>
-
         <div className="SearchBarSection"
           style={{
             lineHeight: "3vh",
             display: "inline",
             margin: "auto"
           }} >
-
           <SearchBar
             onChange={props.handleInputChange}
             onEnter={props.turnOnPageLinkHandler}
@@ -54,7 +52,7 @@ function SelectPage(props) {
 
         <div
           className="ConfigurationSection"
-          style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%" }} >
+          style={{margin: "0.5% 20% 6% 20%"}} >
           <ConfigurationSettingsPanel
             triggerParentHandleInputChange={props.handleInputChange}
             getParentConfigurationEventType={props.configurationEventType}
