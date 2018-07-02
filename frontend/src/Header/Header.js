@@ -9,7 +9,7 @@ import LabelButtons from "../SignUpPage/LabelButtons/LabelButtons";
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   flex: {
     flex: 1
@@ -24,7 +24,9 @@ function SimpleAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default"
+        style={{backgroundColor: "#4834d4"}}
+      >
         <Toolbar>
           <Link style={{ textDecoration: "none" }} to="/home/">
             <Button

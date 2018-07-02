@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-//import Icon from "@material-ui/core/Icon";
-import "font-awesome/css/font-awesome.min.css";
+import "material-icons";
 
 const styles = theme => ({
   rightIcon: {
@@ -24,7 +23,7 @@ function IconLabelButtons(props) {
         variant="raised"
         color="primary"
       >
-        <i class="fa fa-search"></i>
+        <i className="material-icons">search</i>
       </Button>
     </div>
   );

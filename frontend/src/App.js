@@ -156,7 +156,7 @@ class App extends Component {
         />
         <Router>
           <Parallax
-            //bgImage={ this.props.backgroundImage }
+            bgImage={ this.props.backgroundImage }
             blur={{ min: 1, max: 2 }}
           >
             <Header
@@ -169,7 +169,7 @@ class App extends Component {
               style={{
                 fontSize: "6vw",
                 fontFamily: "Kalam",
-                color: "black",
+                color: "#039BE5",
               }}
             >
               {" "}
