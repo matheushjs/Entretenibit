@@ -187,8 +187,8 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
-                    fontFamily: "sans",
                     textAlign: "left",
+                    fontFamily: "sans",
                     color: "#03A678"
                   }}
                 >
