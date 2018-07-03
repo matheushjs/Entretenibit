@@ -3,12 +3,11 @@ import CardGrid from "../CardGrid/CardGrid";
 import ConfigurationSettingsPanel from "./ConfigSettings/ConfigurationSettingsPanel";
 import SearchBar from "./SearchBar/SearchBar";
 import SearchButton from "./SearchButton/SearchButton";
-import LabelButtons from "../SignUpPage/LabelButtons/LabelButtons";
+//import LabelButtons from "../SignUpPage/LabelButtons/LabelButtons";
 
 import {
   Route,
-  Redirect,
-  Link
+  Redirect
 } from "react-router-dom";
 
 function SelectPage(props) {
