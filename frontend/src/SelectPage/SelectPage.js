@@ -52,7 +52,7 @@ function SelectPage(props) {
 
         <div
           className="ConfigurationSection"
-          style={{margin: "0.5% 20% 6% 20%"}} >
+          style={{margin: "0.5% 14% 6% 14%"}} >
           <ConfigurationSettingsPanel
             triggerParentHandleInputChange={props.handleInputChange}
             getParentConfigurationEventType={props.configurationEventType}

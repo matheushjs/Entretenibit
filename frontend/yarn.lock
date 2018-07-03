@@ -4549,6 +4549,10 @@ material-icons@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/material-icons/-/material-icons-0.2.3.tgz#1f84d50effbb700287ba44a21bbce0339252ccaf"
 
+material-ui-background@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/material-ui-background/-/material-ui-background-0.1.2.tgz#739960bc3cc3f1e282e18685e1180f5bb38762cf"
+
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"

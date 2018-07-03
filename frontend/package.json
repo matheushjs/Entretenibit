@@ -8,6 +8,8 @@
     "ajv": "^6.5.0",
     "axios": "^0.18.0",
     "font-awesome": "^4.7.0",
+    "material-icons": "^0.2.3",
+    "material-ui-background": "^0.1.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-parallax": "^1.7.0",

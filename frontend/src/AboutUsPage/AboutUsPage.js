@@ -18,21 +18,23 @@ import about from "./text";
 class AboutUsPage extends React.Component {
   //about us page (the main/parent page of this script)
   render() {
-    return (
+      return (
       <div style={{ marginBottom: "5vh" }}>
+
         <div
           className="AboutProject"
           style={{
             marginTop: "0vh",
-            marginLeft: "5%",
-            marginRight: "5%"
+            marginLeft: "15%",
+            marginRight: "15%"
           }}
         >
           <Typography
             style={{
               fontSize: "2vw",
+              fontFamily: "sans",
               textAlign: "left",
-              color: "#DCD5D4"
+              color: "white"
             }}
           >
             <b>Sobre o projeto</b>
@@ -41,8 +43,9 @@ class AboutUsPage extends React.Component {
           <Typography
             style={{
               fontSize: "1vw",
+              fontFamily: "sans",
               textAlign: "left",
-              color: "#DCD5D4"
+              color: "#607D8B"
             }}
           >
             {about.Info}
@@ -52,15 +55,16 @@ class AboutUsPage extends React.Component {
           className="AboutUs"
           style={{
             marginTop: "3vh",
-            marginLeft: "5%",
-            marginRight: "5%"
+            marginLeft: "15%",
+            marginRight: "15%"
           }}
         >
           <Typography
             style={{
               fontSize: "2vw",
+              fontFamily: "sans",
               textAlign: "left",
-              color: "#DCD5D4"
+              color: "white"
             }}
           >
             <b>Desenvolvedores</b>
@@ -78,8 +82,9 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
+                    fontFamily: "sans",
                     textAlign: "left",
-                    color: "#DCD5D4"
+                    color: "#607D8B"
                   }}
                 >
                   Marcello Pagano<br />
@@ -98,8 +103,9 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
+                    fontFamily: "sans",
                     textAlign: "left",
-                    color: "#DCD5D4"
+                    color: "#607D8B"
                   }}
                 >
                   Bruno Coelho<br />
@@ -118,8 +124,9 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
+                    fontFamily: "sans",
                     textAlign: "left",
-                    color: "#DCD5D4"
+                    color: "#607D8B"
                   }}
                 >
                   Felipe Siqueira<br />
@@ -138,8 +145,9 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
+                    fontFamily: "sans",
                     textAlign: "left",
-                    color: "#DCD5D4"
+                    color: "#607D8B"
                   }}
                 >
                   Gabriel Cruz<br />
@@ -158,8 +166,9 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
+                    fontFamily: "sans",
                     textAlign: "left",
-                    color: "#DCD5D4"
+                    color: "#607D8B"
                   }}
                 >
                   Matheus Saldanha<br />
@@ -178,8 +187,9 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
+                    fontFamily: "sans",
                     textAlign: "left",
-                    color: "#DCD5D4"
+                    color: "#607D8B"
                   }}
                 >
                   Tiago Miranda<br />
