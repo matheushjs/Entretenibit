@@ -45,7 +45,7 @@ class AboutUsPage extends React.Component {
               fontSize: "1vw",
               fontFamily: "sans",
               textAlign: "left",
-              color: "#607D8B"
+              color: "#03A678"
             }}
           >
             {about.Info}
@@ -84,7 +84,7 @@ class AboutUsPage extends React.Component {
                     fontSize: "1.1vw",
                     fontFamily: "sans",
                     textAlign: "left",
-                    color: "#607D8B"
+                    color: "#03A678"
                   }}
                 >
                   Marcello Pagano<br />
@@ -105,7 +105,7 @@ class AboutUsPage extends React.Component {
                     fontSize: "1.1vw",
                     fontFamily: "sans",
                     textAlign: "left",
-                    color: "#607D8B"
+                    color: "#03A678"
                   }}
                 >
                   Bruno Coelho<br />
@@ -126,7 +126,7 @@ class AboutUsPage extends React.Component {
                     fontSize: "1.1vw",
                     fontFamily: "sans",
                     textAlign: "left",
-                    color: "#607D8B"
+                    color: "#03A678"
                   }}
                 >
                   Felipe Siqueira<br />
@@ -147,7 +147,7 @@ class AboutUsPage extends React.Component {
                     fontSize: "1.1vw",
                     fontFamily: "sans",
                     textAlign: "left",
-                    color: "#607D8B"
+                    color: "#03A678"
                   }}
                 >
                   Gabriel Cruz<br />
@@ -168,7 +168,7 @@ class AboutUsPage extends React.Component {
                     fontSize: "1.1vw",
                     fontFamily: "sans",
                     textAlign: "left",
-                    color: "#607D8B"
+                    color: "#03A678"
                   }}
                 >
                   Matheus Saldanha<br />
@@ -189,7 +189,7 @@ class AboutUsPage extends React.Component {
                     fontSize: "1.1vw",
                     fontFamily: "sans",
                     textAlign: "left",
-                    color: "#607D8B"
+                    color: "#03A678"
                   }}
                 >
                   Tiago Miranda<br />
