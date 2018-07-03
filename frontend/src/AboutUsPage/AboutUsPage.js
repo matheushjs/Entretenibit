@@ -31,7 +31,8 @@ class AboutUsPage extends React.Component {
           <Typography
             style={{
               fontSize: "2vw",
-              textAlign: "left"
+              textAlign: "left",
+              color: "#DCD5D4"
             }}
           >
             <b>Sobre o projeto</b>
@@ -40,7 +41,8 @@ class AboutUsPage extends React.Component {
           <Typography
             style={{
               fontSize: "1vw",
-              textAlign: "left"
+              textAlign: "left",
+              color: "#DCD5D4"
             }}
           >
             {about.Info}
@@ -57,7 +59,8 @@ class AboutUsPage extends React.Component {
           <Typography
             style={{
               fontSize: "2vw",
-              textAlign: "left"
+              textAlign: "left",
+              color: "#DCD5D4"
             }}
           >
             <b>Desenvolvedores</b>
@@ -75,7 +78,8 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
-                    textAlign: "left"
+                    textAlign: "left",
+                    color: "#DCD5D4"
                   }}
                 >
                   Marcello Pagano<br />
@@ -94,7 +98,8 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
-                    textAlign: "left"
+                    textAlign: "left",
+                    color: "#DCD5D4"
                   }}
                 >
                   Bruno Coelho<br />
@@ -113,7 +118,8 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
-                    textAlign: "left"
+                    textAlign: "left",
+                    color: "#DCD5D4"
                   }}
                 >
                   Felipe Siqueira<br />
@@ -132,7 +138,8 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
-                    textAlign: "left"
+                    textAlign: "left",
+                    color: "#DCD5D4"
                   }}
                 >
                   Gabriel Cruz<br />
@@ -151,7 +158,8 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
-                    textAlign: "left"
+                    textAlign: "left",
+                    color: "#DCD5D4"
                   }}
                 >
                   Matheus Saldanha<br />
@@ -170,7 +178,8 @@ class AboutUsPage extends React.Component {
                 <Typography
                   style={{
                     fontSize: "1.1vw",
-                    textAlign: "left"
+                    textAlign: "left",
+                    color: "#DCD5D4"
                   }}
                 >
                   Tiago Miranda<br />
