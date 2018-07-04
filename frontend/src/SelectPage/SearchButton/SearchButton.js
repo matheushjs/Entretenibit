@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
+import "material-icons";
 
 const styles = theme => ({
   rightIcon: {
@@ -14,11 +14,7 @@ function IconLabelButtons(props) {
   const { classes } = props;
 
   return (
-    <div style={{ display: "inline-block", padding: "0px 30px" }}>
-      <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-      />
+    <div style={{ display: "inline-block"}}>
 
       <Button
         onClick={props.onClick}
@@ -27,7 +23,7 @@ function IconLabelButtons(props) {
         variant="raised"
         color="primary"
       >
-        <Icon className={classes.rightIcon}>send</Icon>
+        <i className="material-icons">search</i>
       </Button>
     </div>
   );

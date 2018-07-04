@@ -25,14 +25,14 @@ function ConfigurationSettingsPanel(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading} style={{ fontSize: "1.5vw" }}>
-            Informações Avançadas:{" "}
+          <Typography className={classes.heading} style={{ fontSize: "1.1vw" }}>
+            Pesquisa Avançada:{" "}
           </Typography>
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails>
-          <AdvancedSearch 
-            date={props.date} 
+          <AdvancedSearch
+            date={props.date}
             price={props.price}
             changeHandler={props.changeHandler}
             checkBoxes={props.checkBoxes}

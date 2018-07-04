@@ -5,10 +5,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import LabelButtons from "../SignUpPage/LabelButtons/LabelButtons";
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   flex: {
     flex: 1
@@ -23,7 +24,9 @@ function SimpleAppBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default"
+        style={{backgroundColor: "#4834d4"}}
+      >
         <Toolbar>
           <Link style={{ textDecoration: "none" }} to="/home/">
             <Button
@@ -48,14 +51,7 @@ function SimpleAppBar(props) {
           <p className={classes.flex} />
 
           <Link style={{ textDecoration: "none" }} to="/signup/">
-            <Button
-              variant="raised"
-              color="primary"
-              onClick={props.signUpButton}
-              className={classes.menuButton}
-            >
-              Cadastre-se!
-            </Button>
+            <LabelButtons onClick={null} getText={"Cadastre-se"}/>
           </Link>
         </Toolbar>
       </AppBar>

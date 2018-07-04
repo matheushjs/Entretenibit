@@ -3,12 +3,11 @@ import CardGrid from "../CardGrid/CardGrid";
 import ConfigurationSettingsPanel from "./ConfigSettings/ConfigurationSettingsPanel";
 import SearchBar from "./SearchBar/SearchBar";
 import SearchButton from "./SearchButton/SearchButton";
-import LabelButtons from "../SignUpPage/LabelButtons/LabelButtons";
+//import LabelButtons from "../SignUpPage/LabelButtons/LabelButtons";
 
 import {
   Route,
-  Redirect,
-  Link
+  Redirect
 } from "react-router-dom";
 
 function SelectPage(props) {
@@ -16,14 +15,12 @@ function SelectPage(props) {
 
     return (
       <div>
-
         <div className="SearchBarSection"
           style={{
             lineHeight: "3vh",
             display: "inline",
             margin: "auto"
           }} >
-
           <SearchBar
             onChange={props.handleInputChange}
             onEnter={props.turnOnPageLinkHandler}
@@ -38,9 +35,6 @@ function SelectPage(props) {
 
           <SearchButton onClick={props.turnOnPageLinkHandler}/>
 
-          <Link style={{ textDecoration: "none" }} to="/signup/">
-            <LabelButtons onClick={null} getText={"Cadastrar"}/>
-          </Link>
 
           <Route
             path="/(home|search)/"
@@ -57,7 +51,7 @@ function SelectPage(props) {
 
         <div
           className="ConfigurationSection"
-          style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%" }} >
+          style={{margin: "0.5% 14% 6% 14%"}} >
           <ConfigurationSettingsPanel
             triggerParentHandleInputChange={props.handleInputChange}
             getParentConfigurationEventType={props.configurationEventType}

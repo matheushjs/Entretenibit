@@ -23,6 +23,8 @@ function SignUpPage(props) {
           <Typography
             style={{
               fontSize: "2vw",
+              fontFamily: "sans",
+              color: "white",
               textAlign: "left"
             }}
           >
@@ -38,6 +40,8 @@ function SignUpPage(props) {
 
           <p style={{
               fontSize: "1.5vw",
+              fontFamily: "sans",
+              color: "white",
               textAlign: "left",
               display: "inline"
             }}
@@ -65,6 +69,8 @@ function SignUpPage(props) {
 
           <p style={{
               fontSize: "1.5vw",
+              fontFamily: "sans",
+              color: "white",
               textAlign: "left",
               display: "inline"
             }}
@@ -82,12 +88,12 @@ function SignUpPage(props) {
             placeHolder={"Digite seu nome"}
             getName={"name"}
           />
-          
+
         </div>
 
         <div
           className="ConfigurationSection"
-          style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%" }} >
+          style={{ marginTop: "3vh", marginLeft: "12%", marginRight: "16%" }} >
           <ConfigurationSettingsPanel
             triggerParentHandleInputChange={props.handleInputChange}
             getParentConfigurationEventType={props.configurationEventType}
@@ -101,9 +107,11 @@ function SignUpPage(props) {
         <div
           className="KeyWordsSection"
           style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%", textAlign: "left" }} >
-          
+
           <p style={{
               fontSize: "1.5vw",
+              fontFamily: "sans",
+              color: "white",
               textAlign: "left",
               display: "inline"
             }}
@@ -127,11 +135,11 @@ function SignUpPage(props) {
         <div
           className="SignUpButtonSection"
           style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%"}} >
-          
-          <LabelButtons 
+
+          <LabelButtons
             onClick={props.handleSignUpButton}
             getText={"Cadastrar-se"}/>
-          
+
         </div>
 
       </div>
