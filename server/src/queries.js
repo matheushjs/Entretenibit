@@ -37,9 +37,9 @@ function devs(req, res, next) {
 
 function getAllEvents(req, res, next) {
   db.any(
-    `SELECT e.*, t.type 
-    FROM event e 
-    LEFT JOIN type t 
+    `SELECT e.*, t.type
+    FROM event e
+    LEFT JOIN type t
     ON t.event = e.id`
   )
     .then(data => {
@@ -66,13 +66,13 @@ function getEventsByType(req, res, next) {
   // it works with every parameter, but I'll not touch
   // it until I'am sure that this will not break anything.
 
-  // Build a subquery for "type" paramaters. The "TEATRO", 
+  // Build a subquery for "type" paramaters. The "TEATRO",
   // "MUSICA" and "ACADEMICO" are all pretty straighforward to
-  // check with a direct comparison. I've just used a 
+  // check with a direct comparison. I've just used a
   // SQL "LIKE" keyword alongside the user desired types.
   // If the user don't specify any type, for the sake of
-  // simplicity, it is replaced by the "INV" type in the 
-  // "LIKE" group, which is arbitrarily selected between 
+  // simplicity, it is replaced by the "INV" type in the
+  // "LIKE" group, which is arbitrarily selected between
   // any invalid type value.
 
   // All SQL type-related will be kept inside
@@ -81,35 +81,35 @@ function getEventsByType(req, res, next) {
     + (theater === "true" ? "'TEATRO'" : "'INV'") + ","
     + (music === "true" ? "'MUSICA'" : "'INV'") + ","
     + (academic === "true" ? "'ACADEMICO'" : "'INV'") + ")"
-    + (others === "true" ? 
+    + (others === "true" ?
           " OR t.type IS NULL OR UPPER(t.type) NOT IN " +
           " ('TEATRO', 'MUSICA', 'ACADEMICO') " : "");
 
   // Finally, pricing conditions.
   // Will not implement that now because I'm really not sure
   // how exactly this will be stored in database.
-  
+
   // Finally, send the mounted query to the database.
   db.any(`
       SELECT e.*, t.type
-      FROM event e 
+      FROM event e
       LEFT OUTER JOIN type t
-        ON t.event = e.id 
-      LEFT OUTER JOIN occurence o
-        ON e.link = o.event 
-      WHERE 
+        ON t.event = e.id
+      LEFT OUTER JOIN occurrence o
+        ON e.link = o.event
+      WHERE
         UPPER(e.title) LIKE UPPER($1)
       AND ($2:raw)
       AND (
         $3 OR
-        o.date BETWEEN 
-        to_date($4, 'YYYY-MM-DD') AND 
+        o.date BETWEEN
+        to_date($4, 'YYYY-MM-DD') AND
         to_date($5, 'YYYY-MM-DD')
-      );`, 
+      );`,
     [
-      title !== null && 
-      title !== "null" && 
-      title.length > 0 ? 
+      title !== null &&
+      title !== "null" &&
+      title.length > 0 ?
       title : "%",
 
       queryTypes,
@@ -122,14 +122,14 @@ function getEventsByType(req, res, next) {
       dateMax.length === 0) ?
       "TRUE" : "FALSE",
 
-      dateMin !== null && 
-      dateMin !== "null" && 
-      dateMin.length > 0 ? 
+      dateMin !== null &&
+      dateMin !== "null" &&
+      dateMin.length > 0 ?
       dateMin : "0000-00-00",
 
-      dateMax !== null && 
-      dateMax !== "null" && 
-      dateMax.length > 0 ? 
+      dateMax !== null &&
+      dateMax !== "null" &&
+      dateMax.length > 0 ?
       dateMax : "9999-12-31",
     ])
 
