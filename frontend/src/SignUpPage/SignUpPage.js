@@ -22,10 +22,11 @@ function SignUpPage(props) {
 
           <Typography
             style={{
-              fontSize: "2vw",
-              fontFamily: "sans",
-              color: "white",
-              textAlign: "left"
+              fontSize: "2.2vw",
+              textAlign: "left",
+              fontFamily: "Kalam",
+              color: "#D0E5FF",
+              textShadow: "0.75px 0.75px 7.5px #000000"
             }}
           >
             <b>Como deseja receber nossos emails?</b>
@@ -39,10 +40,11 @@ function SignUpPage(props) {
         >
 
           <p style={{
-              fontSize: "1.5vw",
-              fontFamily: "sans",
-              color: "white",
+              fontSize: "2vw",
               textAlign: "left",
+              fontFamily: "Kalam",
+              color: "#D0E5FF",
+              textShadow: "0.75px 0.75px 7.5px #000000",
               display: "inline"
             }}
           >Email: &emsp;
@@ -68,10 +70,11 @@ function SignUpPage(props) {
         >
 
           <p style={{
-              fontSize: "1.5vw",
-              fontFamily: "sans",
-              color: "white",
+              fontSize: "2vw",
               textAlign: "left",
+              fontFamily: "Kalam",
+              color: "#D0E5FF",
+              textShadow: "0.75px 0.75px 7.5px #000000",
               display: "inline"
             }}
           >Nome: &emsp;
@@ -93,7 +96,7 @@ function SignUpPage(props) {
 
         <div
           className="ConfigurationSection"
-          style={{ marginTop: "3vh", marginLeft: "12%", marginRight: "16%" }} >
+          style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "7.75%" }} >
           <ConfigurationSettingsPanel
             triggerParentHandleInputChange={props.handleInputChange}
             getParentConfigurationEventType={props.configurationEventType}
@@ -109,10 +112,11 @@ function SignUpPage(props) {
           style={{ marginTop: "3vh", marginLeft: "5%", marginRight: "5%", textAlign: "left" }} >
 
           <p style={{
-              fontSize: "1.5vw",
-              fontFamily: "sans",
-              color: "white",
+              fontSize: "2vw",
               textAlign: "left",
+              fontFamily: "Kalam",
+              color: "#D0E5FF",
+              textShadow: "0.75px 0.75px 7.5px #000000",
               display: "inline"
             }}
           >Busca: &emsp;

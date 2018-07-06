@@ -35,15 +35,14 @@ function SelectPage(props) {
 
           <SearchButton onClick={props.turnOnPageLinkHandler}/>
 
-
           <Route
             path="/(home|search)/"
             render={() => {
-              return (
+              return (("/home/" + props.actualSearchString) !== window.location.pathname) ? (
                 <Redirect
                   to={"/home/" + props.actualSearchString}
                 />
-              ); 
+              ): null; 
             }}
           />
 
@@ -51,7 +50,7 @@ function SelectPage(props) {
 
         <div
           className="ConfigurationSection"
-          style={{margin: "0.5% 14% 6% 14%"}} >
+          style={{margin: "2% 5% 6% 5%"}} >
           <ConfigurationSettingsPanel
             triggerParentHandleInputChange={props.handleInputChange}
             getParentConfigurationEventType={props.configurationEventType}

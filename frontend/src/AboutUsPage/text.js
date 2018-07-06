@@ -10,9 +10,9 @@ export default {
   Marcello:
     "PO do projeto e desenvoledor Full Stack, responsável pelo servidor.",
   Bruno:
-    "Scrum Master e desenvolvedor Back End, responsável pelo robot do site.",
-  Felipe: "Desenvolvedor Full Stack, responsável pela interface do site.",
-  Gabriel: "Desenvolvedor Back End, responsável pelo robot do site.",
-  Matheus: "Desenvolvedor Full Stack, responsável pelo banco de dados do site.",
-  Tiago: "Desenvolvedor Front End, responsável pela interface do site."
+    "Scrum Master e desenvolvedor Back End, responsável pelo robot.",
+  Felipe: "Desenvolvedor Full Stack, responsável pela interface.",
+  Gabriel: "Desenvolvedor Back End, responsável pelo robot.",
+  Matheus: "Desenvolvedor Full Stack, responsável pelo banco de dados.",
+  Tiago: "Desenvolvedor Front End, responsável pela interface."
 };

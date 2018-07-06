@@ -22,6 +22,9 @@ function IconLabelButtons(props) {
         className={classes.button}
         variant="raised"
         color="primary"
+        style={{
+          boxShadow: "1px 1px 1px #000000"
+        }}
       >
         <i className="material-icons">search</i>
       </Button>

@@ -25,7 +25,7 @@ function SimpleAppBar(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default"
-        style={{backgroundColor: "#4834d4"}}
+        style={{backgroundColor: "#3F7BD4"}}
       >
         <Toolbar>
           <Link style={{ textDecoration: "none" }} to="/home/">
@@ -33,6 +33,9 @@ function SimpleAppBar(props) {
               variant="raised"
               onClick={props.homeButton}
               className={classes.menuButton}
+              style={{
+                boxShadow: "1px 1px 1px #000000"
+              }}
             >
               Home
             </Button>
@@ -43,6 +46,9 @@ function SimpleAppBar(props) {
               variant="raised"
               onClick={props.aboutUsButton}
               className={classes.menuButton}
+              style={{
+                boxShadow: "1px 1px 1px #000000"
+              }}
             >
               Sobre Nós
             </Button>
