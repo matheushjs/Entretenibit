@@ -81,7 +81,7 @@ class SingleCard extends Component {
   render() {
     return (
       <div>
-        <Card className={this.state.classes.card}>
+        <Card className={this.state.classes.card} style={{boxShadow: "0.3px 0.3px 0.3px #000000"}}>
           <CardHeader
             avatar={
               <Avatar
@@ -91,7 +91,10 @@ class SingleCard extends Component {
               />
             }
             title={
-              <Typography gutterBottom variant="headline" component="h2">
+              <Typography gutterBottom variant="headline" component="h2"
+                  style={{
+                    fontSize: "1.6vw"
+                  }}>
                 {this.state.title}
               </Typography>
             }

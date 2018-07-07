@@ -100,7 +100,7 @@ function CustomizedInputs(props) {
           shrink: true,
           className: classes.textFieldFormLabel
         }}
-        style={{ marginRight: 10, width: "60vw" }}
+        style={{ marginRight: 10, width: "78vw", boxShadow: "0.1px 0.1px 0.1px #000000" }}
         value={props.getValue}
       />
     </div>

@@ -116,6 +116,10 @@ class App extends Component {
   //this.selectPageChild.current.cleanSearchStringHandler();
   //window.location.reload();
   }
+  
+  redirectOnSend = () => { //for tests -> get the current path
+    alert(window.location.pathname);
+  }
 
   handleSignUpButton = (event) => {
     insertUser(
@@ -157,7 +161,7 @@ class App extends Component {
         <Router>
           <Parallax
             bgImage={ this.props.backgroundImage }
-            blur={{ min: 1, max: 2 }}
+            blur={{ min: 0.5, max: 1 }}
           >
             <Header
               homeButton={this.onChangePage}
@@ -169,7 +173,8 @@ class App extends Component {
               style={{
                 fontSize: "6vw",
                 fontFamily: "Kalam",
-                color: "#039BE5",
+                color: "#3F7BC8",
+                textShadow: "1px 1px 1px #000000"
               }}
             >
               {" "}
@@ -240,13 +245,10 @@ class App extends Component {
 
 App.defaultProps = {
   backgroundImage:
-    "https://images.pexels.com/photos/34650" +
-    "/pexels-photo.jpg?" +
-    "auto=compress&" +
-    "cs=tinysrgb&" +
-    "h=650&w=940",
+    "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350",
   searchLink: "http://localhost:3000/",
   pathComplement: "/home/"
 };
+//https://images.pexels.com/photos/34650/pexels-photo.jpg
 
 export default App;

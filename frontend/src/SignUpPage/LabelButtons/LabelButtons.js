@@ -20,6 +20,7 @@ function LabelButtons(props) {
         className={classes.button}
         variant="raised"
         color="primary"
+        style={{backgroundColor: "#CAD3E1", color: "#161616", boxShadow: "1px 1px 1px #000000"}}
       >
         {props.getText}
       </Button>

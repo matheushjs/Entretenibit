@@ -31,10 +31,11 @@ class AboutUsPage extends React.Component {
         >
           <Typography
             style={{
-              fontSize: "2vw",
-              fontFamily: "sans",
+              fontSize: "2.5vw",
               textAlign: "left",
-              color: "white"
+              fontFamily: "Kalam",
+              color: "#D0E5FF",
+              textShadow: "0.75px 0.75px 7.5px #000000"
             }}
           >
             <b>Sobre o projeto</b>
@@ -42,10 +43,11 @@ class AboutUsPage extends React.Component {
 
           <Typography
             style={{
-              fontSize: "1vw",
-              fontFamily: "sans",
-              textAlign: "left",
-              color: "#03A678"
+              fontSize: "1.7vw",
+              textAlign: "justify",
+              fontFamily: "Kalam",
+              color: "#FFFFFF",
+              textShadow: "0.75px 0.75px 7.5px #000000"
             }}
           >
             {about.Info}
@@ -61,33 +63,35 @@ class AboutUsPage extends React.Component {
         >
           <Typography
             style={{
-              fontSize: "2vw",
-              fontFamily: "sans",
+              fontSize: "2.5vw",
               textAlign: "left",
-              color: "white"
+              fontFamily: "Kalam",
+              color: "#D0E5FF",
+              textShadow: "0.75px 0.75px 7.5px #000000"
             }}
           >
             <b>Desenvolvedores</b>
           </Typography>
 
-          <GridList cellHeight={350} cellWidth="45%" cols={2} style={{}}>
+          <GridList cellHeight={200} cols={2} style={{}}>
             <GridListTile cols={1}>
               <GridList cellHeight={150} cols={2} style={{ marginTop: "4%" }}>
                 <img
                   src={photoMarcello}
                   alt="Generic_Avatar_1"
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain", clipPath: " circle(34% at center)" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.1vw",
-                    fontFamily: "sans",
+                    fontSize: "1.4vw",
                     textAlign: "left",
-                    color: "#03A678"
+                    fontFamily: "Kalam",
+                    color: "#FFFFFF",
+                    textShadow: "0.75px 0.75px 7.5px #000000"
                   }}
                 >
-                  Marcello Pagano<br />
+                  <b>Marcello Pagano</b><br />
                   {about.Marcello}
                 </Typography>
               </GridList>
@@ -97,18 +101,19 @@ class AboutUsPage extends React.Component {
                 <img
                   src={photoBruno}
                   alt="Generic_Avatar_2"
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain", clipPath: " circle(34% at center)" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.1vw",
-                    fontFamily: "sans",
+                    fontSize: "1.4vw",
                     textAlign: "left",
-                    color: "#03A678"
+                    fontFamily: "Kalam",
+                    color: "#FFFFFF",
+                    textShadow: "0.75px 0.75px 7.5px #000000"
                   }}
                 >
-                  Bruno Coelho<br />
+                  <b>Bruno Coelho</b><br />
                   {about.Bruno}
                 </Typography>
               </GridList>
@@ -118,18 +123,19 @@ class AboutUsPage extends React.Component {
                 <img
                   src={image1}
                   alt="Generic_Avatar_3"
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain", clipPath: " circle(34% at center)" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.1vw",
-                    fontFamily: "sans",
+                    fontSize: "1.4vw",
                     textAlign: "left",
-                    color: "#03A678"
+                    fontFamily: "Kalam",
+                    color: "#FFFFFF",
+                    textShadow: "0.75px 0.75px 7.5px #000000"
                   }}
                 >
-                  Felipe Siqueira<br />
+                  <b>Felipe Siqueira</b><br />
                   {about.Felipe}
                 </Typography>
               </GridList>
@@ -139,18 +145,19 @@ class AboutUsPage extends React.Component {
                 <img
                   src={photoGabriel}
                   alt="Generic_Avatar_4"
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain", clipPath: " circle(34% at center)" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.1vw",
-                    fontFamily: "sans",
+                    fontSize: "1.4vw",
                     textAlign: "left",
-                    color: "#03A678"
+                    fontFamily: "Kalam",
+                    color: "#FFFFFF",
+                    textShadow: "0.75px 0.75px 7.5px #000000"
                   }}
                 >
-                  Gabriel Cruz<br />
+                  <b>Gabriel Cruz</b><br />
                   {about.Gabriel}
                 </Typography>
               </GridList>
@@ -160,18 +167,19 @@ class AboutUsPage extends React.Component {
                 <img
                   src={photoMatheus}
                   alt="Generic_Avatar_5"
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain", clipPath: " circle(34% at center)" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.1vw",
-                    fontFamily: "sans",
+                    fontSize: "1.4vw",
                     textAlign: "left",
-                    color: "#03A678"
+                    fontFamily: "Kalam",
+                    color: "#FFFFFF",
+                    textShadow: "0.75px 0.75px 7.5px #000000"
                   }}
                 >
-                  Matheus Saldanha<br />
+                  <b>Matheus Saldanha</b><br />
                   {about.Matheus}
                 </Typography>
               </GridList>
@@ -181,18 +189,19 @@ class AboutUsPage extends React.Component {
                 <img
                   src={image1}
                   alt="Generic_Avatar_6"
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain", clipPath: " circle(34% at center)" }}
                 />
 
                 <Typography
                   style={{
-                    fontSize: "1.1vw",
+                    fontSize: "1.4vw",
                     textAlign: "left",
-                    fontFamily: "sans",
-                    color: "#03A678"
+                    fontFamily: "Kalam",
+                    color: "#FFFFFF",
+                    textShadow: "0.75px 0.75px 7.5px #000000"
                   }}
                 >
-                  Tiago Miranda<br />
+                  <b>Tiago Miranda</b><br />
                   {about.Tiago}
                 </Typography>
               </GridList>
